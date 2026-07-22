@@ -1,0 +1,62 @@
+name: تحديث يومي ونشر
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # يومياً 6:00 UTC (9 صباحاً بتوقيت الأردن)
+  workflow_dispatch:        # زر تشغيل يدوي
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: جلب الكود
+        uses: actions/checkout@v4
+
+      - name: تجهيز Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: تثبيت المكتبات
+        run: pip install -r requirements.txt
+
+      - name: جلب المستودعات الجديدة
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/fetch_repos.py
+
+      - name: توليد الشرح العربي
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/summarize.py
+
+      - name: بناء الموقع
+        run: python scripts/build_site.py
+
+      - name: حفظ البيانات في المستودع
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ site/
+          git commit -m "تحديث تلقائي: مستودعات وشروح جديدة" || echo "لا يوجد تغيير"
+          git push
+
+      - name: إعداد Pages
+        uses: actions/configure-pages@v5
+
+      - name: رفع الموقع
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: النشر
+        uses: actions/deploy-pages@v4
