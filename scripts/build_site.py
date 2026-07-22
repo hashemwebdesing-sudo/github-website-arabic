@@ -62,9 +62,12 @@ def render_card(repo):
     badge = '<span class="badge-new">جديد</span>' if is_new(repo.get("fetched_at", "")) else ""
     lang = f'<span class="lang">{esc(repo["language"])}</span>' if repo.get("language") else ""
     return f"""
-    <article class="card">
+    <article class="card" data-repo="{esc(repo['full_name'])}">
       <header class="card-head">
-        <h2><a href="{esc(repo['html_url'])}" target="_blank" rel="noopener">{esc(repo['full_name'])}</a> {badge}</h2>
+        <div class="title-row">
+          <h2><a href="{esc(repo['html_url'])}" target="_blank" rel="noopener">{esc(repo['full_name'])}</a> {badge}</h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ {repo['stars']:,}</span>
           {lang}
@@ -118,13 +121,82 @@ TEMPLATE = """<!DOCTYPE html>
   <p class="stats">🗂️ {count} مشروع · آخر تحديث: {updated}</p>
 </header>
 
+<nav class="toolbar">
+  <button class="filter-btn active" type="button" data-filter="all">الكل</button>
+  <button class="filter-btn" type="button" data-filter="fav">🔖 مفضلتي (<span id="fav-count">0</span>)</button>
+</nav>
+
+<p id="empty-favs" class="empty-favs" hidden>
+  ما عندك أي مستودع بالمفضلة بعد. اضغط على أيقونة 🔖 فوق أي بطاقة لتحفظها وترجعلها لاحقاً.
+</p>
+
 <main class="grid">
 {cards}
 </main>
 
 <footer class="site-foot">
   <p>يتحدّث تلقائياً كل يوم عبر GitHub Actions · الشرح مولّد بالذكاء الاصطناعي (Claude)</p>
+  <p class="foot-note">مفضلتك محفوظة داخل متصفحك على هذا الجهاز فقط.</p>
 </footer>
+
+<script>
+(function () {{
+  var KEY = "radar_favs";
+  var currentFilter = "all";
+
+  function getFavs() {{
+    try {{ return JSON.parse(localStorage.getItem(KEY)) || []; }}
+    catch (e) {{ return []; }}
+  }}
+  function setFavs(list) {{ localStorage.setItem(KEY, JSON.stringify(list)); }}
+  function updateCount() {{
+    document.getElementById("fav-count").textContent = getFavs().length;
+  }}
+
+  function applyFilter(mode) {{
+    var favs = getFavs();
+    var shown = 0;
+    document.querySelectorAll(".card").forEach(function (card) {{
+      var isFav = favs.indexOf(card.dataset.repo) !== -1;
+      var show = mode === "all" || isFav;
+      card.style.display = show ? "" : "none";
+      if (show) shown++;
+    }});
+    var empty = document.getElementById("empty-favs");
+    empty.hidden = !(mode === "fav" && shown === 0);
+  }}
+
+  // تجهيز أزرار الحفظ على كل بطاقة
+  document.querySelectorAll(".card").forEach(function (card) {{
+    var repo = card.dataset.repo;
+    var btn = card.querySelector(".fav-btn");
+    if (getFavs().indexOf(repo) !== -1) btn.classList.add("saved");
+    btn.addEventListener("click", function () {{
+      var favs = getFavs();
+      var idx = favs.indexOf(repo);
+      if (idx !== -1) {{ favs.splice(idx, 1); btn.classList.remove("saved"); }}
+      else {{ favs.push(repo); btn.classList.add("saved"); }}
+      setFavs(favs);
+      updateCount();
+      if (currentFilter === "fav") applyFilter("fav");
+    }});
+  }});
+
+  // أزرار الفلترة
+  document.querySelectorAll(".filter-btn").forEach(function (btn) {{
+    btn.addEventListener("click", function () {{
+      document.querySelectorAll(".filter-btn").forEach(function (b) {{
+        b.classList.remove("active");
+      }});
+      btn.classList.add("active");
+      currentFilter = btn.dataset.filter;
+      applyFilter(currentFilter);
+    }});
+  }});
+
+  updateCount();
+}})();
+</script>
 </body>
 </html>
 """

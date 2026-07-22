@@ -14,14 +14,26 @@
 <header class="site-head">
   <h1>📡 رادار GitHub بالعربي</h1>
   <p class="tagline">أحدث المشاريع المميزة على GitHub — اللي وصلت ٢٠٠ نجمة فأكثر — مشروحة لك بالعربي.</p>
-  <p class="stats">🗂️ 30 مشروع · آخر تحديث: 2026-07-22 08:45 UTC</p>
+  <p class="stats">🗂️ 30 مشروع · آخر تحديث: 2026-07-22 09:03 UTC</p>
 </header>
+
+<nav class="toolbar">
+  <button class="filter-btn active" type="button" data-filter="all">الكل</button>
+  <button class="filter-btn" type="button" data-filter="fav">🔖 مفضلتي (<span id="fav-count">0</span>)</button>
+</nav>
+
+<p id="empty-favs" class="empty-favs" hidden>
+  ما عندك أي مستودع بالمفضلة بعد. اضغط على أيقونة 🔖 فوق أي بطاقة لتحفظها وترجعلها لاحقاً.
+</p>
 
 <main class="grid">
 
-    <article class="card">
+    <article class="card" data-repo="Blaizzy/nativ">
       <header class="card-head">
-        <h2><a href="https://github.com/Blaizzy/nativ" target="_blank" rel="noopener">Blaizzy/nativ</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/Blaizzy/nativ" target="_blank" rel="noopener">Blaizzy/nativ</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 671</span>
           <span class="lang">Swift</span>
@@ -37,9 +49,12 @@
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="yetone/kill-ai-slop">
       <header class="card-head">
-        <h2><a href="https://github.com/yetone/kill-ai-slop" target="_blank" rel="noopener">yetone/kill-ai-slop</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/yetone/kill-ai-slop" target="_blank" rel="noopener">yetone/kill-ai-slop</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 694</span>
           <span class="lang">TypeScript</span>
@@ -55,9 +70,12 @@
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="Blueturboguy07/cue">
       <header class="card-head">
-        <h2><a href="https://github.com/Blueturboguy07/cue" target="_blank" rel="noopener">Blueturboguy07/cue</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/Blueturboguy07/cue" target="_blank" rel="noopener">Blueturboguy07/cue</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 709</span>
           <span class="lang">JavaScript</span>
@@ -73,9 +91,12 @@
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="MatinSenPai/Aether-GUI">
       <header class="card-head">
-        <h2><a href="https://github.com/MatinSenPai/Aether-GUI" target="_blank" rel="noopener">MatinSenPai/Aether-GUI</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/MatinSenPai/Aether-GUI" target="_blank" rel="noopener">MatinSenPai/Aether-GUI</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 709</span>
           <span class="lang">TypeScript</span>
@@ -91,9 +112,12 @@
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="MIgHTy-alIeN/MEV-Arbitrage-Bot">
       <header class="card-head">
-        <h2><a href="https://github.com/MIgHTy-alIeN/MEV-Arbitrage-Bot" target="_blank" rel="noopener">MIgHTy-alIeN/MEV-Arbitrage-Bot</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/MIgHTy-alIeN/MEV-Arbitrage-Bot" target="_blank" rel="noopener">MIgHTy-alIeN/MEV-Arbitrage-Bot</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 739</span>
           <span class="lang">Solidity</span>
@@ -109,9 +133,12 @@
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="OpenBMB/StaffDeck">
       <header class="card-head">
-        <h2><a href="https://github.com/OpenBMB/StaffDeck" target="_blank" rel="noopener">OpenBMB/StaffDeck</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/OpenBMB/StaffDeck" target="_blank" rel="noopener">OpenBMB/StaffDeck</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 808</span>
           <span class="lang">Python</span>
@@ -127,9 +154,12 @@
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="v-modal/vmodal_sdk_flutter">
       <header class="card-head">
-        <h2><a href="https://github.com/v-modal/vmodal_sdk_flutter" target="_blank" rel="noopener">v-modal/vmodal_sdk_flutter</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/v-modal/vmodal_sdk_flutter" target="_blank" rel="noopener">v-modal/vmodal_sdk_flutter</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 811</span>
           <span class="lang">Dart</span>
@@ -151,9 +181,12 @@
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="pengchujin/jzsub">
       <header class="card-head">
-        <h2><a href="https://github.com/pengchujin/jzsub" target="_blank" rel="noopener">pengchujin/jzsub</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/pengchujin/jzsub" target="_blank" rel="noopener">pengchujin/jzsub</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 840</span>
           <span class="lang">Python</span>
@@ -169,9 +202,12 @@
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="William-Lu-stack/Flawless">
       <header class="card-head">
-        <h2><a href="https://github.com/William-Lu-stack/Flawless" target="_blank" rel="noopener">William-Lu-stack/Flawless</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/William-Lu-stack/Flawless" target="_blank" rel="noopener">William-Lu-stack/Flawless</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 848</span>
           <span class="lang">Python</span>
@@ -190,9 +226,12 @@
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="mereyabdenbekuly-ctrl/clodex-ide">
       <header class="card-head">
-        <h2><a href="https://github.com/mereyabdenbekuly-ctrl/clodex-ide" target="_blank" rel="noopener">mereyabdenbekuly-ctrl/clodex-ide</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/mereyabdenbekuly-ctrl/clodex-ide" target="_blank" rel="noopener">mereyabdenbekuly-ctrl/clodex-ide</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 849</span>
           <span class="lang">TypeScript</span>
@@ -208,9 +247,12 @@
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="cosmtrek/mindwalk">
       <header class="card-head">
-        <h2><a href="https://github.com/cosmtrek/mindwalk" target="_blank" rel="noopener">cosmtrek/mindwalk</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/cosmtrek/mindwalk" target="_blank" rel="noopener">cosmtrek/mindwalk</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 882</span>
           <span class="lang">Go</span>
@@ -232,9 +274,12 @@ mindwalk
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="Kappaemme-git/codex-first-customer-finder-skill">
       <header class="card-head">
-        <h2><a href="https://github.com/Kappaemme-git/codex-first-customer-finder-skill" target="_blank" rel="noopener">Kappaemme-git/codex-first-customer-finder-skill</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/Kappaemme-git/codex-first-customer-finder-skill" target="_blank" rel="noopener">Kappaemme-git/codex-first-customer-finder-skill</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 889</span>
           <span class="lang">Python</span>
@@ -258,9 +303,12 @@ Use $first-customer-finder to find ten evidence-backed potential first customers
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="x4gKing/Marzban-Node">
       <header class="card-head">
-        <h2><a href="https://github.com/x4gKing/Marzban-Node" target="_blank" rel="noopener">x4gKing/Marzban-Node</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/x4gKing/Marzban-Node" target="_blank" rel="noopener">x4gKing/Marzban-Node</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 898</span>
           <span class="lang">Dockerfile</span>
@@ -279,9 +327,12 @@ Use $first-customer-finder to find ten evidence-backed potential first customers
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="oil-oil/beautify-github-readme">
       <header class="card-head">
-        <h2><a href="https://github.com/oil-oil/beautify-github-readme" target="_blank" rel="noopener">oil-oil/beautify-github-readme</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/oil-oil/beautify-github-readme" target="_blank" rel="noopener">oil-oil/beautify-github-readme</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 911</span>
           <span class="lang">Python</span>
@@ -297,9 +348,12 @@ Use $first-customer-finder to find ten evidence-backed potential first customers
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="nethical6/conversation-steganography">
       <header class="card-head">
-        <h2><a href="https://github.com/nethical6/conversation-steganography" target="_blank" rel="noopener">nethical6/conversation-steganography</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/nethical6/conversation-steganography" target="_blank" rel="noopener">nethical6/conversation-steganography</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 927</span>
           <span class="lang">Go</span>
@@ -319,9 +373,12 @@ Use $first-customer-finder to find ten evidence-backed potential first customers
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="pablostanley/yoinks">
       <header class="card-head">
-        <h2><a href="https://github.com/pablostanley/yoinks" target="_blank" rel="noopener">pablostanley/yoinks</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/pablostanley/yoinks" target="_blank" rel="noopener">pablostanley/yoinks</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 995</span>
           <span class="lang">TypeScript</span>
@@ -337,9 +394,12 @@ Use $first-customer-finder to find ten evidence-backed potential first customers
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="x4gKing/Marzban-Panel">
       <header class="card-head">
-        <h2><a href="https://github.com/x4gKing/Marzban-Panel" target="_blank" rel="noopener">x4gKing/Marzban-Panel</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/x4gKing/Marzban-Panel" target="_blank" rel="noopener">x4gKing/Marzban-Panel</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 1,043</span>
           <span class="lang">Dockerfile</span>
@@ -355,9 +415,12 @@ Use $first-customer-finder to find ten evidence-backed potential first customers
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="Intuition-Lab/personal-model">
       <header class="card-head">
-        <h2><a href="https://github.com/Intuition-Lab/personal-model" target="_blank" rel="noopener">Intuition-Lab/personal-model</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/Intuition-Lab/personal-model" target="_blank" rel="noopener">Intuition-Lab/personal-model</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 1,049</span>
           <span class="lang">Python</span>
@@ -378,9 +441,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="AlephAITech/WorkBuddyGuide">
       <header class="card-head">
-        <h2><a href="https://github.com/AlephAITech/WorkBuddyGuide" target="_blank" rel="noopener">AlephAITech/WorkBuddyGuide</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/AlephAITech/WorkBuddyGuide" target="_blank" rel="noopener">AlephAITech/WorkBuddyGuide</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 1,202</span>
           <span class="lang">Python</span>
@@ -396,9 +462,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="pixel-point/aval">
       <header class="card-head">
-        <h2><a href="https://github.com/pixel-point/aval" target="_blank" rel="noopener">pixel-point/aval</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/pixel-point/aval" target="_blank" rel="noopener">pixel-point/aval</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 1,278</span>
           <span class="lang">TypeScript</span>
@@ -414,9 +483,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="tandpfun/wardrobe">
       <header class="card-head">
-        <h2><a href="https://github.com/tandpfun/wardrobe" target="_blank" rel="noopener">tandpfun/wardrobe</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/tandpfun/wardrobe" target="_blank" rel="noopener">tandpfun/wardrobe</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 1,308</span>
           <span class="lang">JavaScript</span>
@@ -439,9 +511,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="vinhhien112/Three.js-Object-Sculptor-Codex-Plugin">
       <header class="card-head">
-        <h2><a href="https://github.com/vinhhien112/Three.js-Object-Sculptor-Codex-Plugin" target="_blank" rel="noopener">vinhhien112/Three.js-Object-Sculptor-Codex-Plugin</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/vinhhien112/Three.js-Object-Sculptor-Codex-Plugin" target="_blank" rel="noopener">vinhhien112/Three.js-Object-Sculptor-Codex-Plugin</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 1,409</span>
           <span class="lang">Python</span>
@@ -457,9 +532,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="littledivy/mimic">
       <header class="card-head">
-        <h2><a href="https://github.com/littledivy/mimic" target="_blank" rel="noopener">littledivy/mimic</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/littledivy/mimic" target="_blank" rel="noopener">littledivy/mimic</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 1,441</span>
           <span class="lang">Python</span>
@@ -475,9 +553,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="CluvexStudio/Aether">
       <header class="card-head">
-        <h2><a href="https://github.com/CluvexStudio/Aether" target="_blank" rel="noopener">CluvexStudio/Aether</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/CluvexStudio/Aether" target="_blank" rel="noopener">CluvexStudio/Aether</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 1,452</span>
           <span class="lang">Rust</span>
@@ -493,9 +574,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="hoainho/img2threejs">
       <header class="card-head">
-        <h2><a href="https://github.com/hoainho/img2threejs" target="_blank" rel="noopener">hoainho/img2threejs</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/hoainho/img2threejs" target="_blank" rel="noopener">hoainho/img2threejs</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 1,669</span>
           <span class="lang">Python</span>
@@ -511,9 +595,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="lopopolo/harness-engineering">
       <header class="card-head">
-        <h2><a href="https://github.com/lopopolo/harness-engineering" target="_blank" rel="noopener">lopopolo/harness-engineering</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/lopopolo/harness-engineering" target="_blank" rel="noopener">lopopolo/harness-engineering</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 1,918</span>
           <span class="lang">Python</span>
@@ -529,9 +616,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="MDX-Tom/gpt-5.6-instruct">
       <header class="card-head">
-        <h2><a href="https://github.com/MDX-Tom/gpt-5.6-instruct" target="_blank" rel="noopener">MDX-Tom/gpt-5.6-instruct</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/MDX-Tom/gpt-5.6-instruct" target="_blank" rel="noopener">MDX-Tom/gpt-5.6-instruct</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 2,490</span>
           <span class="lang">Python</span>
@@ -547,9 +637,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="unicity-aos/aos-ce">
       <header class="card-head">
-        <h2><a href="https://github.com/unicity-aos/aos-ce" target="_blank" rel="noopener">unicity-aos/aos-ce</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/unicity-aos/aos-ce" target="_blank" rel="noopener">unicity-aos/aos-ce</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 6,090</span>
           <span class="lang">Rust</span>
@@ -565,9 +658,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="Fei-Away/Codex-Dream-Skin">
       <header class="card-head">
-        <h2><a href="https://github.com/Fei-Away/Codex-Dream-Skin" target="_blank" rel="noopener">Fei-Away/Codex-Dream-Skin</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/Fei-Away/Codex-Dream-Skin" target="_blank" rel="noopener">Fei-Away/Codex-Dream-Skin</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 11,685</span>
           <span class="lang">JavaScript</span>
@@ -585,9 +681,12 @@ uv run python scripts/sample_demo.py
     </article>
     
 
-    <article class="card">
+    <article class="card" data-repo="xai-org/grok-build">
       <header class="card-head">
-        <h2><a href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener">xai-org/grok-build</a> <span class="badge-new">جديد</span></h2>
+        <div class="title-row">
+          <h2><a href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener">xai-org/grok-build</a> <span class="badge-new">جديد</span></h2>
+          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
+        </div>
         <div class="meta">
           <span class="stars">⭐ 21,600</span>
           <span class="lang">Rust</span>
@@ -609,6 +708,66 @@ uv run python scripts/sample_demo.py
 
 <footer class="site-foot">
   <p>يتحدّث تلقائياً كل يوم عبر GitHub Actions · الشرح مولّد بالذكاء الاصطناعي (Claude)</p>
+  <p class="foot-note">مفضلتك محفوظة داخل متصفحك على هذا الجهاز فقط.</p>
 </footer>
+
+<script>
+(function () {
+  var KEY = "radar_favs";
+  var currentFilter = "all";
+
+  function getFavs() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+    catch (e) { return []; }
+  }
+  function setFavs(list) { localStorage.setItem(KEY, JSON.stringify(list)); }
+  function updateCount() {
+    document.getElementById("fav-count").textContent = getFavs().length;
+  }
+
+  function applyFilter(mode) {
+    var favs = getFavs();
+    var shown = 0;
+    document.querySelectorAll(".card").forEach(function (card) {
+      var isFav = favs.indexOf(card.dataset.repo) !== -1;
+      var show = mode === "all" || isFav;
+      card.style.display = show ? "" : "none";
+      if (show) shown++;
+    });
+    var empty = document.getElementById("empty-favs");
+    empty.hidden = !(mode === "fav" && shown === 0);
+  }
+
+  // تجهيز أزرار الحفظ على كل بطاقة
+  document.querySelectorAll(".card").forEach(function (card) {
+    var repo = card.dataset.repo;
+    var btn = card.querySelector(".fav-btn");
+    if (getFavs().indexOf(repo) !== -1) btn.classList.add("saved");
+    btn.addEventListener("click", function () {
+      var favs = getFavs();
+      var idx = favs.indexOf(repo);
+      if (idx !== -1) { favs.splice(idx, 1); btn.classList.remove("saved"); }
+      else { favs.push(repo); btn.classList.add("saved"); }
+      setFavs(favs);
+      updateCount();
+      if (currentFilter === "fav") applyFilter("fav");
+    });
+  });
+
+  // أزرار الفلترة
+  document.querySelectorAll(".filter-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll(".filter-btn").forEach(function (b) {
+        b.classList.remove("active");
+      });
+      btn.classList.add("active");
+      currentFilter = btn.dataset.filter;
+      applyFilter(currentFilter);
+    });
+  });
+
+  updateCount();
+})();
+</script>
 </body>
 </html>

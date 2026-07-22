@@ -44,9 +44,47 @@ body {
 .tagline { margin: .25rem auto; max-width: 640px; font-size: 1.1rem; color: var(--muted); }
 .stats { margin-top: 1rem; font-size: .95rem; color: var(--muted); }
 
+.toolbar {
+  max-width: 820px;
+  margin: 1.5rem auto 0;
+  padding: 0 1.25rem;
+  display: flex;
+  gap: .6rem;
+  justify-content: center;
+}
+.filter-btn {
+  font-family: inherit;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding: .5rem 1.2rem;
+  border-radius: 999px;
+  transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--accent); }
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.empty-favs {
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+}
+
 .grid {
   max-width: 820px;
-  margin: 2rem auto;
+  margin: 1.5rem auto 2rem;
   padding: 0 1.25rem;
   display: flex;
   flex-direction: column;
@@ -61,7 +99,32 @@ body {
   box-shadow: var(--shadow);
 }
 
+.title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+}
 .card-head h2 { margin: 0 0 .5rem; font-size: 1.35rem; word-break: break-word; }
+
+.fav-btn {
+  flex-shrink: 0;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 1.15rem;
+  line-height: 1;
+  padding: .4rem .5rem;
+  border-radius: 10px;
+  filter: grayscale(1) opacity(.5);
+  transition: all .15s;
+}
+.fav-btn:hover { filter: grayscale(.3) opacity(.9); border-color: var(--accent); }
+.fav-btn.saved {
+  filter: none;
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
 .card-head h2 a { color: var(--accent); text-decoration: none; }
 .card-head h2 a:hover { text-decoration: underline; }
 
@@ -130,3 +193,4 @@ body {
   font-size: .9rem;
   border-top: 1px solid var(--border);
 }
+.foot-note { margin-top: .5rem; font-size: .82rem; opacity: .8; }

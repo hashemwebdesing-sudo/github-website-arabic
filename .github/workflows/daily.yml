@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "0 6 * * *"   # يومياً 6:00 UTC (9 صباحاً بتوقيت الأردن)
   workflow_dispatch:        # زر تشغيل يدوي
+  push:
+    branches: [main]        # نشر تلقائي مع كل تعديل كود
+    paths:                  # فقط عند تغيير الكود، لا عند تحديث البيانات
+      - "scripts/**"
+      - "site/style.css"
+      - ".github/workflows/**"
 
 permissions:
   contents: write
