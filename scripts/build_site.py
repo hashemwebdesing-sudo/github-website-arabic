@@ -126,8 +126,18 @@ TEMPLATE = """<!DOCTYPE html>
   <button class="filter-btn" type="button" data-filter="fav">🔖 مفضلتي (<span id="fav-count">0</span>)</button>
 </nav>
 
+<div class="search-wrap">
+  <input id="search" type="search" class="search-box"
+         placeholder="🔍 ابحث... (مثلاً: python، مواقع، بيانات)"
+         aria-label="ابحث في المشاريع" autocomplete="off">
+</div>
+
 <p id="empty-favs" class="empty-favs" hidden>
   ما عندك أي مستودع بالمفضلة بعد. اضغط على أيقونة 🔖 فوق أي بطاقة لتحفظها وترجعلها لاحقاً.
+</p>
+
+<p id="no-results" class="empty-favs" hidden>
+  ما في نتائج تطابق بحثك. جرّب كلمة ثانية أو امسح البحث.
 </p>
 
 <main class="grid">
@@ -143,6 +153,7 @@ TEMPLATE = """<!DOCTYPE html>
 (function () {{
   var KEY = "radar_favs";
   var currentFilter = "all";
+  var query = "";
 
   function getFavs() {{
     try {{ return JSON.parse(localStorage.getItem(KEY)) || []; }}
@@ -153,21 +164,32 @@ TEMPLATE = """<!DOCTYPE html>
     document.getElementById("fav-count").textContent = getFavs().length;
   }}
 
-  function applyFilter(mode) {{
+  // نص كل بطاقة (للبحث) نخزّنه مرة وحدة، بأحرف صغيرة
+  var cards = [].slice.call(document.querySelectorAll(".card"));
+  cards.forEach(function (card) {{
+    card._text = (card.textContent || "").toLowerCase();
+  }});
+
+  // العرض = تقاطع الفلتر (الكل/المفضلة) مع البحث
+  function applyView() {{
     var favs = getFavs();
+    var q = query.trim().toLowerCase();
     var shown = 0;
-    document.querySelectorAll(".card").forEach(function (card) {{
-      var isFav = favs.indexOf(card.dataset.repo) !== -1;
-      var show = mode === "all" || isFav;
+    cards.forEach(function (card) {{
+      var passFilter = currentFilter === "all" || favs.indexOf(card.dataset.repo) !== -1;
+      var passSearch = q === "" || card._text.indexOf(q) !== -1;
+      var show = passFilter && passSearch;
       card.style.display = show ? "" : "none";
       if (show) shown++;
     }});
-    var empty = document.getElementById("empty-favs");
-    empty.hidden = !(mode === "fav" && shown === 0);
+    // رسائل الحالة الفارغة
+    document.getElementById("empty-favs").hidden =
+      !(currentFilter === "fav" && q === "" && shown === 0);
+    document.getElementById("no-results").hidden = !(q !== "" && shown === 0);
   }}
 
   // تجهيز أزرار الحفظ على كل بطاقة
-  document.querySelectorAll(".card").forEach(function (card) {{
+  cards.forEach(function (card) {{
     var repo = card.dataset.repo;
     var btn = card.querySelector(".fav-btn");
     if (getFavs().indexOf(repo) !== -1) btn.classList.add("saved");
@@ -178,7 +200,7 @@ TEMPLATE = """<!DOCTYPE html>
       else {{ favs.push(repo); btn.classList.add("saved"); }}
       setFavs(favs);
       updateCount();
-      if (currentFilter === "fav") applyFilter("fav");
+      applyView();
     }});
   }});
 
@@ -190,8 +212,14 @@ TEMPLATE = """<!DOCTYPE html>
       }});
       btn.classList.add("active");
       currentFilter = btn.dataset.filter;
-      applyFilter(currentFilter);
+      applyView();
     }});
+  }});
+
+  // مربع البحث — فلترة فورية أثناء الكتابة
+  document.getElementById("search").addEventListener("input", function (e) {{
+    query = e.target.value;
+    applyView();
   }});
 
   updateCount();
