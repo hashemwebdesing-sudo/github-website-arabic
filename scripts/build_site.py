@@ -112,7 +112,9 @@ def render_details(summary, lang):
 
 
 def is_visible(repo):
-    """يُخفي المرفوضين من الحَكَم، والفئات المزعجة الواضحة (حتى قبل الحُكم)."""
+    """يُظهر فقط المشاريع الجاهزة بشرح عربي (ويُخفي المرفوضين والزبالة)."""
+    if not repo.get("summary_ar"):
+        return False  # لسه ما اتشرح بالعربي — لا نعرضه إطلاقاً
     v = repo.get("verdict")
     if v is not None and not v.get("keep"):
         return False
