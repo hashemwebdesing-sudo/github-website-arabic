@@ -8,6 +8,7 @@
 
 import json
 import os
+import re
 import sys
 import time
 from pathlib import Path
@@ -28,9 +29,12 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "repos.json"
 
 MODEL = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
-MAX_TOKENS = 1500
+MAX_TOKENS = 1200
 MAX_RETRIES = 4
+RATE_RETRIES = 8  # محاولات إضافية عند تجاوز حد الطلبات (429)
 LIMIT = int(os.environ.get("SUMMARIZE_LIMIT", "0"))  # 0 = بلا حد
+# نقتطع README لتقليل التوكن المُرسَل (أهم عامل لتفادي حد Groq المجاني)
+README_LIMIT = int(os.environ.get("README_CHARS", "1500"))
 
 REQUIRED_KEYS = ("what", "why", "who", "try")
 
@@ -129,7 +133,7 @@ def valid_summary(obj):
 
 
 def call_groq(prompt, max_tokens, temperature):
-    """يرسل طلباً لـ Groq (واجهة متوافقة مع OpenAI) ويُعيد نص المحتوى."""
+    """يرسل طلباً لـ Groq ويُعيد نص المحتوى، مع انتظار ذكي عند حد الطلبات (429)."""
     payload = {
         "model": MODEL,
         "max_tokens": max_tokens,
@@ -138,10 +142,21 @@ def call_groq(prompt, max_tokens, temperature):
         "messages": [{"role": "user", "content": prompt}],
     }
     headers = {"Authorization": f"Bearer {os.environ['GROQ_API_KEY']}"}
-    status, data = post_json(GROQ_URL, payload, headers)
-    if status != 200:
+    for _ in range(RATE_RETRIES):
+        status, data = post_json(GROQ_URL, payload, headers)
+        if status == 200:
+            time.sleep(0.4)  # تهدئة بسيطة بين الطلبات
+            return data["choices"][0]["message"]["content"]
+        if status == 429:
+            # نستخرج مدة الانتظار المقترحة من رسالة Groq (وإلا 20ث)
+            msg = json.dumps(data, ensure_ascii=False)
+            m = re.search(r"try again in ([\d.]+)s", msg)
+            wait = (float(m.group(1)) + 1.5) if m else 20
+            print(f"    حد Groq — انتظار {wait:.0f}ث", file=sys.stderr)
+            time.sleep(wait)
+            continue
         raise RuntimeError(f"Groq رجّع {status}: {str(data)[:200]}")
-    return data["choices"][0]["message"]["content"]
+    raise RuntimeError("Groq: تجاوز الحد بشكل متكرر (429)")
 
 
 def summarize_one(repo, lang):
@@ -150,7 +165,7 @@ def summarize_one(repo, lang):
         language=repo["language"] or "unspecified",
         description=repo["description"] or "no description",
         stars=repo["stars"],
-        readme=repo["readme"] or "no README",
+        readme=(repo["readme"] or "no README")[:README_LIMIT],
     )
 
     for attempt in range(1, MAX_RETRIES + 1):
@@ -177,7 +192,7 @@ def judge_one(repo):
         language=repo["language"] or "unspecified",
         stars=repo["stars"],
         topics=", ".join(repo.get("topics") or []) or "none",
-        readme=repo["readme"] or "no README",
+        readme=(repo["readme"] or "no README")[:README_LIMIT],
         categories=", ".join(GOOD_CATEGORIES + sorted(JUNK_CATEGORIES)),
     )
     for attempt in range(1, MAX_RETRIES + 1):
