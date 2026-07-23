@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hashemwebdesing-sudo.github.io/github-website-arabic/sitemap.xml

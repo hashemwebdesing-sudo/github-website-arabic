@@ -3,304 +3,407 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>رادار GitHub بالعربي — أحدث المشاريع المميزة مشروحة</title>
-<meta name="description" content="أحدث مستودعات GitHub المميزة التي وصلت 200 نجمة فأكثر، مشروحة بالعربي: شو المشروع، ليش مميز، ومين يستفيد منه.">
+
+<title>GitHub Radar · رادار GitHub — أحدث المشاريع الصاعدة مشروحة بالعربي</title>
+<meta name="description" content="اكتشف أحدث مستودعات GitHub التي تخطّت 200 نجمة، مشروحة بالعربي ببساطة: ما هو المشروع، لماذا يتميّز، ومن يستفيد منه. · Discover trending new GitHub repositories that crossed 200 stars, explained simply in Arabic.">
+<meta name="keywords" content="GitHub, رادار, مشاريع مفتوحة المصدر, برمجة, شرح عربي, trending repositories, open source, Arabic">
+<meta name="author" content="aijolabs.com">
+<link rel="canonical" href="https://hashemwebdesing-sudo.github.io/github-website-arabic/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="GitHub Radar · رادار GitHub">
+<meta property="og:description" content="أحدث مشاريع GitHub الصاعدة مشروحة بالعربي ببساطة. Trending GitHub projects, explained in Arabic.">
+<meta property="og:url" content="https://hashemwebdesing-sudo.github.io/github-website-arabic/">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GitHub Radar · رادار GitHub">
+<meta name="twitter:description" content="أحدث مشاريع GitHub الصاعدة مشروحة بالعربي ببساطة.">
+
+<meta name="theme-color" content="#0d1117">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230d1117' stroke='%232dd4bf' stroke-width='2'/%3E%3Cpath d='M16 16 L26 10' stroke='%232dd4bf' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%232dd4bf'/%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GitHub Radar · رادار GitHub",
+  "url": "https://hashemwebdesing-sudo.github.io/github-website-arabic/",
+  "description": "أحدث مستودعات GitHub الصاعدة مشروحة بالعربي ببساطة.",
+  "inLanguage": ["ar", "en"],
+  "author": { "@type": "Organization", "name": "aijolabs.com", "url": "https://aijolabs.com" }
+}
+</script>
 </head>
 <body>
-<header class="site-head">
-  <h1>📡 رادار GitHub بالعربي</h1>
-  <p class="tagline">أحدث المشاريع المميزة على GitHub — اللي وصلت ٢٠٠ نجمة فأكثر — مشروحة لك بالعربي.</p>
-  <p class="stats">🗂️ 30 مشروع · آخر تحديث: 2026-07-22 09:12 UTC</p>
+
+<header class="topbar" id="top">
+  <a class="brand" href="#top" aria-label="GitHub Radar">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-name" data-k="brand">GitHub Radar</span>
+  </a>
+  <button class="lang-btn" id="lang-btn" type="button">EN</button>
 </header>
 
-<nav class="toolbar">
-  <button class="filter-btn active" type="button" data-filter="all">الكل</button>
-  <button class="filter-btn" type="button" data-filter="fav">🔖 مفضلتي (<span id="fav-count">0</span>)</button>
+<section class="hero">
+  <h1 class="hero-title" data-k="hero_title">Discover GitHub's rising projects</h1>
+  <p class="hero-sub" data-k="hero_sub">New repositories that crossed 200 stars, explained simply in Arabic.</p>
+
+  <div class="hero-row">
+    <div class="countdown" title="">
+      <span class="cd-label" data-k="cd_label">Next scan in</span>
+      <span class="cd-time" id="cd-time">--:--</span>
+    </div>
+    <div class="stats">
+      <span><strong>30</strong> <span data-k="stat_projects">projects tracked</span></span>
+      <span class="sep">·</span>
+      <span><span data-k="stat_updated">Updated</span> <time class="mono">2026-07-23 02:42 UTC</time></span>
+    </div>
+  </div>
+</section>
+
+<nav class="controls">
+  <div class="filters">
+    <button class="filter-btn active" type="button" data-filter="all" data-k="filter_all">All</button>
+    <button class="filter-btn" type="button" data-filter="fav">
+      <span data-k="filter_fav">Favorites</span> <span class="fav-count" id="fav-count">0</span>
+    </button>
+  </div>
+  <input id="search" class="search-box" type="search" autocomplete="off"
+         data-k-ph="search_ph" aria-label="Search">
 </nav>
 
-<div class="search-wrap">
-  <input id="search" type="search" class="search-box"
-         placeholder="🔍 ابحث... (مثلاً: python، مواقع، بيانات)"
-         aria-label="ابحث في المشاريع" autocomplete="off">
-</div>
-
-<p id="empty-favs" class="empty-favs" hidden>
-  ما عندك أي مستودع بالمفضلة بعد. اضغط على أيقونة 🔖 فوق أي بطاقة لتحفظها وترجعلها لاحقاً.
-</p>
-
-<p id="no-results" class="empty-favs" hidden>
-  ما في نتائج تطابق بحثك. جرّب كلمة ثانية أو امسح البحث.
-</p>
+<p id="empty-favs" class="notice" data-k="empty_favs" hidden>No bookmarks yet.</p>
+<p id="no-results" class="notice" data-k="no_results" hidden>No results.</p>
 
 <main class="grid">
 
     <article class="card" data-repo="Blaizzy/nativ">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/Blaizzy/nativ" target="_blank" rel="noopener">Blaizzy/nativ</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 676</span>
-          <span class="lang">Swift</span>
-          <span class="date">أُنشئ: 2026-07-20</span>
-        </div>
-      </header>
-      <p class="desc-en">Local AI, native to your Mac. Chat, serve, monitor, and connect MLX models from one macOS app.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>تطبيق ذكاء اصطناعي يعمل بشكل محلي على جهاز ماك، بدون الحاجة للإنترنت بعد التحميل. يتيح لك التحدث مع نماذج ذكية وإدارتها من واجهة جميلة وسهلة الاستخدام.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>المشروع مميز لأنه يجلب قوة الذكاء الاصطناعي مباشرة لجهازك الشخصي بدون الاعتماد على خوادم بعيدة، مما يعطيك الخصوصية الكاملة وسرعة أسرع. الناس متحمسة له لأنه يوفر بديلاً مجانياً محلياً لتطبيقات دفع مثل ChatGPT، ويدعم أدوات البرمجة، ويعمل بكفاءة على أجهزة ماك الحديثة.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>مطورو البرامج، المبرمجون، الأشخاص المهتمون بالذكاء الاصطناعي، والمستخدمون الذين يريدون خصوصية أكثر وحلاً محلياً بدون الاعتماد على الإنترنت المستمر.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>حمل التطبيق من صفحة الإصدارات على GitHub، ضعه في مجلد التطبيقات وشغّله. عند التشغيل الأول، اختر نموذجاً ذكياً (يمكنك تحميله من داخل التطبيق)، ثم ابدأ في التحدث معه مباشرة. إذا كنت مطوراً وتريد البناء من المصدر: شغّل `brew install xcodegen` ثم `make xcode-generate` و`make xcode-build`.</p></div></div>
-      <a class="btn" href="https://github.com/Blaizzy/nativ" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/Blaizzy/nativ" target="_blank" rel="noopener">Blaizzy/nativ</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">تطبيق ذكاء اصطناعي يعمل بشكل محلي على جهاز ماك، بدون الحاجة للإنترنت بعد التحميل. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 676</span>
+        <span class="lang"><i class="dot"></i>Swift</span>
+        <span class="date">2026-07-20</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>تطبيق ذكاء اصطناعي يعمل بشكل محلي على جهاز ماك، بدون الحاجة للإنترنت بعد التحميل. يتيح لك التحدث مع نماذج ذكية وإدارتها من واجهة جميلة وسهلة الاستخدام.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>المشروع مميز لأنه يجلب قوة الذكاء الاصطناعي مباشرة لجهازك الشخصي بدون الاعتماد على خوادم بعيدة، مما يعطيك الخصوصية الكاملة وسرعة أسرع. الناس متحمسة له لأنه يوفر بديلاً مجانياً محلياً لتطبيقات دفع مثل ChatGPT، ويدعم أدوات البرمجة، ويعمل بكفاءة على أجهزة ماك الحديثة.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>مطورو البرامج، المبرمجون، الأشخاص المهتمون بالذكاء الاصطناعي، والمستخدمون الذين يريدون خصوصية أكثر وحلاً محلياً بدون الاعتماد على الإنترنت المستمر.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>حمل التطبيق من صفحة الإصدارات على GitHub، ضعه في مجلد التطبيقات وشغّله. عند التشغيل الأول، اختر نموذجاً ذكياً (يمكنك تحميله من داخل التطبيق)، ثم ابدأ في التحدث معه مباشرة. إذا كنت مطوراً وتريد البناء من المصدر: شغّل `brew install xcodegen` ثم `make xcode-generate` و`make xcode-build`.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/Blaizzy/nativ" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="yetone/kill-ai-slop">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/yetone/kill-ai-slop" target="_blank" rel="noopener">yetone/kill-ai-slop</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 697</span>
-          <span class="lang">TypeScript</span>
-          <span class="date">أُنشئ: 2026-07-10</span>
-        </div>
-      </header>
-      <p class="desc-en">A field guide to the visual &amp; copy tics of AI-generated products — and an Agent Skill that scans your project and strips them out. https://killaislop.com</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يساعدك تتعرف على الأخطاء البصرية والكتابية الشائعة في المنتجات المصنوعة بالذكاء الاصطناعي، مثل الألوان الغريبة والرسومات البسيطة جداً. المشروع يوفر موقع ويب يشرح 33 خطأ شائع مع أمثلة قبل وبعد، وأداة برمجية تفحص مشاريعك الخاصة وتصلح هذه الأخطاء تلقائياً.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>الناس متحمسة له لأنه يحل مشكلة حقيقية: المنتجات المصنوعة بالذكاء الاصطناعي تبدو سيئة وواضحة جداً من الوهلة الأولى. هذا المشروع يعلمك تتجنب هذه الأخطاء الشائعة وتصنع منتجات احترافية وجميلة، مما يجعله مفيد جداً للمطورين والمصممين.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المطورون والمصممون الذين يريدون تحسين مظهر مشاريعهم ويريدون تجنب الأخطاء الشائعة للذكاء الاصطناعي، وأي شخص يريد أن يتعلم الفرق بين التصميم الجيد والتصميم السيء.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>جرب الموقع مباشرة على killaislop.com ورى الأمثلة. أما للأداة البرمجية فاكتب: `npx skills add yetone/kill-ai-slop` أو ادخل لمجلد المشروع واكتب `npm install` ثم `npm run dev` لتشغيله محلياً على حاسوبك.</p></div></div>
-      <a class="btn" href="https://github.com/yetone/kill-ai-slop" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/yetone/kill-ai-slop" target="_blank" rel="noopener">yetone/kill-ai-slop</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يساعدك تتعرف على الأخطاء البصرية والكتابية الشائعة في المنتجات المصنوعة بالذكاء الاصطناعي، مثل الألوان الغريبة والرسومات البسيطة جداً. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 697</span>
+        <span class="lang"><i class="dot"></i>TypeScript</span>
+        <span class="date">2026-07-10</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يساعدك تتعرف على الأخطاء البصرية والكتابية الشائعة في المنتجات المصنوعة بالذكاء الاصطناعي، مثل الألوان الغريبة والرسومات البسيطة جداً. المشروع يوفر موقع ويب يشرح 33 خطأ شائع مع أمثلة قبل وبعد، وأداة برمجية تفحص مشاريعك الخاصة وتصلح هذه الأخطاء تلقائياً.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>الناس متحمسة له لأنه يحل مشكلة حقيقية: المنتجات المصنوعة بالذكاء الاصطناعي تبدو سيئة وواضحة جداً من الوهلة الأولى. هذا المشروع يعلمك تتجنب هذه الأخطاء الشائعة وتصنع منتجات احترافية وجميلة، مما يجعله مفيد جداً للمطورين والمصممين.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المطورون والمصممون الذين يريدون تحسين مظهر مشاريعهم ويريدون تجنب الأخطاء الشائعة للذكاء الاصطناعي، وأي شخص يريد أن يتعلم الفرق بين التصميم الجيد والتصميم السيء.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>جرب الموقع مباشرة على killaislop.com ورى الأمثلة. أما للأداة البرمجية فاكتب: `npx skills add yetone/kill-ai-slop` أو ادخل لمجلد المشروع واكتب `npm install` ثم `npm run dev` لتشغيله محلياً على حاسوبك.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/yetone/kill-ai-slop" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="Blueturboguy07/cue">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/Blueturboguy07/cue" target="_blank" rel="noopener">Blueturboguy07/cue</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 709</span>
-          <span class="lang">JavaScript</span>
-          <span class="date">أُنشئ: 2026-07-15</span>
-        </div>
-      </header>
-      <p class="desc-en">Open-source macOS AI copilot that floats over your screen, sees/hears your meetings, and stays hidden from screen shares. Cluely alternative, bring-your-own-key.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>برنامج صغير يطفو على شاشتك ويساعدك بالذكاء الاصطناعي في الاجتماعات والبرمجة. يرى شاشتك ويسمع محادثتك ويبقى مختفياً عند مشاركة الشاشة مع الآخرين.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>البرنامج مميز لأنه مفتوح المصدر وتحكم به أنت بنفسك، لا يحتاج خادم بعيد، وآمن تماماً لأنه يعمل على جهازك فقط. الناس متحمسة له لأنه بديل مجاني وقوي للبرامج المدفوعة المشابهة، وسهل التثبيت حتى للمبتدئين.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>الطلاب والموظفون الذين يريدون مساعدة في الاجتماعات والدراسة، والمبرمجون الذين يريدون حل مشاكل البرمجة بسرعة، وأي شخص يريد مساعد ذكي خاص به على ماك.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>اذهب لصفحة التنزيلات في المشروع وحمّل الملف &#x27;cue-mac.zip&#x27;، ثم استخرجه وانقل &#x27;cue.app&#x27; لمجلد البرامج. عند الفتح الأول قد يطلب منك موافقة أمان من ماك، اضغط بزر اليمين ثم &#x27;فتح&#x27; وأكمل. بعدها أعطه صلاحية الميكروفون والشاشة، أضف مفتاح ذكائك الاصطناعي (من أوبن إيه آي أو كلود أو جوجل)، وابدأ الاستخدام.</p></div></div>
-      <a class="btn" href="https://github.com/Blueturboguy07/cue" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/Blueturboguy07/cue" target="_blank" rel="noopener">Blueturboguy07/cue</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">برنامج صغير يطفو على شاشتك ويساعدك بالذكاء الاصطناعي في الاجتماعات والبرمجة. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 709</span>
+        <span class="lang"><i class="dot"></i>JavaScript</span>
+        <span class="date">2026-07-15</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>برنامج صغير يطفو على شاشتك ويساعدك بالذكاء الاصطناعي في الاجتماعات والبرمجة. يرى شاشتك ويسمع محادثتك ويبقى مختفياً عند مشاركة الشاشة مع الآخرين.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>البرنامج مميز لأنه مفتوح المصدر وتحكم به أنت بنفسك، لا يحتاج خادم بعيد، وآمن تماماً لأنه يعمل على جهازك فقط. الناس متحمسة له لأنه بديل مجاني وقوي للبرامج المدفوعة المشابهة، وسهل التثبيت حتى للمبتدئين.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>الطلاب والموظفون الذين يريدون مساعدة في الاجتماعات والدراسة، والمبرمجون الذين يريدون حل مشاكل البرمجة بسرعة، وأي شخص يريد مساعد ذكي خاص به على ماك.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>اذهب لصفحة التنزيلات في المشروع وحمّل الملف &#x27;cue-mac.zip&#x27;، ثم استخرجه وانقل &#x27;cue.app&#x27; لمجلد البرامج. عند الفتح الأول قد يطلب منك موافقة أمان من ماك، اضغط بزر اليمين ثم &#x27;فتح&#x27; وأكمل. بعدها أعطه صلاحية الميكروفون والشاشة، أضف مفتاح ذكائك الاصطناعي (من أوبن إيه آي أو كلود أو جوجل)، وابدأ الاستخدام.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/Blueturboguy07/cue" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="MatinSenPai/Aether-GUI">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/MatinSenPai/Aether-GUI" target="_blank" rel="noopener">MatinSenPai/Aether-GUI</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 709</span>
-          <span class="lang">TypeScript</span>
-          <span class="date">أُنشئ: 2026-07-14</span>
-        </div>
-      </header>
-      <p class="desc-en">One-click desktop GUI for the Aether censorship-circumvention tunnel — Tauri v2, React 19, Rust</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>برنامج ديسكتوب صغير وجميل يساعدك تتصل بالإنترنت بحرية في الدول اللي تحظر المواقع. بدل ما تكتب أوامر معقّدة في الطرفية، بتضغط زرّ واحد وخلص - كل شي يصير بشكل تلقائي في الخلفية.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>البرنامج متميّز لأنه يجمع بين تقنيات حديثة قوية (TypeScript و React و Rust) مع واجهة استخدام سهلة جداً وخفيفة. الناس متحمسة له لأنه يحلّ مشكلة حقيقية بطريقة أنيقة: يأخذ أداة حقيقية قوية (Aether) ويغلفها في برنامج بسيط بدون تعقيد، والواجهة فيها أنيميشن جميل وتصميم احترافي حقاً.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>الأشخاص اللي يعيشوا في دول فيها حجب إنترنت (إيران والصين وسوريا وغيرها)، والناس التقنيين اللي يريدوا أداة موثوقة وآمنة، وكل من يريد يحافظ على خصوصيته وأمان اتصاله.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>أسهل طريقة: روح على صفحة Releases في GitHub واحمل آخر نسخة (ملف بصيغة exe)، ثم شغّل المثبّت والبرنامج يتثبت بشكل عادي زي أي برنامج ويندوز. لو بدّك تثبّت من الكود: تحتاج Node.js و Rust و المتطلبات تبعة Tauri، بعدين تكتب `npm install` و `npm run tauri dev` للتجربة أو `npm run tauri build` للبناء النهائي.</p></div></div>
-      <a class="btn" href="https://github.com/MatinSenPai/Aether-GUI" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/MatinSenPai/Aether-GUI" target="_blank" rel="noopener">MatinSenPai/Aether-GUI</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">برنامج ديسكتوب صغير وجميل يساعدك تتصل بالإنترنت بحرية في الدول اللي تحظر المواقع. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 709</span>
+        <span class="lang"><i class="dot"></i>TypeScript</span>
+        <span class="date">2026-07-14</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>برنامج ديسكتوب صغير وجميل يساعدك تتصل بالإنترنت بحرية في الدول اللي تحظر المواقع. بدل ما تكتب أوامر معقّدة في الطرفية، بتضغط زرّ واحد وخلص - كل شي يصير بشكل تلقائي في الخلفية.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>البرنامج متميّز لأنه يجمع بين تقنيات حديثة قوية (TypeScript و React و Rust) مع واجهة استخدام سهلة جداً وخفيفة. الناس متحمسة له لأنه يحلّ مشكلة حقيقية بطريقة أنيقة: يأخذ أداة حقيقية قوية (Aether) ويغلفها في برنامج بسيط بدون تعقيد، والواجهة فيها أنيميشن جميل وتصميم احترافي حقاً.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>الأشخاص اللي يعيشوا في دول فيها حجب إنترنت (إيران والصين وسوريا وغيرها)، والناس التقنيين اللي يريدوا أداة موثوقة وآمنة، وكل من يريد يحافظ على خصوصيته وأمان اتصاله.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>أسهل طريقة: روح على صفحة Releases في GitHub واحمل آخر نسخة (ملف بصيغة exe)، ثم شغّل المثبّت والبرنامج يتثبت بشكل عادي زي أي برنامج ويندوز. لو بدّك تثبّت من الكود: تحتاج Node.js و Rust و المتطلبات تبعة Tauri، بعدين تكتب `npm install` و `npm run tauri dev` للتجربة أو `npm run tauri build` للبناء النهائي.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/MatinSenPai/Aether-GUI" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="MIgHTy-alIeN/MEV-Arbitrage-Bot">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/MIgHTy-alIeN/MEV-Arbitrage-Bot" target="_blank" rel="noopener">MIgHTy-alIeN/MEV-Arbitrage-Bot</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 739</span>
-          <span class="lang">Solidity</span>
-          <span class="date">أُنشئ: 2026-07-17</span>
-        </div>
-      </header>
-      <p class="desc-en">An arbitrage bot is a smart contract connected to an external automation script that controls its operation.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>برنامج ذكي يعمل على شبكة إيثيريوم، وظيفته البحث عن فرص ربح سريعة من فروقات الأسعار بين منصات التبادل المختلفة، ثم تنفيذ عمليات البيع والشراء تلقائياً لجني الأرباح دون تدخل يدوي من الإنسان.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>مشروع مميز جداً لأنه يجمع بين العقود الذكية والأتمتة بطريقة ذكية جداً، ويوفر طريقة سهلة للمبتدئين لدخول عالم التمويل اللامركزي والربح من الفروقات السعرية، بالإضافة إلى أنه مفتوح المصدر مما يعني الشفافية الكاملة ويمكن للجميع فهم الكود.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المستثمرون الذين يريدون أموالهم تعمل بشكل تلقائي بدون مراقبة مستمرة، والمهتمون بالعملات الرقمية والتمويل اللامركزي، والمبرمجون الذين يريدون تعلم كيفية عمل العقود الذكية بطريقة عملية.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>1) زيارة موقع Etherlab 2) إنشاء ملف جديد والصق كود العقد الذكي 3) اختر إصدار المترجم 0.8.20 ثم اضغط ترجمة 4) أوصل محفظتك وانشر العقد وأرسل له 0.5 إلى 1 إيثيريوم 5) اذهب لتبويب الأتمتة واضغط ابدأ، ثم وافق على العملية في محفظتك والبرنامج سيبدأ البحث عن الفرص تلقائياً.</p></div></div>
-      <a class="btn" href="https://github.com/MIgHTy-alIeN/MEV-Arbitrage-Bot" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/MIgHTy-alIeN/MEV-Arbitrage-Bot" target="_blank" rel="noopener">MIgHTy-alIeN/MEV-Arbitrage-Bot</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">برنامج ذكي يعمل على شبكة إيثيريوم، وظيفته البحث عن فرص ربح سريعة من فروقات الأسعار بين منصات التبادل المختلفة، ثم تنفيذ عمليات البيع والشراء تلقائياً… <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 739</span>
+        <span class="lang"><i class="dot"></i>Solidity</span>
+        <span class="date">2026-07-17</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>برنامج ذكي يعمل على شبكة إيثيريوم، وظيفته البحث عن فرص ربح سريعة من فروقات الأسعار بين منصات التبادل المختلفة، ثم تنفيذ عمليات البيع والشراء تلقائياً لجني الأرباح دون تدخل يدوي من الإنسان.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>مشروع مميز جداً لأنه يجمع بين العقود الذكية والأتمتة بطريقة ذكية جداً، ويوفر طريقة سهلة للمبتدئين لدخول عالم التمويل اللامركزي والربح من الفروقات السعرية، بالإضافة إلى أنه مفتوح المصدر مما يعني الشفافية الكاملة ويمكن للجميع فهم الكود.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المستثمرون الذين يريدون أموالهم تعمل بشكل تلقائي بدون مراقبة مستمرة، والمهتمون بالعملات الرقمية والتمويل اللامركزي، والمبرمجون الذين يريدون تعلم كيفية عمل العقود الذكية بطريقة عملية.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>1) زيارة موقع Etherlab 2) إنشاء ملف جديد والصق كود العقد الذكي 3) اختر إصدار المترجم 0.8.20 ثم اضغط ترجمة 4) أوصل محفظتك وانشر العقد وأرسل له 0.5 إلى 1 إيثيريوم 5) اذهب لتبويب الأتمتة واضغط ابدأ، ثم وافق على العملية في محفظتك والبرنامج سيبدأ البحث عن الفرص تلقائياً.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/MIgHTy-alIeN/MEV-Arbitrage-Bot" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="OpenBMB/StaffDeck">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/OpenBMB/StaffDeck" target="_blank" rel="noopener">OpenBMB/StaffDeck</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 812</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-13</span>
-        </div>
-      </header>
-      <p class="desc-en">Enterprise Digital Employee Platform</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>ستافديك هو برنامج يساعدك لإنشاء موظفين رقميين (أي برامج ذكية) يقومون بالأعمال المكررة والروتينية بدلاً منك. هذه البرامج تتعلم من خبرتك وطريقة عملك وتصبح قادرة على القيام بالمهام بشكل مستقل بلا توقف.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>هو مميز لأنه يحول خبرة الموظفين والعمليات المعقدة إلى أصول رقمية قابلة للإعادة والتطوير والتتبع، مما يعني أن معرفة الموظف لا تضيع عند تركه العمل. الناس متحمسة له لأنه يحقق حلماً قديماً: الذكاء الاصطناعي الذي يفهم العمليات التعقيدة ويؤديها بدقة مثل إنسان متخصص.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>الشركات الكبيرة والمؤسسات التي تريد تقليل الأعمال المكررة والعمليات الروتينية، والمهنيون الذين يريدون توثيق معرفتهم وعمليات عملهم بصيغة قابلة للاستخدام والتطوير المستمر.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>1. تحميل المشروع: git clone https://github.com/OpenBMB/StaffDeck.git &amp;&amp; cd StaffDeck 2. تثبيت المتطلبات: python3 -m venv backend/.venv ثم تفعيل البيئة 3. تثبيت المكتبات: pip install -e &quot;backend[dev]&quot; و npm --prefix frontend-enterprise ci 4. نسخ ملف الإعدادات: cp backend/.env.example backend/.env 5. إضافة مفتاح واجهة برمجية لنموذج ذكي (مثل OpenAI) في ملف .env 6. تشغيل البرنامج: scripts/dev_up.sh --detach (لينكس/ماك) أو .\scripts\dev_up.ps1 --detach (ويندوز) 7. دخول الموقع: http://127.0.0.1:5173 باسم مستخدم admin وكلمة مرور admin</p></div></div>
-      <a class="btn" href="https://github.com/OpenBMB/StaffDeck" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/OpenBMB/StaffDeck" target="_blank" rel="noopener">OpenBMB/StaffDeck</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">ستافديك هو برنامج يساعدك لإنشاء موظفين رقميين (أي برامج ذكية) يقومون بالأعمال المكررة والروتينية بدلاً منك. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 812</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-13</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>ستافديك هو برنامج يساعدك لإنشاء موظفين رقميين (أي برامج ذكية) يقومون بالأعمال المكررة والروتينية بدلاً منك. هذه البرامج تتعلم من خبرتك وطريقة عملك وتصبح قادرة على القيام بالمهام بشكل مستقل بلا توقف.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>هو مميز لأنه يحول خبرة الموظفين والعمليات المعقدة إلى أصول رقمية قابلة للإعادة والتطوير والتتبع، مما يعني أن معرفة الموظف لا تضيع عند تركه العمل. الناس متحمسة له لأنه يحقق حلماً قديماً: الذكاء الاصطناعي الذي يفهم العمليات التعقيدة ويؤديها بدقة مثل إنسان متخصص.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>الشركات الكبيرة والمؤسسات التي تريد تقليل الأعمال المكررة والعمليات الروتينية، والمهنيون الذين يريدون توثيق معرفتهم وعمليات عملهم بصيغة قابلة للاستخدام والتطوير المستمر.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>1. تحميل المشروع: git clone https://github.com/OpenBMB/StaffDeck.git &amp;&amp; cd StaffDeck 2. تثبيت المتطلبات: python3 -m venv backend/.venv ثم تفعيل البيئة 3. تثبيت المكتبات: pip install -e &quot;backend[dev]&quot; و npm --prefix frontend-enterprise ci 4. نسخ ملف الإعدادات: cp backend/.env.example backend/.env 5. إضافة مفتاح واجهة برمجية لنموذج ذكي (مثل OpenAI) في ملف .env 6. تشغيل البرنامج: scripts/dev_up.sh --detach (لينكس/ماك) أو .\scripts\dev_up.ps1 --detach (ويندوز) 7. دخول الموقع: http://127.0.0.1:5173 باسم مستخدم admin وكلمة مرور admin</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/OpenBMB/StaffDeck" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="v-modal/vmodal_sdk_flutter">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/v-modal/vmodal_sdk_flutter" target="_blank" rel="noopener">v-modal/vmodal_sdk_flutter</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 815</span>
-          <span class="lang">Dart</span>
-          <span class="date">أُنشئ: 2026-07-16</span>
-        </div>
-      </header>
-      <p class="desc-en">V- Modal AI: Search anything anywhere SDK Flutter</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مكتبة برمجية تضيف ميزة البحث الذكي في الفيديوهات للتطبيقات، حيث تقدر تكتب جملة عادية وتلقي لك اللحظات المطابقة من الفيديو بدل ما تتفرج كل شيء.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>لأنها توفر تقنية بحث متقدمة (ذكاء اصطناعي) تفهم معنى ما تقول وتبحث في الفيديوهات بناءً على الكلام والصور والنصوص، وتعمل بسرعة على الهواتف الذكية بطريقة سهلة وآمنة، مما يغير طريقة تفاعل المستخدمين مع مكتبات الفيديو.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>مطورو تطبيقات الجوال اللي يبغون يضيفوا ميزة بحث ذكية في فيديوهاتهم، وتطبيقات السفر والألعاب والتوثيق والأرشفة اللي تستخدم فيديوهات كثيرة.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>أضف هذه السطور في ملف pubspec.yaml: dependencies:
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/v-modal/vmodal_sdk_flutter" target="_blank" rel="noopener">v-modal/vmodal_sdk_flutter</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مكتبة برمجية تضيف ميزة البحث الذكي في الفيديوهات للتطبيقات، حيث تقدر تكتب جملة عادية وتلقي لك اللحظات المطابقة من الفيديو بدل ما تتفرج كل شيء. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 815</span>
+        <span class="lang"><i class="dot"></i>Dart</span>
+        <span class="date">2026-07-16</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مكتبة برمجية تضيف ميزة البحث الذكي في الفيديوهات للتطبيقات، حيث تقدر تكتب جملة عادية وتلقي لك اللحظات المطابقة من الفيديو بدل ما تتفرج كل شيء.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>لأنها توفر تقنية بحث متقدمة (ذكاء اصطناعي) تفهم معنى ما تقول وتبحث في الفيديوهات بناءً على الكلام والصور والنصوص، وتعمل بسرعة على الهواتف الذكية بطريقة سهلة وآمنة، مما يغير طريقة تفاعل المستخدمين مع مكتبات الفيديو.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>مطورو تطبيقات الجوال اللي يبغون يضيفوا ميزة بحث ذكية في فيديوهاتهم، وتطبيقات السفر والألعاب والتوثيق والأرشفة اللي تستخدم فيديوهات كثيرة.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>أضف هذه السطور في ملف pubspec.yaml: dependencies:
   vmodal_sdk_flutter:
     git:
       url: https://github.com/v-modal/vmodal_sdk_flutter.git
       ref: main
 ثم اكتب: flutter pub get
-ثم استورد المكتبة: import &#x27;package:vmodal_sdk_flutter/vmodal_sdk_flutter.dart&#x27;; وابدأ باستخدام VmodalClient مع مفتاح الوصول الخاص بك.</p></div></div>
-      <a class="btn" href="https://github.com/v-modal/vmodal_sdk_flutter" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+ثم استورد المكتبة: import &#x27;package:vmodal_sdk_flutter/vmodal_sdk_flutter.dart&#x27;; وابدأ باستخدام VmodalClient مع مفتاح الوصول الخاص بك.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/v-modal/vmodal_sdk_flutter" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="pengchujin/jzsub">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/pengchujin/jzsub" target="_blank" rel="noopener">pengchujin/jzsub</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 840</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-10</span>
-        </div>
-      </header>
-      <p class="desc-en">JZSub — 一条视频链接，自动交付最高画质、封面和 GPT 双语字幕 MP4。</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>برنامج ذكي يحمّل الفيديوهات من الإنترنت (يوتيوب وغيره) ويضيف عليها ترجمة ثنائية اللغة (الأصلية والعربية) بشكل تلقائي، فينتج لك ملف فيديو جاهز بأفضل جودة ممكنة مع صورة الغلاف.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>البرنامج يقوم بكل الشغل بلا تعقيد: يختار أفضل جودة للفيديو، يترجم الكلام تلقائياً باستخدام الذكاء الاصطناعي، يعدّ الترجمة بشكل احترافي، وينتج لك ملف واحد جاهز للمشاهدة. الناس متحمسة له لأنه توفر وقت وجهد كبير جداً والنتيجة احترافية.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>محترفو المحتوى، الطلاب اللي يبغون يشاهدوا فيديوهات تعليمية مع ترجمة، والمترجمون، وأي واحد يبغى يحمّل فيديو بسرعة وسهولة من أي منصة.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>إذا كان عندك Node.js مثبت، اكتب في الطرفية: `npx skills add pengchujin/jzsub --skill jzsub -g -a codex -y` أو حمّل المشروع من GitHub وشغّل: `python3 skills/jzsub/scripts/fetch_video.py &quot;رابط_الفيديو&quot; --output-dir job`. محتاج Python 3.10 أو أحدث و FFmpeg مثبتة.</p></div></div>
-      <a class="btn" href="https://github.com/pengchujin/jzsub" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/pengchujin/jzsub" target="_blank" rel="noopener">pengchujin/jzsub</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">برنامج ذكي يحمّل الفيديوهات من الإنترنت (يوتيوب وغيره) ويضيف عليها ترجمة ثنائية اللغة (الأصلية والعربية) بشكل تلقائي، فينتج لك ملف فيديو جاهز بأفضل… <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 840</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-10</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>برنامج ذكي يحمّل الفيديوهات من الإنترنت (يوتيوب وغيره) ويضيف عليها ترجمة ثنائية اللغة (الأصلية والعربية) بشكل تلقائي، فينتج لك ملف فيديو جاهز بأفضل جودة ممكنة مع صورة الغلاف.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>البرنامج يقوم بكل الشغل بلا تعقيد: يختار أفضل جودة للفيديو، يترجم الكلام تلقائياً باستخدام الذكاء الاصطناعي، يعدّ الترجمة بشكل احترافي، وينتج لك ملف واحد جاهز للمشاهدة. الناس متحمسة له لأنه توفر وقت وجهد كبير جداً والنتيجة احترافية.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>محترفو المحتوى، الطلاب اللي يبغون يشاهدوا فيديوهات تعليمية مع ترجمة، والمترجمون، وأي واحد يبغى يحمّل فيديو بسرعة وسهولة من أي منصة.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>إذا كان عندك Node.js مثبت، اكتب في الطرفية: `npx skills add pengchujin/jzsub --skill jzsub -g -a codex -y` أو حمّل المشروع من GitHub وشغّل: `python3 skills/jzsub/scripts/fetch_video.py &quot;رابط_الفيديو&quot; --output-dir job`. محتاج Python 3.10 أو أحدث و FFmpeg مثبتة.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/pengchujin/jzsub" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="William-Lu-stack/Flawless">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/William-Lu-stack/Flawless" target="_blank" rel="noopener">William-Lu-stack/Flawless</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 848</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-10</span>
-        </div>
-      </header>
-      <p class="desc-en">AI SRE AgenticOps for Kubernetes and cloud infrastructure.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع &#x27;فلاولس&#x27; هو برنامج ذكي يساعد على حل مشاكل الأنظمة السحابية والخوادم تلقائياً. البرنامج يكتشف المشكلة، يحللها، يقترح حل، ينتظر موافقة الإنسان، ثم ينفذ الحل ويتأكد أنه اشتغل.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>هذا المشروع مميز لأنه يجمع بين الذكاء الاصطناعي والأمان: يترك القرار النهائي للإنسان ولا يتصرف وحده، يحتفظ بسجل كامل لكل ما حدث، ويتعلم من الأخطاء السابقة. الناس متحمسة له لأنه يوفر عليهم ساعات من العمل اليدوي والبحث عن الأخطاء.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>مهندسو العمليات والمسؤولون عن صيانة الخوادم والأنظمة السحابية، وأي شركة تستخدم &#x27;كوبرنيتس&#x27; (أداة إدارة الحاويات) وتريد أن تجعل عمليات الصيانة أسرع وأآمن.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>1️⃣ إذا كان عندك ماك: نسخ وشغل هذا الأمر: curl -fsSL https://raw.githubusercontent.com/your-org/Flawless/main/scripts/install-macos.sh | bash
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/William-Lu-stack/Flawless" target="_blank" rel="noopener">William-Lu-stack/Flawless</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع &#x27;فلاولس&#x27; هو برنامج ذكي يساعد على حل مشاكل الأنظمة السحابية والخوادم تلقائياً. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 848</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-10</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع &#x27;فلاولس&#x27; هو برنامج ذكي يساعد على حل مشاكل الأنظمة السحابية والخوادم تلقائياً. البرنامج يكتشف المشكلة، يحللها، يقترح حل، ينتظر موافقة الإنسان، ثم ينفذ الحل ويتأكد أنه اشتغل.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>هذا المشروع مميز لأنه يجمع بين الذكاء الاصطناعي والأمان: يترك القرار النهائي للإنسان ولا يتصرف وحده، يحتفظ بسجل كامل لكل ما حدث، ويتعلم من الأخطاء السابقة. الناس متحمسة له لأنه يوفر عليهم ساعات من العمل اليدوي والبحث عن الأخطاء.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>مهندسو العمليات والمسؤولون عن صيانة الخوادم والأنظمة السحابية، وأي شركة تستخدم &#x27;كوبرنيتس&#x27; (أداة إدارة الحاويات) وتريد أن تجعل عمليات الصيانة أسرع وأآمن.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>1️⃣ إذا كان عندك ماك: نسخ وشغل هذا الأمر: curl -fsSL https://raw.githubusercontent.com/your-org/Flawless/main/scripts/install-macos.sh | bash
 2️⃣ أو لينوكس/WSL: curl -fsSL https://raw.githubusercontent.com/your-org/Flawless/main/scripts/install-linux.sh | bash
 3️⃣ أو نسخ المشروع يدويّاً: git clone + cd Flawless + ./scripts/quickstart.sh
-4️⃣ افتح المتصفح على http://127.0.0.1:8080 وانتظر &quot;ready&quot;</p></div></div>
-      <a class="btn" href="https://github.com/William-Lu-stack/Flawless" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+4️⃣ افتح المتصفح على http://127.0.0.1:8080 وانتظر &quot;ready&quot;</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/William-Lu-stack/Flawless" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="mereyabdenbekuly-ctrl/clodex-ide">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/mereyabdenbekuly-ctrl/clodex-ide" target="_blank" rel="noopener">mereyabdenbekuly-ctrl/clodex-ide</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 849</span>
-          <span class="lang">TypeScript</span>
-          <span class="date">أُنشئ: 2026-07-12</span>
-        </div>
-      </header>
-      <p class="desc-en">Local-first, zero-trust agentic IDE for verifiable autonomous software development.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>برنامج يساعدك تكتب وتطور البرامج بذكاء، يجمع محرر أكواد وطرفية وفحص ملفات وكل الأدوات في مكان واحد، والذكاء الاصطناعي يساعدك في البرمجة لكن أنت اللي تقرر وتوافق على كل حركة يعملها.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>البرامج العادية تنسى الشغل كل مرة تفتحها من جديد، لكن هذا البرنامج يتذكر كل اللي شتغلت عليه، وفيه حماية قوية لأنك أنت اللي تتحكم، الذكاء الاصطناعي مجرد ساعد مش رئيس، والناس تحب هيك الحاجات لأن تخليهم أسرع في الشغل وآمنين أكثر.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المبرمجين والمطورين اللي يشتغلوا على مشاريع كبيرة وطويلة، والناس اللي ما بدهم يعتمدوا على السحابة أو شركات غريبة بمعلوماتهم، والكل اللي بدهم أدوات قوية بدون ما يدفعوا فلوس.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>روح على الموقع ide.clodex.xyz أو حمّل البرنامج من الإصدار Community Observed 14 على GitHub (في نسخ لـ Mac و Windows و Linux)، بعدين شغّل البرنامج واختار طريقة تسجيل الدخول، وممكن تحط مفتاح من OpenAI أو تستخدم Ollama المحلي، وبعدها افتح مشروعك والبدء بكتابة مهام.</p></div></div>
-      <a class="btn" href="https://github.com/mereyabdenbekuly-ctrl/clodex-ide" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/mereyabdenbekuly-ctrl/clodex-ide" target="_blank" rel="noopener">mereyabdenbekuly-ctrl/clodex-ide</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">برنامج يساعدك تكتب وتطور البرامج بذكاء، يجمع محرر أكواد وطرفية وفحص ملفات وكل الأدوات في مكان واحد، والذكاء الاصطناعي يساعدك في البرمجة لكن أنت اللي… <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 849</span>
+        <span class="lang"><i class="dot"></i>TypeScript</span>
+        <span class="date">2026-07-12</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>برنامج يساعدك تكتب وتطور البرامج بذكاء، يجمع محرر أكواد وطرفية وفحص ملفات وكل الأدوات في مكان واحد، والذكاء الاصطناعي يساعدك في البرمجة لكن أنت اللي تقرر وتوافق على كل حركة يعملها.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>البرامج العادية تنسى الشغل كل مرة تفتحها من جديد، لكن هذا البرنامج يتذكر كل اللي شتغلت عليه، وفيه حماية قوية لأنك أنت اللي تتحكم، الذكاء الاصطناعي مجرد ساعد مش رئيس، والناس تحب هيك الحاجات لأن تخليهم أسرع في الشغل وآمنين أكثر.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المبرمجين والمطورين اللي يشتغلوا على مشاريع كبيرة وطويلة، والناس اللي ما بدهم يعتمدوا على السحابة أو شركات غريبة بمعلوماتهم، والكل اللي بدهم أدوات قوية بدون ما يدفعوا فلوس.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>روح على الموقع ide.clodex.xyz أو حمّل البرنامج من الإصدار Community Observed 14 على GitHub (في نسخ لـ Mac و Windows و Linux)، بعدين شغّل البرنامج واختار طريقة تسجيل الدخول، وممكن تحط مفتاح من OpenAI أو تستخدم Ollama المحلي، وبعدها افتح مشروعك والبدء بكتابة مهام.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/mereyabdenbekuly-ctrl/clodex-ide" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="cosmtrek/mindwalk">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/cosmtrek/mindwalk" target="_blank" rel="noopener">cosmtrek/mindwalk</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 883</span>
-          <span class="lang">Go</span>
-          <span class="date">أُنشئ: 2026-07-09</span>
-        </div>
-      </header>
-      <p class="desc-en">A visualization tool that replays coding-agent sessions on a 3D map of your codebase.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>برنامج يعرض لك خريطة ثلاثية الأبعاد لمشروعك البرمجي، ويشغّل عليها فيديو يوضح كيف عمل مساعد ذكي (مثل Claude) على تعديل الأكواد - تشوف الملفات اللي لمسها بألوان براقة والملفات الثانية تبقى مظلمة.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>يحل مشكلة صعبة: عندما يعمل مساعد ذكي على مشروعك، من الصعب تتابع فهمه للمشروع والملفات اللي استكشفها وأين أخطأ - هذا البرنامج يحولها لصورة بصرية جميلة وسهلة تفهم بدل قراءة أسطر نصية معقدة. وإنه مجاني وآمن تماماً (كل شيء محلياً على جهازك).</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المطورون اللي يستخدمون أدوات الذكاء الاصطناعي (مثل Claude Code أو Codex)، والفريق التقني اللي بدهم يراجعوا شنو عمل الذكاء الاصطناعي بالضبط على مشاريعهم.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>اكتب الأمر:
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/cosmtrek/mindwalk" target="_blank" rel="noopener">cosmtrek/mindwalk</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">برنامج يعرض لك خريطة ثلاثية الأبعاد لمشروعك البرمجي، ويشغّل عليها فيديو يوضح كيف عمل مساعد ذكي (مثل Claude) على تعديل الأكواد - تشوف الملفات اللي… <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 883</span>
+        <span class="lang"><i class="dot"></i>Go</span>
+        <span class="date">2026-07-09</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>برنامج يعرض لك خريطة ثلاثية الأبعاد لمشروعك البرمجي، ويشغّل عليها فيديو يوضح كيف عمل مساعد ذكي (مثل Claude) على تعديل الأكواد - تشوف الملفات اللي لمسها بألوان براقة والملفات الثانية تبقى مظلمة.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>يحل مشكلة صعبة: عندما يعمل مساعد ذكي على مشروعك، من الصعب تتابع فهمه للمشروع والملفات اللي استكشفها وأين أخطأ - هذا البرنامج يحولها لصورة بصرية جميلة وسهلة تفهم بدل قراءة أسطر نصية معقدة. وإنه مجاني وآمن تماماً (كل شيء محلياً على جهازك).</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المطورون اللي يستخدمون أدوات الذكاء الاصطناعي (مثل Claude Code أو Codex)، والفريق التقني اللي بدهم يراجعوا شنو عمل الذكاء الاصطناعي بالضبط على مشاريعهم.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>اكتب الأمر:
 curl -fsSL https://raw.githubusercontent.com/cosmtrek/mindwalk/master/scripts/install.sh | sh
 بعدين:
 export PATH=&quot;$HOME/.local/bin:$PATH&quot;
 بعدين:
 mindwalk
-وافتح الموقع اللي بيظهر لك في المتصفح. إذا كنت على ويندوز، حمّل البرنامج من GitHub Releases.</p></div></div>
-      <a class="btn" href="https://github.com/cosmtrek/mindwalk" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+وافتح الموقع اللي بيظهر لك في المتصفح. إذا كنت على ويندوز، حمّل البرنامج من GitHub Releases.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/cosmtrek/mindwalk" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="Kappaemme-git/codex-first-customer-finder-skill">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/Kappaemme-git/codex-first-customer-finder-skill" target="_blank" rel="noopener">Kappaemme-git/codex-first-customer-finder-skill</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 889</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-12</span>
-        </div>
-      </header>
-      <p class="desc-en">A Codex skill that finds evidence-backed potential first customers from recent public signals.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>أداة ذكية تساعدك على إيجاد أول الزبائن المناسبين لشركتك الناشئة أو فكرتك الجديدة. تبحث عن دلائل حقيقية من الإنترنت (مثل تغريدات أو تعليقات) توضح أن هناك أشخاصاً بحاجة إلى منتجك بالفعل.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>المشروع مميز لأنه لا يخمّن عشوائياً، بل يجد أدلة حقيقية من مصادر عامة وينظمها في تقرير جميل، ويربط كل زبون محتمل بمصدر الدليل الأصلي. الناس متحمسة له لأنه يوفر الوقت على رواد الأعمال في البحث اليدوي المرهق، ويعطيهم قائمة مرتبة حسب الأولوية مع أفكار لكيفية التواصل معهم بشكل احترافي.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المستفيدون هم رواد الأعمال والشركات الناشئة الذين يريدون إيجاد أول زبائنهم، ومديرو المبيعات الذين يبحثون عن عملاء جدد بسرعة، والباحثون عن فرص للعمل مع فريق مبكر (ما يسمى بـ Design Partners).</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>التثبيت سهل جداً: اكتب هذا الأمر في جهازك:
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/Kappaemme-git/codex-first-customer-finder-skill" target="_blank" rel="noopener">Kappaemme-git/codex-first-customer-finder-skill</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">أداة ذكية تساعدك على إيجاد أول الزبائن المناسبين لشركتك الناشئة أو فكرتك الجديدة. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 889</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-12</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>أداة ذكية تساعدك على إيجاد أول الزبائن المناسبين لشركتك الناشئة أو فكرتك الجديدة. تبحث عن دلائل حقيقية من الإنترنت (مثل تغريدات أو تعليقات) توضح أن هناك أشخاصاً بحاجة إلى منتجك بالفعل.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>المشروع مميز لأنه لا يخمّن عشوائياً، بل يجد أدلة حقيقية من مصادر عامة وينظمها في تقرير جميل، ويربط كل زبون محتمل بمصدر الدليل الأصلي. الناس متحمسة له لأنه يوفر الوقت على رواد الأعمال في البحث اليدوي المرهق، ويعطيهم قائمة مرتبة حسب الأولوية مع أفكار لكيفية التواصل معهم بشكل احترافي.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المستفيدون هم رواد الأعمال والشركات الناشئة الذين يريدون إيجاد أول زبائنهم، ومديرو المبيعات الذين يبحثون عن عملاء جدد بسرعة، والباحثون عن فرص للعمل مع فريق مبكر (ما يسمى بـ Design Partners).</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>التثبيت سهل جداً: اكتب هذا الأمر في جهازك:
 
 npx --yes codex-first-customer-finder-skill@latest
 
@@ -308,441 +411,609 @@ npx --yes codex-first-customer-finder-skill@latest
 
 Use $first-customer-finder to find ten evidence-backed potential first customers for [رابط موقعك] and create the final HTML report.
 
-البرنامج سيبحث عن الزبائن المحتملين وسينشئ لك تقرير بصيغة HTML تقدر تفتحه في المتصفح وتشوف القائمة مع الأدلة.</p></div></div>
-      <a class="btn" href="https://github.com/Kappaemme-git/codex-first-customer-finder-skill" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+البرنامج سيبحث عن الزبائن المحتملين وسينشئ لك تقرير بصيغة HTML تقدر تفتحه في المتصفح وتشوف القائمة مع الأدلة.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/Kappaemme-git/codex-first-customer-finder-skill" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="x4gKing/Marzban-Node">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/x4gKing/Marzban-Node" target="_blank" rel="noopener">x4gKing/Marzban-Node</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 899</span>
-          <span class="lang">Dockerfile</span>
-          <span class="date">أُنشئ: 2026-07-12</span>
-        </div>
-      </header>
-      
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يساعدك على تشغيل برنامج مرزبان نود (أداة توزيع الإنترنت) على منصة Railway السحابية بسهولة، دون الحاجة لخادم خاص بك.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>مميز لأنه يبسط العملية جداً - البرنامج يحدّث نفسه تلقائياً عند كل إعادة تشغيل، ويتوافق بشكل سلس مع بيئة Railway، والناس متحمسة له لأنه يوفر عليهم تكاليف الخوادم المشروط ويجنبهم المشاكل الفنية المعقدة.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>مسؤولو خوادم الإنترنت والأشخاص الذين يستخدمون مرزبان ويريدون نوداً إضافياً بدون متاعب، والمبتدئون في مجال التقنية.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>1. انسخ هذا المستودع على حسابك في GitHub (Fork)
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/x4gKing/Marzban-Node" target="_blank" rel="noopener">x4gKing/Marzban-Node</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يساعدك على تشغيل برنامج مرزبان نود (أداة توزيع الإنترنت) على منصة Railway السحابية بسهولة، دون الحاجة لخادم خاص بك. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 899</span>
+        <span class="lang"><i class="dot"></i>Dockerfile</span>
+        <span class="date">2026-07-12</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يساعدك على تشغيل برنامج مرزبان نود (أداة توزيع الإنترنت) على منصة Railway السحابية بسهولة، دون الحاجة لخادم خاص بك.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>مميز لأنه يبسط العملية جداً - البرنامج يحدّث نفسه تلقائياً عند كل إعادة تشغيل، ويتوافق بشكل سلس مع بيئة Railway، والناس متحمسة له لأنه يوفر عليهم تكاليف الخوادم المشروط ويجنبهم المشاكل الفنية المعقدة.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>مسؤولو خوادم الإنترنت والأشخاص الذين يستخدمون مرزبان ويريدون نوداً إضافياً بدون متاعب، والمبتدئون في مجال التقنية.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>1. انسخ هذا المستودع على حسابك في GitHub (Fork)
 2. ادخل إلى Railway واعمل سرفس جديد من هذا المستودع
 3. بعد انتهاء البرنامج من التثبيت، خذ عنوان الخادم والمنفذ وأضفهم في إعدادات مرزبان الرئيسي تحت &quot;Node Settings&quot;
-4. خلاص! برنامجك يعمل ويحدّث نفسه بنفسه</p></div></div>
-      <a class="btn" href="https://github.com/x4gKing/Marzban-Node" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+4. خلاص! برنامجك يعمل ويحدّث نفسه بنفسه</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/x4gKing/Marzban-Node" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="oil-oil/beautify-github-readme">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/oil-oil/beautify-github-readme" target="_blank" rel="noopener">oil-oil/beautify-github-readme</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 911</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-13</span>
-        </div>
-      </header>
-      <p class="desc-en">Design clear, theme-specific GitHub README homepages with SVG titles, real proof, and maintainable Markdown</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يساعدك على تزيين صفحة المستودع الرئيسية على جيتهاب بطريقة احترافية وجميلة. يستخدم صور ورسومات ونصوص منسقة لتوضيح فكرة مشروعك بسرعة قبل ما يقرأ الزائر التفاصيل الممل.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>الناس بتحب لأنه ما بيستخدم قوالب ممل وموحدة، بل كل مشروع يأخذ شكل وألوان وتصميم خاص به حسب طبيعته. بتاني إنه بيركز على أهم المعلومة والدليل العملي أولاً قبل الأوامر والتفاصيل التقنية، وبالتالي الناس تفهم المشروع بسرعة وتنجذب له.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المطورين والمبرمجين اللي عندهم مستودعات على جيتهاب ويبون يظهروها بشكل احترافي جميل. أي شخص عنده مشروع برمجي أو أداة أو مكتبة ويبي الزوار يفهموها من أول نظرة.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>طريقة بسيطة جداً: اكتب هذا الأمر في سطر الأوامر: `npx skills add oil-oil/beautify-github-readme` أو تقدر تطلب من مساعد ذكي (Agent) يركب لك هذه الأداة. بعدها اختر: تبي تجمل كل الصفحة الرئيسية، ولا بس تضيف صورة عنوان جميلة؟ وتقدر تشوف معاينة محلية قبل ما تنشر أي حاجة.</p></div></div>
-      <a class="btn" href="https://github.com/oil-oil/beautify-github-readme" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/oil-oil/beautify-github-readme" target="_blank" rel="noopener">oil-oil/beautify-github-readme</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يساعدك على تزيين صفحة المستودع الرئيسية على جيتهاب بطريقة احترافية وجميلة. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 911</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-13</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يساعدك على تزيين صفحة المستودع الرئيسية على جيتهاب بطريقة احترافية وجميلة. يستخدم صور ورسومات ونصوص منسقة لتوضيح فكرة مشروعك بسرعة قبل ما يقرأ الزائر التفاصيل الممل.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>الناس بتحب لأنه ما بيستخدم قوالب ممل وموحدة، بل كل مشروع يأخذ شكل وألوان وتصميم خاص به حسب طبيعته. بتاني إنه بيركز على أهم المعلومة والدليل العملي أولاً قبل الأوامر والتفاصيل التقنية، وبالتالي الناس تفهم المشروع بسرعة وتنجذب له.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المطورين والمبرمجين اللي عندهم مستودعات على جيتهاب ويبون يظهروها بشكل احترافي جميل. أي شخص عنده مشروع برمجي أو أداة أو مكتبة ويبي الزوار يفهموها من أول نظرة.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>طريقة بسيطة جداً: اكتب هذا الأمر في سطر الأوامر: `npx skills add oil-oil/beautify-github-readme` أو تقدر تطلب من مساعد ذكي (Agent) يركب لك هذه الأداة. بعدها اختر: تبي تجمل كل الصفحة الرئيسية، ولا بس تضيف صورة عنوان جميلة؟ وتقدر تشوف معاينة محلية قبل ما تنشر أي حاجة.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/oil-oil/beautify-github-readme" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="nethical6/conversation-steganography">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/nethical6/conversation-steganography" target="_blank" rel="noopener">nethical6/conversation-steganography</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 928</span>
-          <span class="lang">Go</span>
-          <span class="date">أُنشئ: 2026-07-17</span>
-        </div>
-      </header>
-      <p class="desc-en">Use LLMs to hide messages inside normal looking conversations</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يخفي الرسائل السرية داخل محادثات عادية تبدو طبيعية. تكتب رسالة سرية، فيحولها البرنامج إلى نصّ عادي بريء تماماً، فتحسب أن لا أحد يعرف أن فيه رسالة مخفية فيها.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>الحكومات بدها تراقب الرسائل، فالناس خايفة ترسل رسائل مشفرة عادية عشان قد تنتبه لها السلطات. هذا المشروع ذكي لأنه يخفي الرسالة بطريقة ما حد يلاحظها، فالرسالة الظاهرة برا براءة وفيها كتاب طبخة أو حوار عادي، لكن المستقبل يفهمها عادي. وصل ل927 نجمة لأن الفكرة مبتكرة وتحل مشكلة حقيقية.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>أي شخصين بدهم يتواصلوا بسرية عالية - مثلاً صحافيين، ناشطين، أشخاص في دول تراقب الإنترنت، أو أي واحد بدو يحمي خصوصيته من المراقبة.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>1. نزّل المشروع: git clone https://github.com/nethical6/conversation-stenography.git و cd conversation-stenography
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/nethical6/conversation-steganography" target="_blank" rel="noopener">nethical6/conversation-steganography</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يخفي الرسائل السرية داخل محادثات عادية تبدو طبيعية. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 928</span>
+        <span class="lang"><i class="dot"></i>Go</span>
+        <span class="date">2026-07-17</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يخفي الرسائل السرية داخل محادثات عادية تبدو طبيعية. تكتب رسالة سرية، فيحولها البرنامج إلى نصّ عادي بريء تماماً، فتحسب أن لا أحد يعرف أن فيه رسالة مخفية فيها.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>الحكومات بدها تراقب الرسائل، فالناس خايفة ترسل رسائل مشفرة عادية عشان قد تنتبه لها السلطات. هذا المشروع ذكي لأنه يخفي الرسالة بطريقة ما حد يلاحظها، فالرسالة الظاهرة برا براءة وفيها كتاب طبخة أو حوار عادي، لكن المستقبل يفهمها عادي. وصل ل927 نجمة لأن الفكرة مبتكرة وتحل مشكلة حقيقية.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>أي شخصين بدهم يتواصلوا بسرية عالية - مثلاً صحافيين، ناشطين، أشخاص في دول تراقب الإنترنت، أو أي واحد بدو يحمي خصوصيته من المراقبة.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>1. نزّل المشروع: git clone https://github.com/nethical6/conversation-stenography.git و cd conversation-stenography
 2. بنّيه: go build -o conversation-stenography ./cmd/conversation-stenography
 3. شغّله: ./conversation-stenography (بيساعدك يختار نموذج الذكاء الاصطناعي ويحمله تلقائياً)
 4. جرّبه بجهاز واحد: ./conversation-stenography simulate
-5. بعدها ركب مع شخص ثاني بنفس الإعدادات والعبارة السرية وابدأ تتبادل الرسائل</p></div></div>
-      <a class="btn" href="https://github.com/nethical6/conversation-steganography" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+5. بعدها ركب مع شخص ثاني بنفس الإعدادات والعبارة السرية وابدأ تتبادل الرسائل</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/nethical6/conversation-steganography" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="pablostanley/yoinks">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/pablostanley/yoinks" target="_blank" rel="noopener">pablostanley/yoinks</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 999</span>
-          <span class="lang">TypeScript</span>
-          <span class="date">أُنشئ: 2026-07-16</span>
-        </div>
-      </header>
-      <p class="desc-en">yoink any video from your terminal. no shady ads.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>برنامج يسمح لك بتحميل الفيديوهات من الإنترنت (يوتيوب وتيك توك وإنستغرام وغيرها) مباشرة من سطر الأوامر بدون إعلانات مزعجة. تلصق رابط الفيديو وتختار الجودة وينزّل الملف بسهولة.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>المشروع جميل لأنه آمن وموثوق بدون إعلانات مخادعة أو مواقع وهمية. المستخدمون يحبّونه لأنه سريع وسهل الاستخدام وواجهته جميلة وتعمل في الـ Terminal (سطر الأوامر). وصل إلى ألف نجمة لأنه يحل مشكلة حقيقية بطريقة احترافية وبسيطة في نفس الوقت.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>مطورو البرامج، محررو الفيديوهات، الأشخاص الذين يريدون حفظ مقاطع من وسائل التواصل، والمهتمون بالتكنولوجيا الذين يفضّلون استخدام سطر الأوامر بدل الواجهات العادية.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>استخدم أحد الأوامر التالية: إما `npm install -g yoinks` لتثبيته نهائياً، أو `npx yoinks` لتجربته فوراً بدون تثبيت. بعدها اكتب `yoinks ورابط-الفيديو` وستفتح لك قائمة تختار منها الجودة التي تريد، ثم اضغط Enter وينزّل الملف في مجلد التحميلات.</p></div></div>
-      <a class="btn" href="https://github.com/pablostanley/yoinks" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/pablostanley/yoinks" target="_blank" rel="noopener">pablostanley/yoinks</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">برنامج يسمح لك بتحميل الفيديوهات من الإنترنت (يوتيوب وتيك توك وإنستغرام وغيرها) مباشرة من سطر الأوامر بدون إعلانات مزعجة. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 999</span>
+        <span class="lang"><i class="dot"></i>TypeScript</span>
+        <span class="date">2026-07-16</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>برنامج يسمح لك بتحميل الفيديوهات من الإنترنت (يوتيوب وتيك توك وإنستغرام وغيرها) مباشرة من سطر الأوامر بدون إعلانات مزعجة. تلصق رابط الفيديو وتختار الجودة وينزّل الملف بسهولة.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>المشروع جميل لأنه آمن وموثوق بدون إعلانات مخادعة أو مواقع وهمية. المستخدمون يحبّونه لأنه سريع وسهل الاستخدام وواجهته جميلة وتعمل في الـ Terminal (سطر الأوامر). وصل إلى ألف نجمة لأنه يحل مشكلة حقيقية بطريقة احترافية وبسيطة في نفس الوقت.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>مطورو البرامج، محررو الفيديوهات، الأشخاص الذين يريدون حفظ مقاطع من وسائل التواصل، والمهتمون بالتكنولوجيا الذين يفضّلون استخدام سطر الأوامر بدل الواجهات العادية.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>استخدم أحد الأوامر التالية: إما `npm install -g yoinks` لتثبيته نهائياً، أو `npx yoinks` لتجربته فوراً بدون تثبيت. بعدها اكتب `yoinks ورابط-الفيديو` وستفتح لك قائمة تختار منها الجودة التي تريد، ثم اضغط Enter وينزّل الملف في مجلد التحميلات.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/pablostanley/yoinks" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="x4gKing/Marzban-Panel">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/x4gKing/Marzban-Panel" target="_blank" rel="noopener">x4gKing/Marzban-Panel</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 1,044</span>
-          <span class="lang">Dockerfile</span>
-          <span class="date">أُنشئ: 2026-07-12</span>
-        </div>
-      </header>
-      
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يساعدك على تشغيل تطبيق مارزبان (وهو برنامج لإدارة الإنترنت والاتصالات) على منصة Railway بدون ما تحتاج تنسخ ملفات كثيرة، لأن البرنامج يحمل نفسه بنفسه تلقائياً من مصدره الأصلي وقت التثبيت.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>ميزته الكبيرة أنك تحصل دائماً على أحدث نسخة من البرنامج الأصلي بدون ما تضطر تحدّث شيء يدويّاً، والمستودع يبقى صغير جداً، وتثبيت التحديثات يصير بضغطة زر واحدة على Railway، هذا خفّف على المستخدمين الكثير من المشاكل والتعقيدات.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>أي شخص يريد تشغيل تطبيق مارزبان على الإنترنت بطريقة احترافية وسهلة، خاصة الأشخاص اللي ما عندهم خادم خاص وبيستخدموا Railway لاستضافة التطبيقات.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>أولاً انسخ هذا المشروع لحسابك على GitHub (Fork)، بعدين روح Railway واختر New Project وربطه بالمشروع المنسوخ، استنى شوية لحد ما ينتهي التثبيت، وإذا بتحتاج حساب أدمن اكتب هذا الأمر: marzban-cli admin create --sudo، والمشروع يشتغل تلقائياً بدون ما تسوي إعدادات معقدة.</p></div></div>
-      <a class="btn" href="https://github.com/x4gKing/Marzban-Panel" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/x4gKing/Marzban-Panel" target="_blank" rel="noopener">x4gKing/Marzban-Panel</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يساعدك على تشغيل تطبيق مارزبان (وهو برنامج لإدارة الإنترنت والاتصالات) على منصة Railway بدون ما تحتاج تنسخ ملفات كثيرة، لأن البرنامج يحمل نفسه… <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 1,044</span>
+        <span class="lang"><i class="dot"></i>Dockerfile</span>
+        <span class="date">2026-07-12</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يساعدك على تشغيل تطبيق مارزبان (وهو برنامج لإدارة الإنترنت والاتصالات) على منصة Railway بدون ما تحتاج تنسخ ملفات كثيرة، لأن البرنامج يحمل نفسه بنفسه تلقائياً من مصدره الأصلي وقت التثبيت.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>ميزته الكبيرة أنك تحصل دائماً على أحدث نسخة من البرنامج الأصلي بدون ما تضطر تحدّث شيء يدويّاً، والمستودع يبقى صغير جداً، وتثبيت التحديثات يصير بضغطة زر واحدة على Railway، هذا خفّف على المستخدمين الكثير من المشاكل والتعقيدات.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>أي شخص يريد تشغيل تطبيق مارزبان على الإنترنت بطريقة احترافية وسهلة، خاصة الأشخاص اللي ما عندهم خادم خاص وبيستخدموا Railway لاستضافة التطبيقات.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>أولاً انسخ هذا المشروع لحسابك على GitHub (Fork)، بعدين روح Railway واختر New Project وربطه بالمشروع المنسوخ، استنى شوية لحد ما ينتهي التثبيت، وإذا بتحتاج حساب أدمن اكتب هذا الأمر: marzban-cli admin create --sudo، والمشروع يشتغل تلقائياً بدون ما تسوي إعدادات معقدة.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/x4gKing/Marzban-Panel" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="Intuition-Lab/personal-model">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/Intuition-Lab/personal-model" target="_blank" rel="noopener">Intuition-Lab/personal-model</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 1,049</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-10</span>
-        </div>
-      </header>
-      <p class="desc-en">Build your HUMAN.md.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يبني نموذج شخصي لك يتعلم من طريقة عملك وتفكيرك على جهازك، ثم يساعد برامج الذكاء الاصطناعي أن تفهمك بشكل أفضل وتكمل عملك بنفس أسلوبك وأولويتك.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>لأنه يحل مشكلة حقيقية: البرامج الذكية العادية لا تفهم شخصيتك وأسلوبك، فتعطيك نفس الإجابة مثل أي شخص آخر. هذا المشروع يجعل الذكاء الاصطناعي يعرفك فعلاً، وكل شيء يبقى في جهازك آمناً وخاص بك بدون إرسال بيانات للإنترنت.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المطورون والكتاب والعاملون بالمعرفة الذين يريدون أن يساعدهم الذكاء الاصطناعي في عملهم بطريقة مخصصة لهم وشخصية، خاصة على أجهزة ماك.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>خطوة سريعة للتجربة بدون بيانات شخصية: افتح الطرفية واكتب:
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/Intuition-Lab/personal-model" target="_blank" rel="noopener">Intuition-Lab/personal-model</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يبني نموذج شخصي لك يتعلم من طريقة عملك وتفكيرك على جهازك، ثم يساعد برامج الذكاء الاصطناعي أن تفهمك بشكل أفضل وتكمل عملك بنفس أسلوبك وأولويتك. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 1,049</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-10</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يبني نموذج شخصي لك يتعلم من طريقة عملك وتفكيرك على جهازك، ثم يساعد برامج الذكاء الاصطناعي أن تفهمك بشكل أفضل وتكمل عملك بنفس أسلوبك وأولويتك.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>لأنه يحل مشكلة حقيقية: البرامج الذكية العادية لا تفهم شخصيتك وأسلوبك، فتعطيك نفس الإجابة مثل أي شخص آخر. هذا المشروع يجعل الذكاء الاصطناعي يعرفك فعلاً، وكل شيء يبقى في جهازك آمناً وخاص بك بدون إرسال بيانات للإنترنت.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المطورون والكتاب والعاملون بالمعرفة الذين يريدون أن يساعدهم الذكاء الاصطناعي في عملهم بطريقة مخصصة لهم وشخصية، خاصة على أجهزة ماك.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>خطوة سريعة للتجربة بدون بيانات شخصية: افتح الطرفية واكتب:
 git clone https://github.com/Intuition-Lab/personal-model.git
 cd personal-model
 uv run python scripts/sample_demo.py
 
-أو للتثبيت الحقيقي مع بياناتك: اكتب persome onboard ثم persome model open</p></div></div>
-      <a class="btn" href="https://github.com/Intuition-Lab/personal-model" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+أو للتثبيت الحقيقي مع بياناتك: اكتب persome onboard ثم persome model open</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/Intuition-Lab/personal-model" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="AlephAITech/WorkBuddyGuide">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/AlephAITech/WorkBuddyGuide" target="_blank" rel="noopener">AlephAITech/WorkBuddyGuide</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 1,203</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-10</span>
-        </div>
-      </header>
-      <p class="desc-en">A practical, open-source guide to mastering WorkBuddy through real-world workflows.开源的 WorkBuddy 实战蓝皮书：教程、真实工作流、Skills、MCP、自动化与多智能体实践。</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع تعليمي مفتوح المصدر يشرح كيفية استخدام برنامج WorkBuddy (أداة ذكاء اصطناعي) في العمل اليومي. يحتوي على دروس عملية وأمثلة حقيقية لتتمكن من إنجاز المهام بسرعة وكفاءة.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>المشروع مميز لأنه يركز على الحالات الواقعية بدلاً من الشرح الجاف، ويساعد الناس على تحويل المهام البسيطة إلى أنظمة عمل متقدمة باستخدام فريق من الذكاء الاصطناعي. وصل إلى 1202 نجمة لأنه يجمع بين التوثيق الشامل والأمثلة العملية التي يحتاجها الجميع.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>الموظفون والعاملون في المكاتب الذين يريدون توفير الوقت، المتخصصون في الأتمتة والذكاء الاصطناعي، الفريق الداخلي للشركات التي تستخدم WorkBuddy، والمبتدئون الذين يريدون تعلم استخدام أدوات الذكاء الاصطناعي الحديثة.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>1. تثبيت Node.js 22 على جهازك، 2. انسخ المشروع من GitHub بأمر: git clone، 3. انتقل لمجلد المشروع وكتب: npm install، 4. شغّل الخادم بأمر: npm run dev، 5. افتح الموقع في المتصفح على주소: localhost:5173 لتشاهد الدروس محلياً.</p></div></div>
-      <a class="btn" href="https://github.com/AlephAITech/WorkBuddyGuide" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/AlephAITech/WorkBuddyGuide" target="_blank" rel="noopener">AlephAITech/WorkBuddyGuide</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع تعليمي مفتوح المصدر يشرح كيفية استخدام برنامج WorkBuddy (أداة ذكاء اصطناعي) في العمل اليومي. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 1,203</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-10</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع تعليمي مفتوح المصدر يشرح كيفية استخدام برنامج WorkBuddy (أداة ذكاء اصطناعي) في العمل اليومي. يحتوي على دروس عملية وأمثلة حقيقية لتتمكن من إنجاز المهام بسرعة وكفاءة.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>المشروع مميز لأنه يركز على الحالات الواقعية بدلاً من الشرح الجاف، ويساعد الناس على تحويل المهام البسيطة إلى أنظمة عمل متقدمة باستخدام فريق من الذكاء الاصطناعي. وصل إلى 1202 نجمة لأنه يجمع بين التوثيق الشامل والأمثلة العملية التي يحتاجها الجميع.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>الموظفون والعاملون في المكاتب الذين يريدون توفير الوقت، المتخصصون في الأتمتة والذكاء الاصطناعي، الفريق الداخلي للشركات التي تستخدم WorkBuddy، والمبتدئون الذين يريدون تعلم استخدام أدوات الذكاء الاصطناعي الحديثة.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>1. تثبيت Node.js 22 على جهازك، 2. انسخ المشروع من GitHub بأمر: git clone، 3. انتقل لمجلد المشروع وكتب: npm install، 4. شغّل الخادم بأمر: npm run dev، 5. افتح الموقع في المتصفح على주소: localhost:5173 لتشاهد الدروس محلياً.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/AlephAITech/WorkBuddyGuide" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="pixel-point/aval">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/pixel-point/aval" target="_blank" rel="noopener">pixel-point/aval</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 1,278</span>
-          <span class="lang">TypeScript</span>
-          <span class="date">أُنشئ: 2026-07-13</span>
-        </div>
-      </header>
-      <p class="desc-en">A new open-source format for interactive video on the web, with a built-in state machine, frame-accurate transitions, and packed-alpha transparency.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يساعدك تعمل رسوميات متحركة تفاعلية على الويب بجودة عالية جداً. البرنامج يعطيك طريقة سهلة لإنشاء حركات سلسة وجميلة وتحكم فيها بسهولة من خلال أزرار أو أحداث مختلفة.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>المشروع مميز لأنه يوفر طريقة جديدة وفعالة لعرض الرسوميات المتحركة على المتصفح بحجم ملفات صغير وجودة عالية جداً. الناس متحمسة له لأنه مفتوح المصدر وسهل الاستخدام ويدعم كل المتصفحات الحديثة بطريقة ذكية تختار أفضل صيغة فيديو متاحة.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المطورون الذين يبنون مواقع ويب ويريدون إضافة رسوميات متحركة احترافية، ومصممو الواجهات الذين يحتاجون لحركات سلسة وجميلة وتفاعلية في تطبيقاتهم.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>اكتب هذه الأوامر في المحطة الطرفية: `npm install @pixel-point/aval-element@1.0.0` ثم `npm install --save-dev @pixel-point/aval-compiler@1.0.0` ثم `npx avl init my-motion` و `cd my-motion` و `npm install` و `npm run dev`. بعدها ستجد مجلد كامل فيه كل حاجة تحتاجها تبدأ تشتغل عليها مباشرة.</p></div></div>
-      <a class="btn" href="https://github.com/pixel-point/aval" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/pixel-point/aval" target="_blank" rel="noopener">pixel-point/aval</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يساعدك تعمل رسوميات متحركة تفاعلية على الويب بجودة عالية جداً. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 1,278</span>
+        <span class="lang"><i class="dot"></i>TypeScript</span>
+        <span class="date">2026-07-13</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يساعدك تعمل رسوميات متحركة تفاعلية على الويب بجودة عالية جداً. البرنامج يعطيك طريقة سهلة لإنشاء حركات سلسة وجميلة وتحكم فيها بسهولة من خلال أزرار أو أحداث مختلفة.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>المشروع مميز لأنه يوفر طريقة جديدة وفعالة لعرض الرسوميات المتحركة على المتصفح بحجم ملفات صغير وجودة عالية جداً. الناس متحمسة له لأنه مفتوح المصدر وسهل الاستخدام ويدعم كل المتصفحات الحديثة بطريقة ذكية تختار أفضل صيغة فيديو متاحة.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المطورون الذين يبنون مواقع ويب ويريدون إضافة رسوميات متحركة احترافية، ومصممو الواجهات الذين يحتاجون لحركات سلسة وجميلة وتفاعلية في تطبيقاتهم.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>اكتب هذه الأوامر في المحطة الطرفية: `npm install @pixel-point/aval-element@1.0.0` ثم `npm install --save-dev @pixel-point/aval-compiler@1.0.0` ثم `npx avl init my-motion` و `cd my-motion` و `npm install` و `npm run dev`. بعدها ستجد مجلد كامل فيه كل حاجة تحتاجها تبدأ تشتغل عليها مباشرة.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/pixel-point/aval" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="tandpfun/wardrobe">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/tandpfun/wardrobe" target="_blank" rel="noopener">tandpfun/wardrobe</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 1,309</span>
-          <span class="lang">JavaScript</span>
-          <span class="date">أُنشئ: 2026-07-16</span>
-        </div>
-      </header>
-      <p class="desc-en">Your clothes, extracted and organized with gpt-image.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يساعدك على تنظيم ملابسك الشخصية بطريقة ذكية. تصور صورة لملابسك، والبرنامج يفصل كل قطعة ملابس تلقائياً ويرتبها في مجموعة منظمة، حتى يمكنك معرفة كل ما تملكه بسهولة.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>المشروع مميز لأنه يستخدم تقنية الذكاء الاصطناعي من أوبن إيه آي (OpenAI) لتحليل الصور بذكاء عالي. الناس متحمسة له لأنه يحل مشكلة حقيقية في حياتنا اليومية: معرفة ما نملكه من ملابس واختيار ملابس متناسقة بسهولة. كما أنه يوفر ميزة عرض كيف ستبدو الملابس عليك قبل ارتداؤها.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>أي شخص يريد تنظيم خزانة ملابسه بطريقة ذكية، خاصة من يحب الموضة والتصميم ويريد إنشاء تنسيقات ملابس متناسقة بسرعة. أيضاً الأشخاص الذين يعملون في مجال التصميم الأزياء والاستشارات.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>1. انسخ المشروع: اكتب git clone https://github.com/tandpfun/wardrobe.git
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/tandpfun/wardrobe" target="_blank" rel="noopener">tandpfun/wardrobe</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يساعدك على تنظيم ملابسك الشخصية بطريقة ذكية. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 1,309</span>
+        <span class="lang"><i class="dot"></i>JavaScript</span>
+        <span class="date">2026-07-16</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يساعدك على تنظيم ملابسك الشخصية بطريقة ذكية. تصور صورة لملابسك، والبرنامج يفصل كل قطعة ملابس تلقائياً ويرتبها في مجموعة منظمة، حتى يمكنك معرفة كل ما تملكه بسهولة.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>المشروع مميز لأنه يستخدم تقنية الذكاء الاصطناعي من أوبن إيه آي (OpenAI) لتحليل الصور بذكاء عالي. الناس متحمسة له لأنه يحل مشكلة حقيقية في حياتنا اليومية: معرفة ما نملكه من ملابس واختيار ملابس متناسقة بسهولة. كما أنه يوفر ميزة عرض كيف ستبدو الملابس عليك قبل ارتداؤها.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>أي شخص يريد تنظيم خزانة ملابسه بطريقة ذكية، خاصة من يحب الموضة والتصميم ويريد إنشاء تنسيقات ملابس متناسقة بسرعة. أيضاً الأشخاص الذين يعملون في مجال التصميم الأزياء والاستشارات.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>1. انسخ المشروع: اكتب git clone https://github.com/tandpfun/wardrobe.git
 2. ادخل المجلد: cd wardrobe
 3. ثبت البرامج المطلوبة: npm install
 4. انسخ ملف الإعدادات: cp .env.example .env
 5. أضف مفتاح أوبن إيه آي الخاص بك في ملف .env
 6. ضع صورة نفسك في المجلد data باسم model-reference.png
 7. شغل البرنامج: npm run dev
-8. افتح المتصفح على: localhost:5173</p></div></div>
-      <a class="btn" href="https://github.com/tandpfun/wardrobe" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+8. افتح المتصفح على: localhost:5173</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/tandpfun/wardrobe" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="vinhhien112/Three.js-Object-Sculptor-Codex-Plugin">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/vinhhien112/Three.js-Object-Sculptor-Codex-Plugin" target="_blank" rel="noopener">vinhhien112/Three.js-Object-Sculptor-Codex-Plugin</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 1,412</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-09</span>
-        </div>
-      </header>
-      <p class="desc-en">Codex plugin that turns attached object images into code-only, animation-ready procedural Three.js models.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>برنامج يحوّل صورة جسم ثلاثي الأبعاد (مثل طاولة أو شجرة) إلى كود برمجي جاهز يعمل مباشرة في المتصفح. البرنامج يستخدم الذكاء الاصطناعي لفهم الصورة وإنشاء نموذج ثلاثي الأبعاد محرّك بالكود فقط، بدون الحاجة لتنزيل ملفات ثقيلة.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>المشروع مميز جداً لأنه يحل مشكلة حقيقية: عادة البرامج التي تحوّل الصور لنماذج ثلاثية الأبعاد تخسر التفاصيل المهمة التي تجعل الشيء معروف. هذا المشروع يعمل بذكاء - يبني النموذج تدريجياً ويتحقق من كل خطوة بالصورة الأصلية. الناس متحمسة له لأنه ينتج كود حقيقي يمكن تحريكه وتطويره مباشرة، وليس مجرد صورة ثابتة.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المطورون الذين يعملون على ألعاب ويب وتطبيقات تفاعلية ثلاثية الأبعاد. كذلك المصممون والفنانون الرقميون الذين يريدون إنشاء نماذج إضافية بسرعة. أيضاً أي شخص يريد تحويل فكرة أو صورة لنموذج ثلاثي الأبعاد قابل للحركة والتعديل.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>الخطوات الأساسية: افتح نافذة الأوامر وكتب هذا الأمر: git clone [رابط المشروع] ~/plugins/threejs-object-sculptor. ثم تأكد أن برنامج Codex الخاص بك يعرّفه كإضافة. بعدها يمكنك تحميل صورة جسم وسيحوّلها البرنامج لكود Three.js جاهز للاستخدام في موقع ويب. تحتاج فقط Python 3.10 والمتصفح.</p></div></div>
-      <a class="btn" href="https://github.com/vinhhien112/Three.js-Object-Sculptor-Codex-Plugin" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/vinhhien112/Three.js-Object-Sculptor-Codex-Plugin" target="_blank" rel="noopener">vinhhien112/Three.js-Object-Sculptor-Codex-Plugin</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">برنامج يحوّل صورة جسم ثلاثي الأبعاد (مثل طاولة أو شجرة) إلى كود برمجي جاهز يعمل مباشرة في المتصفح. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 1,412</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-09</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>برنامج يحوّل صورة جسم ثلاثي الأبعاد (مثل طاولة أو شجرة) إلى كود برمجي جاهز يعمل مباشرة في المتصفح. البرنامج يستخدم الذكاء الاصطناعي لفهم الصورة وإنشاء نموذج ثلاثي الأبعاد محرّك بالكود فقط، بدون الحاجة لتنزيل ملفات ثقيلة.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>المشروع مميز جداً لأنه يحل مشكلة حقيقية: عادة البرامج التي تحوّل الصور لنماذج ثلاثية الأبعاد تخسر التفاصيل المهمة التي تجعل الشيء معروف. هذا المشروع يعمل بذكاء - يبني النموذج تدريجياً ويتحقق من كل خطوة بالصورة الأصلية. الناس متحمسة له لأنه ينتج كود حقيقي يمكن تحريكه وتطويره مباشرة، وليس مجرد صورة ثابتة.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المطورون الذين يعملون على ألعاب ويب وتطبيقات تفاعلية ثلاثية الأبعاد. كذلك المصممون والفنانون الرقميون الذين يريدون إنشاء نماذج إضافية بسرعة. أيضاً أي شخص يريد تحويل فكرة أو صورة لنموذج ثلاثي الأبعاد قابل للحركة والتعديل.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>الخطوات الأساسية: افتح نافذة الأوامر وكتب هذا الأمر: git clone [رابط المشروع] ~/plugins/threejs-object-sculptor. ثم تأكد أن برنامج Codex الخاص بك يعرّفه كإضافة. بعدها يمكنك تحميل صورة جسم وسيحوّلها البرنامج لكود Three.js جاهز للاستخدام في موقع ويب. تحتاج فقط Python 3.10 والمتصفح.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/vinhhien112/Three.js-Object-Sculptor-Codex-Plugin" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="littledivy/mimic">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/littledivy/mimic" target="_blank" rel="noopener">littledivy/mimic</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 1,442</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-13</span>
-        </div>
-      </header>
-      <p class="desc-en">Intercept any app, then call it from Python like a library</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يسمح لك بالتقاط بيانات تطبيق هاتفي أو موقع ويب (مثل رموز الدخول والمعلومات المحفوظة)، ثم استخدام هذا التطبيق من داخل لغة بايثون وكأنه مكتبة برمجية عادية بدلاً من أن تحتاج لكتابة الأوامر يدويّاً.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>لأنه يوفر وقتاً كبيراً على المبرمجين - بدلاً من فهم طريقة عمل تطبيق معين والكتابة اليدوية لأوامره، الأداة تفعل هذا تلقائياً باستخدام الذكاء الاصطناعي. الناس متحمسة له لأنه يحول مهمة معقدة وممله إلى عملية بسيطة وسريعة جداً، وخصوصاً للمبرمجين الذين يريدون أتمتة تطبيقات معينة.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المبرمجون الذين يريدون كتابة برامج تتفاعل مع تطبيقات أخرى بدون الحاجة لفهم تفاصيلها التقنية بالكامل، وأيضاً هواة التقنية والمطورون الذين يريدون أتمتة مهام معينة من تطبيقاتهم المفضلة.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>أولاً: شغّل `sh install.sh` لتثبيت الأداة. ثانياً: اكتب `mimic record` على جهازك وتابع التعليمات لربط هاتفك بالإنترنت عبر برنامج وسيط. ثالثاً: استخدم التطبيق عادياً على الهاتف وبعدها اكتب `mimic gen` اسم-التطبيق لتوليد الكود تلقائياً.</p></div></div>
-      <a class="btn" href="https://github.com/littledivy/mimic" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/littledivy/mimic" target="_blank" rel="noopener">littledivy/mimic</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يسمح لك بالتقاط بيانات تطبيق هاتفي أو موقع ويب (مثل رموز الدخول والمعلومات المحفوظة)، ثم استخدام هذا التطبيق من داخل لغة بايثون وكأنه مكتبة… <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 1,442</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-13</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يسمح لك بالتقاط بيانات تطبيق هاتفي أو موقع ويب (مثل رموز الدخول والمعلومات المحفوظة)، ثم استخدام هذا التطبيق من داخل لغة بايثون وكأنه مكتبة برمجية عادية بدلاً من أن تحتاج لكتابة الأوامر يدويّاً.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>لأنه يوفر وقتاً كبيراً على المبرمجين - بدلاً من فهم طريقة عمل تطبيق معين والكتابة اليدوية لأوامره، الأداة تفعل هذا تلقائياً باستخدام الذكاء الاصطناعي. الناس متحمسة له لأنه يحول مهمة معقدة وممله إلى عملية بسيطة وسريعة جداً، وخصوصاً للمبرمجين الذين يريدون أتمتة تطبيقات معينة.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المبرمجون الذين يريدون كتابة برامج تتفاعل مع تطبيقات أخرى بدون الحاجة لفهم تفاصيلها التقنية بالكامل، وأيضاً هواة التقنية والمطورون الذين يريدون أتمتة مهام معينة من تطبيقاتهم المفضلة.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>أولاً: شغّل `sh install.sh` لتثبيت الأداة. ثانياً: اكتب `mimic record` على جهازك وتابع التعليمات لربط هاتفك بالإنترنت عبر برنامج وسيط. ثالثاً: استخدم التطبيق عادياً على الهاتف وبعدها اكتب `mimic gen` اسم-التطبيق لتوليد الكود تلقائياً.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/littledivy/mimic" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="CluvexStudio/Aether">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/CluvexStudio/Aether" target="_blank" rel="noopener">CluvexStudio/Aether</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 1,453</span>
-          <span class="lang">Rust</span>
-          <span class="date">أُنشئ: 2026-07-14</span>
-        </div>
-      </header>
-      
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>برنامج يساعدك تستخدم الإنترنت بحرية في الدول اللي تحجب المواقع والخدمات. يعمل بطريقة ذكية عن طريق إنشاء نفق آمن مشفّر يخفي نشاطك على الإنترنت من الجهات الحكومية.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>المشروع مميز لأنه مبني بلغة برمجية سريعة وآمنة جداً (Rust)، وعنده قدرات عالية في تخطي الحجب المتقدم والفحص العميق للبيانات. الناس متحمسة له لأنه يعمل في البيئات الصعبة جداً حيث البرامج التقليدية تفشل، وفريق التطوير يهتمون بالجودة والأمان بشكل احترافي.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>الأشخاص في الدول اللي فيها حجب إنترنت قوي، أو اللي يخافون على خصوصيتهم وأمانهم على الشبكة. كل من يبي ينجاح الحجب بطريقة آمنة وموثوقة.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>للهواتف الذكية (Android)، اكتب هذا الأمر في تطبيق Termux: `curl -fsSL https://raw.githubusercontent.com/CluvexStudio/aether/main/aether.sh -o aether.sh &amp;&amp; chmod +x aether.sh &amp;&amp; ./aether.sh install` ثم شغّل البرنامج بـ `aether`. للحواسيب (Windows أو macOS أو Linux)، نزّل البرنامج الجاهز من صفحة الإصدارات في الموقع، ثم شغّله والبرنامج بيطلب منك أسئلة سهلة.</p></div></div>
-      <a class="btn" href="https://github.com/CluvexStudio/Aether" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/CluvexStudio/Aether" target="_blank" rel="noopener">CluvexStudio/Aether</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">برنامج يساعدك تستخدم الإنترنت بحرية في الدول اللي تحجب المواقع والخدمات. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 1,453</span>
+        <span class="lang"><i class="dot"></i>Rust</span>
+        <span class="date">2026-07-14</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>برنامج يساعدك تستخدم الإنترنت بحرية في الدول اللي تحجب المواقع والخدمات. يعمل بطريقة ذكية عن طريق إنشاء نفق آمن مشفّر يخفي نشاطك على الإنترنت من الجهات الحكومية.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>المشروع مميز لأنه مبني بلغة برمجية سريعة وآمنة جداً (Rust)، وعنده قدرات عالية في تخطي الحجب المتقدم والفحص العميق للبيانات. الناس متحمسة له لأنه يعمل في البيئات الصعبة جداً حيث البرامج التقليدية تفشل، وفريق التطوير يهتمون بالجودة والأمان بشكل احترافي.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>الأشخاص في الدول اللي فيها حجب إنترنت قوي، أو اللي يخافون على خصوصيتهم وأمانهم على الشبكة. كل من يبي ينجاح الحجب بطريقة آمنة وموثوقة.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>للهواتف الذكية (Android)، اكتب هذا الأمر في تطبيق Termux: `curl -fsSL https://raw.githubusercontent.com/CluvexStudio/aether/main/aether.sh -o aether.sh &amp;&amp; chmod +x aether.sh &amp;&amp; ./aether.sh install` ثم شغّل البرنامج بـ `aether`. للحواسيب (Windows أو macOS أو Linux)، نزّل البرنامج الجاهز من صفحة الإصدارات في الموقع، ثم شغّله والبرنامج بيطلب منك أسئلة سهلة.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/CluvexStudio/Aether" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="hoainho/img2threejs">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/hoainho/img2threejs" target="_blank" rel="noopener">hoainho/img2threejs</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 1,688</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-15</span>
-        </div>
-      </header>
-      <p class="desc-en">Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model. Token-efficient image-to-3D.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يأخذ صورة عادية لجسم (مثل سلاح أو صندوق) ويحوّلها تلقائياً إلى نموذج ثلاثي الأبعاد يعمل في المتصفح. النموذج يكون مكتوب بـ كود برمجي نظيف وليس ملف ثقيل، مما يجعله سريع وسهل التحريك والتعديل عليه.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>الفكرة جديدة وذكية جداً: بدل ما تحمّل ملفات 3D ضخمة، الأداة تستخدم الذكاء الاصطناعي لتفهم الصورة وتكتب الكود اللي ينتج نفس الشكل. مميز كمان إنه يحافظ على التفاصيل الدقيقة (الألوان، اللمعان، الخدوش) وجودة عالية. الناس متحمسة لأنها توفر وقت ومجهود وتعطي نتايج احترافية سريعة.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>مصممو الألعاب، مطورو تطبيقات الويب ثلاثية الأبعاد، صناع المحتوى الرقمي، أو أي حد عايز يحول أفكاره من صور إلى نماذج 3D جاهزة للاستخدام والحركة.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>تحتاج Python 3.10 أو أحدث مثبت على جهازك. بعدها: 1) استنسخ المستودع من GitHub 2) حمّل المكتبات المطلوبة بـ pip install 3) شغّل البرنامج مع صورة من اختيارك 4) البرنامج راح يعطيك ملف كود Three.js جاهز تركضه في المتصفح.</p></div></div>
-      <a class="btn" href="https://github.com/hoainho/img2threejs" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/hoainho/img2threejs" target="_blank" rel="noopener">hoainho/img2threejs</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يأخذ صورة عادية لجسم (مثل سلاح أو صندوق) ويحوّلها تلقائياً إلى نموذج ثلاثي الأبعاد يعمل في المتصفح. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 1,688</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-15</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يأخذ صورة عادية لجسم (مثل سلاح أو صندوق) ويحوّلها تلقائياً إلى نموذج ثلاثي الأبعاد يعمل في المتصفح. النموذج يكون مكتوب بـ كود برمجي نظيف وليس ملف ثقيل، مما يجعله سريع وسهل التحريك والتعديل عليه.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>الفكرة جديدة وذكية جداً: بدل ما تحمّل ملفات 3D ضخمة، الأداة تستخدم الذكاء الاصطناعي لتفهم الصورة وتكتب الكود اللي ينتج نفس الشكل. مميز كمان إنه يحافظ على التفاصيل الدقيقة (الألوان، اللمعان، الخدوش) وجودة عالية. الناس متحمسة لأنها توفر وقت ومجهود وتعطي نتايج احترافية سريعة.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>مصممو الألعاب، مطورو تطبيقات الويب ثلاثية الأبعاد، صناع المحتوى الرقمي، أو أي حد عايز يحول أفكاره من صور إلى نماذج 3D جاهزة للاستخدام والحركة.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>تحتاج Python 3.10 أو أحدث مثبت على جهازك. بعدها: 1) استنسخ المستودع من GitHub 2) حمّل المكتبات المطلوبة بـ pip install 3) شغّل البرنامج مع صورة من اختيارك 4) البرنامج راح يعطيك ملف كود Three.js جاهز تركضه في المتصفح.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/hoainho/img2threejs" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="lopopolo/harness-engineering">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/lopopolo/harness-engineering" target="_blank" rel="noopener">lopopolo/harness-engineering</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 1,936</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-18</span>
-        </div>
-      </header>
-      <p class="desc-en">🐎 Ryan Lopopolo’s anthology, field guide, and agent context bundle for harness engineering</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يعلّمك كيف تُحسّن نتائج برامج الذكاء الاصطناعي بطرق ذكية، بدل أن تعتمد على البرنامج نفسه فقط. يقدّم رايان (مؤلف المشروع) أفكاره وتجاربه وأدواته لتحسين أداء عملاء الذكاء الاصطناعي بشكل كبير.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>المشروع يحل مشكلة حقيقية: برامج الذكاء الاصطناعي بحاجة للسياق والمعلومات الخاصة بكل شركة أو منظمة لتعمل بشكل أفضل. رايان أظهر أن يمكنك تحسين النتائج مئة مرة بمجرد إعطاء البرنامج المعلومات والأدوات الصحيحة. الناس متحمسة له لأنه عملي وليس نظري فقط.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المطورون والشركات اللي تستخدم برامج الذكاء الاصطناعي للبرمجة والتطوير، والمديرون التقنيون اللي يريدون تحسين إنتاجية فريقهم.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>المشروع بيقدم وثائق وأمثلة جاهزة: ابدأ بملف AGENTS.md لأنه يوضح الطريقة الصحيحة، أو اقرأ الوثائق الأساسية في مجلد docs/، أو استخدم الأمثلة الجاهزة في مجلد playbooks/ - لا تحتاج تثبيت معقد، فقط اقرأ وطبّق الأفكار على مشروعك.</p></div></div>
-      <a class="btn" href="https://github.com/lopopolo/harness-engineering" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/lopopolo/harness-engineering" target="_blank" rel="noopener">lopopolo/harness-engineering</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يعلّمك كيف تُحسّن نتائج برامج الذكاء الاصطناعي بطرق ذكية، بدل أن تعتمد على البرنامج نفسه فقط. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 1,936</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-18</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يعلّمك كيف تُحسّن نتائج برامج الذكاء الاصطناعي بطرق ذكية، بدل أن تعتمد على البرنامج نفسه فقط. يقدّم رايان (مؤلف المشروع) أفكاره وتجاربه وأدواته لتحسين أداء عملاء الذكاء الاصطناعي بشكل كبير.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>المشروع يحل مشكلة حقيقية: برامج الذكاء الاصطناعي بحاجة للسياق والمعلومات الخاصة بكل شركة أو منظمة لتعمل بشكل أفضل. رايان أظهر أن يمكنك تحسين النتائج مئة مرة بمجرد إعطاء البرنامج المعلومات والأدوات الصحيحة. الناس متحمسة له لأنه عملي وليس نظري فقط.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المطورون والشركات اللي تستخدم برامج الذكاء الاصطناعي للبرمجة والتطوير، والمديرون التقنيون اللي يريدون تحسين إنتاجية فريقهم.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>المشروع بيقدم وثائق وأمثلة جاهزة: ابدأ بملف AGENTS.md لأنه يوضح الطريقة الصحيحة، أو اقرأ الوثائق الأساسية في مجلد docs/، أو استخدم الأمثلة الجاهزة في مجلد playbooks/ - لا تحتاج تثبيت معقد، فقط اقرأ وطبّق الأفكار على مشروعك.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/lopopolo/harness-engineering" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="MDX-Tom/gpt-5.6-instruct">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/MDX-Tom/gpt-5.6-instruct" target="_blank" rel="noopener">MDX-Tom/gpt-5.6-instruct</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 2,494</span>
-          <span class="lang">Python</span>
-          <span class="date">أُنشئ: 2026-07-11</span>
-        </div>
-      </header>
-      <p class="desc-en">A Codex CLI jailbreak prompt and test pack for gpt-5.6-sol. 针对 gpt-5.6 系列的 Codex CLI 破甲提示词与测试包。</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يوفر تعليمات خاصة لنموذج ذكاء اصطناعي يسمى GPT-5.6 لجعله أقوى وأكثر قدرة على تنفيذ المهام المعقدة. المشروع يأتي مع أدوات اختبار للتأكد من أن التعليمات تعمل بشكل صحيح.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>المشروع مميز لأنه يحسّن من أداء النموذج بنسبة كبيرة جداً (تحسن يصل إلى 45%)، ويوفر طريقة سهلة وآمنة لتثبيت التعليمات دون الحاجة لتعديل ملفات معقدة. الناس متحمسة له لأنه يجعل الذكاء الاصطناعي أكثر فائدة وقدرة على فهم أوامر معقدة ومختلطة.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المطورون والباحثون الذين يستخدمون نموذج GPT-5.6، والأشخاص الذين يريدون اختبار وتطوير قدرات الذكاء الاصطناعي، والمهتمون بأمان وتحسين النماذج الضخمة.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>أولاً: انسخ المشروع بالأمر: git clone https://github.com/MDX-Tom/gpt-5.6-instruct.git ثم ادخل المجلد. ثانياً: شغّل البرنامج بـ: python3 codex-instruct.py وتابع التعليمات على الشاشة لتثبيت النسخة الموصى بها (v5). ثالثاً: يمكنك اختبار التعليمات قبل التثبيت بالأمر: python3 codex-instruct.py --dry-run</p></div></div>
-      <a class="btn" href="https://github.com/MDX-Tom/gpt-5.6-instruct" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/MDX-Tom/gpt-5.6-instruct" target="_blank" rel="noopener">MDX-Tom/gpt-5.6-instruct</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يوفر تعليمات خاصة لنموذج ذكاء اصطناعي يسمى GPT-5.6 لجعله أقوى وأكثر قدرة على تنفيذ المهام المعقدة. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 2,494</span>
+        <span class="lang"><i class="dot"></i>Python</span>
+        <span class="date">2026-07-11</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يوفر تعليمات خاصة لنموذج ذكاء اصطناعي يسمى GPT-5.6 لجعله أقوى وأكثر قدرة على تنفيذ المهام المعقدة. المشروع يأتي مع أدوات اختبار للتأكد من أن التعليمات تعمل بشكل صحيح.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>المشروع مميز لأنه يحسّن من أداء النموذج بنسبة كبيرة جداً (تحسن يصل إلى 45%)، ويوفر طريقة سهلة وآمنة لتثبيت التعليمات دون الحاجة لتعديل ملفات معقدة. الناس متحمسة له لأنه يجعل الذكاء الاصطناعي أكثر فائدة وقدرة على فهم أوامر معقدة ومختلطة.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المطورون والباحثون الذين يستخدمون نموذج GPT-5.6، والأشخاص الذين يريدون اختبار وتطوير قدرات الذكاء الاصطناعي، والمهتمون بأمان وتحسين النماذج الضخمة.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>أولاً: انسخ المشروع بالأمر: git clone https://github.com/MDX-Tom/gpt-5.6-instruct.git ثم ادخل المجلد. ثانياً: شغّل البرنامج بـ: python3 codex-instruct.py وتابع التعليمات على الشاشة لتثبيت النسخة الموصى بها (v5). ثالثاً: يمكنك اختبار التعليمات قبل التثبيت بالأمر: python3 codex-instruct.py --dry-run</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/MDX-Tom/gpt-5.6-instruct" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="unicity-aos/aos-ce">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/unicity-aos/aos-ce" target="_blank" rel="noopener">unicity-aos/aos-ce</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 6,108</span>
-          <span class="lang">Rust</span>
-          <span class="date">أُنشئ: 2026-07-12</span>
-        </div>
-      </header>
-      <p class="desc-en">AOS Community Edition: the open agent operating system.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>نظام تشغيل مفتوح المصدر مصمم للوكلاء الذكية (الروبوتات والذكاء الاصطناعي)، يسمح للمستخدمين ببناء وتركيب برامج خاصة بهم بسهولة وأمان.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>مميز لأنه يعطي الناس السيطرة الكاملة والشفافية على كيفية عمل برامج الذكاء الاصطناعي، ويسمح لهم بفهم كل شيء وتعديله. الناس متحمسة له لأنه يجمع بين الأمان والمرونة والسهولة، وهذه أشياء نادرة تجتمع معاً.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المطورون والشركات اللي بتشتغل على الذكاء الاصطناعي والوكلاء الذكية، والأشخاص اللي يبغون يفهموا كيف يشتغل البرنامج من الداخل وليس فقط يستخدموه.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>حمّل وثبّت البرنامج بهالأمر: curl --proto &#x27;=https&#x27; --tlsv1.2 -fsSL https://aos.unicity.ai/install.sh | sh ثم اكتب: aos init لتشغيل البرنامج وتجهيزه. بعدها تقدر تستخدم أوامر مثل: aos status لترى حالة النظام، و aos capsule build لبناء برامجك الخاصة.</p></div></div>
-      <a class="btn" href="https://github.com/unicity-aos/aos-ce" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/unicity-aos/aos-ce" target="_blank" rel="noopener">unicity-aos/aos-ce</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">نظام تشغيل مفتوح المصدر مصمم للوكلاء الذكية (الروبوتات والذكاء الاصطناعي)، يسمح للمستخدمين ببناء وتركيب برامج خاصة بهم بسهولة وأمان. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 6,108</span>
+        <span class="lang"><i class="dot"></i>Rust</span>
+        <span class="date">2026-07-12</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>نظام تشغيل مفتوح المصدر مصمم للوكلاء الذكية (الروبوتات والذكاء الاصطناعي)، يسمح للمستخدمين ببناء وتركيب برامج خاصة بهم بسهولة وأمان.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>مميز لأنه يعطي الناس السيطرة الكاملة والشفافية على كيفية عمل برامج الذكاء الاصطناعي، ويسمح لهم بفهم كل شيء وتعديله. الناس متحمسة له لأنه يجمع بين الأمان والمرونة والسهولة، وهذه أشياء نادرة تجتمع معاً.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المطورون والشركات اللي بتشتغل على الذكاء الاصطناعي والوكلاء الذكية، والأشخاص اللي يبغون يفهموا كيف يشتغل البرنامج من الداخل وليس فقط يستخدموه.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>حمّل وثبّت البرنامج بهالأمر: curl --proto &#x27;=https&#x27; --tlsv1.2 -fsSL https://aos.unicity.ai/install.sh | sh ثم اكتب: aos init لتشغيل البرنامج وتجهيزه. بعدها تقدر تستخدم أوامر مثل: aos status لترى حالة النظام، و aos capsule build لبناء برامجك الخاصة.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/unicity-aos/aos-ce" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="Fei-Away/Codex-Dream-Skin">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/Fei-Away/Codex-Dream-Skin" target="_blank" rel="noopener">Fei-Away/Codex-Dream-Skin</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 11,699</span>
-          <span class="lang">JavaScript</span>
-          <span class="date">أُنشئ: 2026-07-15</span>
-        </div>
-      </header>
-      <p class="desc-en">Codex Dream Skin</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع يسمح لك بتغيير مظهر برنامج Codex (برنامج كتابة الأكواد من OpenAI) بصور جميلة وخلفيات رائعة، مثل تغيير ثيم الهاتف أو الكمبيوتر. البرنامج يبقى يشتغل بشكل طبيعي لكن بوجه جديد وجميل.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>الناس تحب المشروع لأنه يجعل بيئة العمل أجمل وأكثر متعة دون تعديل البرنامج الأصلي، وتقدر تختار من مئات الثيمات المختلفة حسب ذوقك. آخر شيء يحب المبرمج وهو أن برنامج الترميز يكون جميل المظهر وممتع النفس أثناء الكود.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>كل شخص يستخدم برنامج Codex على الحاسوب (ماك أو ويندوز) وأراد أن يجعل واجهة البرنامج أجمل وأكثر إثارة للإلهام أثناء كتابة الأكواد.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>للماك: اذهب إلى مجلد macos وشغل Install Codex Dream Skin.command
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/Fei-Away/Codex-Dream-Skin" target="_blank" rel="noopener">Fei-Away/Codex-Dream-Skin</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع يسمح لك بتغيير مظهر برنامج Codex (برنامج كتابة الأكواد من OpenAI) بصور جميلة وخلفيات رائعة، مثل تغيير ثيم الهاتف أو الكمبيوتر. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 11,699</span>
+        <span class="lang"><i class="dot"></i>JavaScript</span>
+        <span class="date">2026-07-15</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع يسمح لك بتغيير مظهر برنامج Codex (برنامج كتابة الأكواد من OpenAI) بصور جميلة وخلفيات رائعة، مثل تغيير ثيم الهاتف أو الكمبيوتر. البرنامج يبقى يشتغل بشكل طبيعي لكن بوجه جديد وجميل.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>الناس تحب المشروع لأنه يجعل بيئة العمل أجمل وأكثر متعة دون تعديل البرنامج الأصلي، وتقدر تختار من مئات الثيمات المختلفة حسب ذوقك. آخر شيء يحب المبرمج وهو أن برنامج الترميز يكون جميل المظهر وممتع النفس أثناء الكود.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>كل شخص يستخدم برنامج Codex على الحاسوب (ماك أو ويندوز) وأراد أن يجعل واجهة البرنامج أجمل وأكثر إثارة للإلهام أثناء كتابة الأكواد.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>للماك: اذهب إلى مجلد macos وشغل Install Codex Dream Skin.command
 للويندوز: افتح PowerShell وشغل install-dream-skin.ps1
-بعدها تختار صورة خلفية تحبها من البرنامج وتطبقها بلمسة زر، وتقدر ترجع للمظهر الأصلي في أي وقت.</p></div></div>
-      <a class="btn" href="https://github.com/Fei-Away/Codex-Dream-Skin" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+بعدها تختار صورة خلفية تحبها من البرنامج وتطبقها بلمسة زر، وتقدر ترجع للمظهر الأصلي في أي وقت.</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/Fei-Away/Codex-Dream-Skin" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 
     <article class="card" data-repo="xai-org/grok-build">
-      <header class="card-head">
-        <div class="title-row">
-          <h2><a href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener">xai-org/grok-build</a> <span class="badge-new">جديد</span></h2>
-          <button class="fav-btn" type="button" aria-label="احفظ في المفضلة" title="احفظ في المفضلة">🔖</button>
-        </div>
-        <div class="meta">
-          <span class="stars">⭐ 21,615</span>
-          <span class="lang">Rust</span>
-          <span class="date">أُنشئ: 2026-07-14</span>
-        </div>
-      </header>
-      <p class="desc-en">SpaceXAI&#x27;s coding agent harness and TUI. Fullscreen, mouse interactive, extensible.</p>
-      <div class="summary"><div class="sec"><h4>💡 شو هو المشروع؟</h4><p>مشروع برنامج ذكاء اصطناعي متقدم من شركة SpaceX، يساعدك على كتابة وتعديل الأكواد البرمجية بشكل تلقائي. البرنامج يعمل كمساعد ذكي يفهم مشاريعك، يعدّل الملفات، ينفذ الأوامر، ويبحث على الإنترنت بطريقة تفاعلية وسهلة الاستخدام.</p></div>
-<div class="sec"><h4>⭐ ليش مميز؟</h4><p>مشروع حديث من فريق تقني قوي جداً (SpaceX)، وقيمته العملية كبيرة جداً لأنه يوفر وقتاً كبيراً للمبرمجين. الناس متحمسة له لأنه يجمع بين قوة الذكاء الاصطناعي وسهولة الاستخدام، ويدعم أنظمة تشغيل مختلفة (ويندوز، ماك، لينكس)، ويمكنك استخدامه بطرق متعددة: في الطرفية أو في محررات الأكواد المختلفة.</p></div>
-<div class="sec"><h4>👥 مين يستفيد منه؟</h4><p>المبرمجون والمطورون الذين يريدون تسريع عملهم وأتمتة الكثير من المهام البرمجية المتكررة، والفرق التقنية التي تريد دمج الذكاء الاصطناعي في سير عملها.</p></div>
-<div class="sec"><h4>🚀 كيف تجرّبه؟</h4><p>طريقة سهلة: نسخ واحد من الأوامر التالية حسب نظام التشغيل الخاص بك وتشغيله. لينكس وماك: curl -fsSL https://x.ai/cli/install.sh | bash
+      <div class="card-top">
+        <h2 class="repo-name"><a href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener">xai-org/grok-build</a></h2>
+        <button class="fav-btn" type="button" aria-label="Bookmark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </button>
+      </div>
+      <p class="tagline">مشروع برنامج ذكاء اصطناعي متقدم من شركة SpaceX، يساعدك على كتابة وتعديل الأكواد البرمجية بشكل تلقائي. <span class="badge-new" data-k="new_badge">New</span></p>
+      <div class="meta">
+        <span class="stars">★ 21,615</span>
+        <span class="lang"><i class="dot"></i>Rust</span>
+        <span class="date">2026-07-14</span>
+      </div>
+      <button class="details-toggle" type="button" aria-expanded="false">
+        <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
+      </button>
+      <div class="details">
+        <div class="sec"><h4>ما هو المشروع</h4><p>مشروع برنامج ذكاء اصطناعي متقدم من شركة SpaceX، يساعدك على كتابة وتعديل الأكواد البرمجية بشكل تلقائي. البرنامج يعمل كمساعد ذكي يفهم مشاريعك، يعدّل الملفات، ينفذ الأوامر، ويبحث على الإنترنت بطريقة تفاعلية وسهلة الاستخدام.</p></div>
+<div class="sec"><h4>لماذا يتميّز</h4><p>مشروع حديث من فريق تقني قوي جداً (SpaceX)، وقيمته العملية كبيرة جداً لأنه يوفر وقتاً كبيراً للمبرمجين. الناس متحمسة له لأنه يجمع بين قوة الذكاء الاصطناعي وسهولة الاستخدام، ويدعم أنظمة تشغيل مختلفة (ويندوز، ماك، لينكس)، ويمكنك استخدامه بطرق متعددة: في الطرفية أو في محررات الأكواد المختلفة.</p></div>
+<div class="sec"><h4>من يستفيد منه</h4><p>المبرمجون والمطورون الذين يريدون تسريع عملهم وأتمتة الكثير من المهام البرمجية المتكررة، والفرق التقنية التي تريد دمج الذكاء الاصطناعي في سير عملها.</p></div>
+<div class="sec"><h4>كيف تجرّبه</h4><p>طريقة سهلة: نسخ واحد من الأوامر التالية حسب نظام التشغيل الخاص بك وتشغيله. لينكس وماك: curl -fsSL https://x.ai/cli/install.sh | bash
 ويندوز: irm https://x.ai/cli/install.ps1 | iex
 بعدها اكتب: grok --version
-وإذا بدك تبني البرنامج من الكود مباشرة، احتاج تثبيت Rust و DotSlash أولاً، ثم تشغيل: cargo run -p xai-grok-pager-bin</p></div></div>
-      <a class="btn" href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener">افتح على GitHub ↗</a>
+وإذا بدك تبني البرنامج من الكود مباشرة، احتاج تثبيت Rust و DotSlash أولاً، ثم تشغيل: cargo run -p xai-grok-pager-bin</p></div>
+      </div>
+      <a class="btn-gh" href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
 </main>
 
 <footer class="site-foot">
-  <p>يتحدّث تلقائياً كل يوم عبر GitHub Actions · الشرح مولّد بالذكاء الاصطناعي (Claude)</p>
-  <p class="foot-note">مفضلتك محفوظة داخل متصفحك على هذا الجهاز فقط.</p>
+  <p class="foot-auto" data-k="foot_auto">Auto-updates every 10 minutes via GitHub Actions.</p>
+  <p class="foot-by">
+    <span data-k="foot_by">Designed &amp; developed by</span>
+    <a href="https://aijolabs.com" target="_blank" rel="noopener">aijolabs.com</a>
+  </p>
 </footer>
 
 <script>
 (function () {
-  var KEY = "radar_favs";
+  /* ---------- i18n ---------- */
+  var I18N = {
+    ar: {
+      brand: "رادار GitHub",
+      hero_title: "اكتشف أقوى مشاريع GitHub الجديدة",
+      hero_sub: "المستودعات الجديدة التي تخطّت ٢٠٠ نجمة — مشروحة لك بالعربي ببساطة.",
+      cd_label: "المسح القادم بعد",
+      stat_projects: "مشروع مُتابَع",
+      stat_updated: "آخر تحديث",
+      filter_all: "الكل",
+      filter_fav: "المفضلة",
+      search_ph: "ابحث… (python، بيانات، مواقع)",
+      details_toggle: "التفاصيل",
+      open_gh: "افتح على GitHub",
+      new_badge: "جديد",
+      empty_favs: "لا يوجد مفضلة بعد. اضغط أيقونة الإشارة المرجعية على أي بطاقة لحفظها والرجوع إليها لاحقاً.",
+      no_results: "لا توجد نتائج تطابق بحثك. جرّب كلمة أخرى.",
+      foot_auto: "يُحدَّث تلقائياً كل ١٠ دقائق عبر GitHub Actions.",
+      foot_by: "صُمّم وطُوِّر بواسطة",
+      lang_switch: "EN"
+    },
+    en: {
+      brand: "GitHub Radar",
+      hero_title: "Discover GitHub's rising projects",
+      hero_sub: "New repositories that crossed 200 stars — explained simply, in Arabic.",
+      cd_label: "Next scan in",
+      stat_projects: "projects tracked",
+      stat_updated: "Updated",
+      filter_all: "All",
+      filter_fav: "Favorites",
+      search_ph: "Search… (python, data, tools)",
+      details_toggle: "Details",
+      open_gh: "Open on GitHub",
+      new_badge: "New",
+      empty_favs: "No bookmarks yet. Tap the bookmark icon on any card to save it for later.",
+      no_results: "No results match your search. Try another keyword.",
+      foot_auto: "Auto-updates every 10 minutes via GitHub Actions.",
+      foot_by: "Designed & developed by",
+      lang_switch: "عربي"
+    }
+  };
+  var LKEY = "radar_lang";
+  var lang = localStorage.getItem(LKEY) || "ar";
+
+  function applyLang() {
+    var dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.querySelectorAll("[data-k]").forEach(function (el) {
+      var v = dict[el.dataset.k];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll("[data-k-ph]").forEach(function (el) {
+      var v = dict[el.dataset.kPh];
+      if (v != null) el.placeholder = v;
+    });
+    document.getElementById("lang-btn").textContent = dict.lang_switch;
+  }
+  document.getElementById("lang-btn").addEventListener("click", function () {
+    lang = lang === "ar" ? "en" : "ar";
+    localStorage.setItem(LKEY, lang);
+    applyLang();
+  });
+
+  /* ---------- countdown to next 10-minute mark ---------- */
+  var cdEl = document.getElementById("cd-time");
+  function tickCountdown() {
+    var now = new Date();
+    var secsIntoBlock = (now.getMinutes() % 10) * 60 + now.getSeconds();
+    var left = 600 - secsIntoBlock;
+    var m = Math.floor(left / 60);
+    var s = left % 60;
+    cdEl.textContent = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
+
+  /* ---------- favorites + search + filter ---------- */
+  var FKEY = "radar_favs";
   var currentFilter = "all";
   var query = "";
 
   function getFavs() {
-    try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+    try { return JSON.parse(localStorage.getItem(FKEY)) || []; }
     catch (e) { return []; }
   }
-  function setFavs(list) { localStorage.setItem(KEY, JSON.stringify(list)); }
+  function setFavs(list) { localStorage.setItem(FKEY, JSON.stringify(list)); }
   function updateCount() {
     document.getElementById("fav-count").textContent = getFavs().length;
   }
 
-  // نص كل بطاقة (للبحث) نخزّنه مرة وحدة، بأحرف صغيرة
   var cards = [].slice.call(document.querySelectorAll(".card"));
-  cards.forEach(function (card) {
-    card._text = (card.textContent || "").toLowerCase();
-  });
+  cards.forEach(function (card) { card._text = (card.textContent || "").toLowerCase(); });
 
-  // العرض = تقاطع الفلتر (الكل/المفضلة) مع البحث
   function applyView() {
     var favs = getFavs();
     var q = query.trim().toLowerCase();
@@ -754,46 +1025,45 @@ uv run python scripts/sample_demo.py
       card.style.display = show ? "" : "none";
       if (show) shown++;
     });
-    // رسائل الحالة الفارغة
     document.getElementById("empty-favs").hidden =
       !(currentFilter === "fav" && q === "" && shown === 0);
     document.getElementById("no-results").hidden = !(q !== "" && shown === 0);
   }
 
-  // تجهيز أزرار الحفظ على كل بطاقة
   cards.forEach(function (card) {
     var repo = card.dataset.repo;
-    var btn = card.querySelector(".fav-btn");
-    if (getFavs().indexOf(repo) !== -1) btn.classList.add("saved");
-    btn.addEventListener("click", function () {
+    var fav = card.querySelector(".fav-btn");
+    if (getFavs().indexOf(repo) !== -1) fav.classList.add("saved");
+    fav.addEventListener("click", function () {
       var favs = getFavs();
-      var idx = favs.indexOf(repo);
-      if (idx !== -1) { favs.splice(idx, 1); btn.classList.remove("saved"); }
-      else { favs.push(repo); btn.classList.add("saved"); }
-      setFavs(favs);
-      updateCount();
-      applyView();
+      var i = favs.indexOf(repo);
+      if (i !== -1) { favs.splice(i, 1); fav.classList.remove("saved"); }
+      else { favs.push(repo); fav.classList.add("saved"); }
+      setFavs(favs); updateCount(); applyView();
+    });
+
+    var toggle = card.querySelector(".details-toggle");
+    toggle.addEventListener("click", function () {
+      var open = card.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
   });
 
-  // أزرار الفلترة
   document.querySelectorAll(".filter-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
-      document.querySelectorAll(".filter-btn").forEach(function (b) {
-        b.classList.remove("active");
-      });
+      document.querySelectorAll(".filter-btn").forEach(function (b) { b.classList.remove("active"); });
       btn.classList.add("active");
       currentFilter = btn.dataset.filter;
       applyView();
     });
   });
 
-  // مربع البحث — فلترة فورية أثناء الكتابة
   document.getElementById("search").addEventListener("input", function (e) {
     query = e.target.value;
     applyView();
   });
 
+  applyLang();
   updateCount();
 })();
 </script>
