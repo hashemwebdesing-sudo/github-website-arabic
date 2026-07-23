@@ -1,11 +1,12 @@
 name: تحديث ونشر
 
 on:
-  schedule:
-    - cron: "*/10 * * * *"   # كل 10 دقائق (best-effort من GitHub)
-  workflow_dispatch:          # زر تشغيل يدوي
+  # الجدولة التلقائية موقوفة — يجري الانتقال للاستضافة على Hostinger.
+  # schedule:
+  #   - cron: "*/10 * * * *"
+  workflow_dispatch:          # زر تشغيل يدوي فقط
   push:
-    branches: [main]          # نشر تلقائي مع كل تعديل كود
+    branches: [main]
     paths:
       - "scripts/**"
       - "site/style.css"
