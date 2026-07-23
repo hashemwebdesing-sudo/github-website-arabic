@@ -12,6 +12,9 @@ from pathlib import Path
 
 import requests
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from quality import is_junk_text
+
 # ضمان طباعة العربية بشكل صحيح على أي نظام (خاصة ويندوز)
 for _stream in (sys.stdout, sys.stderr):
     try:
@@ -23,9 +26,10 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "repos.json"
 
 MIN_STARS = 200
-DAYS_BACK = 14
-MAX_RESULTS = 30
+DAYS_BACK = 21
+MAX_RESULTS = 50          # نجلب عدداً أكبر لأن الفلترة تستبعد جزءاً
 README_MAX_CHARS = 8000
+README_MIN_CHARS = 200    # README أقصر من هذا غالباً مشروع فارغ/ريسكِن
 
 GITHUB_API = "https://api.github.com"
 
@@ -97,26 +101,49 @@ def main():
     print(f"رجّع GitHub {len(items)} مستودع.")
 
     added = 0
+    skipped = 0
     for item in items:
         full_name = item["full_name"]
         if full_name in known:
             continue
 
-        print(f"  + جديد: {full_name} ({item['stargazers_count']}⭐)")
-        readme = fetch_readme(full_name)
+        description = item.get("description") or ""
+        topics = item.get("topics") or []
 
+        # الطبقة الأولى: فلتر قواعد سريع (قبل جلب README لتوفير الطلبات)
+        if item.get("fork"):
+            skipped += 1
+            continue
+        if not description.strip():
+            skipped += 1
+            continue
+        if is_junk_text(item["name"], description, topics):
+            print(f"  - مستبعَد (فئة مزعجة): {full_name}")
+            skipped += 1
+            continue
+
+        readme = fetch_readme(full_name)
+        if len(readme.strip()) < README_MIN_CHARS:
+            print(f"  - مستبعَد (README ضعيف): {full_name}")
+            skipped += 1
+            continue
+
+        print(f"  + مرشّح: {full_name} ({item['stargazers_count']}⭐)")
         record = {
             "full_name": full_name,
             "name": item["name"],
             "owner": item["owner"]["login"],
             "html_url": item["html_url"],
-            "description": item.get("description") or "",
+            "description": description,
             "language": item.get("language") or "",
+            "topics": topics,
             "stars": item["stargazers_count"],
             "created_at": item["created_at"],
             "fetched_at": datetime.now(timezone.utc).isoformat(),
             "readme": readme,
-            "summary_ar": None,  # يملأه summarize.py لاحقاً
+            "verdict": None,     # يملأه الحَكَم في summarize.py
+            "summary_ar": None,
+            "summary_en": None,
         }
         archive.append(record)
         known.add(full_name)
@@ -129,7 +156,7 @@ def main():
             r["stars"] = stars_now[r["full_name"]]
 
     save_archive(archive)
-    print(f"تمت الإضافة: {added} مستودع جديد. الإجمالي في الأرشيف: {len(archive)}.")
+    print(f"تمت الإضافة: {added} مرشّح جديد (استُبعد {skipped}). الإجمالي: {len(archive)}.")
     return added
 
 

@@ -11,6 +11,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from quality import is_junk_text
+
 for _stream in (sys.stdout, sys.stderr):
     try:
         _stream.reconfigure(encoding="utf-8")
@@ -99,6 +102,25 @@ def render_details(summary, lang):
     return "\n".join(parts)
 
 
+def is_visible(repo):
+    """يُخفي المرفوضين من الحَكَم، والفئات المزعجة الواضحة (حتى قبل الحُكم)."""
+    v = repo.get("verdict")
+    if v is not None and not v.get("keep"):
+        return False
+    if is_junk_text(repo.get("name", ""), repo.get("description", ""), repo.get("topics")):
+        return False
+    return True
+
+
+def category_chip(repo):
+    v = repo.get("verdict") or {}
+    cat = v.get("category") if v.get("keep") else None
+    if not cat:
+        return ""
+    label = esc(cat.replace("-", " ").title())
+    return f'<span class="cat">{label}</span>'
+
+
 def render_card(repo):
     new_badge = (
         '<span class="badge-new" data-k="new_badge">New</span>'
@@ -129,6 +151,7 @@ def render_card(repo):
         <span class="lx lx-en">{esc(tagline_of(repo, 'en'))}</span>
       </p>
       <div class="meta">
+        {category_chip(repo)}
         <span class="stars">★ {repo['stars']:,}</span>
         {lang}
         <span class="date">{format_date(repo.get('created_at', ''))}</span>
@@ -150,8 +173,10 @@ def build():
         print("لا يوجد data/repos.json — شغّل fetch_repos.py أولاً.", file=sys.stderr)
         sys.exit(1)
 
-    repos = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    all_repos = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    repos = [r for r in all_repos if is_visible(r)]
     repos.sort(key=lambda r: r.get("fetched_at", ""), reverse=True)
+    hidden = len(all_repos) - len(repos)
 
     cards = "\n".join(render_card(r) for r in repos)
     updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -180,7 +205,7 @@ def build():
         "</urlset>\n",
         encoding="utf-8",
     )
-    print(f"تم بناء الموقع: {count} مستودع في site/index.html")
+    print(f"تم بناء الموقع: {count} مستودع ظاهر (أُخفي {hidden}) في site/index.html")
 
 
 TEMPLATE = r"""<!DOCTYPE html>

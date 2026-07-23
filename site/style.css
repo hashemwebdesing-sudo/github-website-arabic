@@ -314,6 +314,16 @@ a { color: inherit; }
   font-size: .8rem;
   color: var(--muted);
 }
+.meta .cat {
+  font-size: .68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: .08rem .5rem;
+  border-radius: 6px;
+}
 .meta .stars { color: var(--star); }
 .meta .lang { display: inline-flex; align-items: center; gap: .4rem; }
 .meta .dot {

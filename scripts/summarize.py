@@ -12,6 +12,9 @@ import sys
 import time
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from quality import JUNK_CATEGORIES, QUALITY_MIN, GOOD_CATEGORIES
+
 for _stream in (sys.stdout, sys.stderr):
     try:
         _stream.reconfigure(encoding="utf-8")
@@ -41,6 +44,8 @@ PROMPT_AR = """أنت خبير تقني تشرح مشاريع GitHub لشخص ع
 {readme}
 ---
 
+اعتمد **فقط** على المعلومات الموجودة في الوصف والـ README. لا تخترع أسماء شركات أو مطوّرين أو ميزات غير مذكورة.
+
 أعِد الإجابة **بصيغة JSON فقط** (بدون أي نص خارج الـ JSON)، بهذا الشكل تماماً:
 {{
   "what": "شو هو هذا المشروع؟ جملتان بلغة بسيطة جداً",
@@ -62,6 +67,8 @@ README excerpt:
 {readme}
 ---
 
+Base your answer **only** on the description and README. Do not invent company names, authors, or features that are not stated.
+
 Return your answer as **JSON only** (no text outside the JSON), exactly like this:
 {{
   "what": "What is this project? Two simple sentences.",
@@ -72,6 +79,31 @@ Return your answer as **JSON only** (no text outside the JSON), exactly like thi
 All values in English. Do not add any text or comments outside the JSON."""
 
 PROMPTS = {"ar": PROMPT_AR, "en": PROMPT_EN}
+
+JUDGE_PROMPT = """You are a strict curator for a site that features genuinely useful, substantial open-source GitHub projects for developers. Decide if this repository deserves to be featured.
+
+Repository: {full_name}
+Description: {description}
+Language: {language}
+Stars: {stars}
+Topics: {topics}
+
+README excerpt:
+---
+{readme}
+---
+
+REJECT (keep=false) if it is any of: cryptocurrency / trading / MEV / airdrop; VPN / proxy / censorship-circumvention panel; gambling or betting; NSFW; a cheat or exploit for games; a low-effort reskin or theme wrapper around another product; a joke / fake / troll repo; spam; or anything with no real engineering substance.
+KEEP (keep=true) only if it is a real, substantial, useful project (developer tool, library, framework, application, AI/ML, data, security, learning resource, design or infrastructure tool).
+
+Return JSON ONLY, exactly:
+{{
+  "keep": true,
+  "category": "one of: {categories}",
+  "quality": 7,
+  "reason": "one short sentence"
+}}
+No text outside the JSON."""
 
 
 def load_repos():
@@ -126,7 +158,54 @@ def summarize_one(client, repo, lang):
     return None
 
 
+def judge_one(client, repo):
+    prompt = JUDGE_PROMPT.format(
+        full_name=repo["full_name"],
+        description=repo["description"] or "no description",
+        language=repo["language"] or "unspecified",
+        stars=repo["stars"],
+        topics=", ".join(repo.get("topics") or []) or "none",
+        readme=repo["readme"] or "no README",
+        categories=", ".join(GOOD_CATEGORIES + sorted(JUNK_CATEGORIES)),
+    )
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            response = client.chat.completions.create(
+                model=MODEL,
+                max_tokens=300,
+                temperature=0.2,
+                response_format={"type": "json_object"},
+                messages=[{"role": "user", "content": prompt}],
+            )
+            v = json.loads(response.choices[0].message.content)
+            keep = bool(v.get("keep"))
+            category = str(v.get("category", "other")).strip().lower()
+            try:
+                quality = int(v.get("quality", 0))
+            except (TypeError, ValueError):
+                quality = 0
+            # فرض القواعد: فئة مرفوضة أو جودة منخفضة = رفض مهما قال الحَكَم
+            if category in JUNK_CATEGORIES or quality < QUALITY_MIN:
+                keep = False
+            return {
+                "keep": keep,
+                "category": category,
+                "quality": quality,
+                "reason": str(v.get("reason", ""))[:200],
+            }
+        except Exception as e:  # noqa: BLE001
+            wait = min(2 ** attempt, 30)
+            print(f"    خطأ حَكَم ({type(e).__name__}): {e} — انتظار {wait}ث", file=sys.stderr)
+            time.sleep(wait)
+    return None
+
+
 def needs_work(repo):
+    v = repo.get("verdict")
+    if v is None:
+        return True                       # بحاجة لحُكم
+    if not v.get("keep"):
+        return False                      # مرفوض — لا عمل إضافي
     return repo.get("summary_ar") is None or repo.get("summary_en") is None
 
 
@@ -151,10 +230,27 @@ def main():
     from groq import Groq  # استيراد كسول: نحتاجه فقط عند وجود عمل فعلي
 
     client = Groq()
-    print(f"مستودعات بحاجة لشرح: {len(pending)} (النموذج: {MODEL})")
+    print(f"مستودعات بحاجة لمعالجة: {len(pending)} (النموذج: {MODEL})")
 
-    done = 0
+    judged = summarized = rejected = 0
     for repo in pending:
+        # ١) الحَكَم أولاً — لتوفير مكالمات الشرح على المرفوضين
+        if repo.get("verdict") is None:
+            verdict = judge_one(client, repo)
+            if not verdict:
+                print(f"    فشل حُكم {repo['full_name']}، سيُعاد لاحقاً.", file=sys.stderr)
+                continue
+            repo["verdict"] = verdict
+            judged += 1
+            save_repos(repos)
+            mark = "✓" if verdict["keep"] else f"✗ ({verdict['category']})"
+            print(f"  حُكم: {repo['full_name']} → {mark} جودة {verdict['quality']}")
+
+        if not repo["verdict"].get("keep"):
+            rejected += 1
+            continue
+
+        # ٢) الشرح ثنائي اللغة للمقبولين فقط
         for lang, field in (("ar", "summary_ar"), ("en", "summary_en")):
             if repo.get(field) is not None:
                 continue
@@ -162,12 +258,12 @@ def main():
             summary = summarize_one(client, repo, lang)
             if summary:
                 repo[field] = summary
-                done += 1
-                save_repos(repos)  # حفظ تدريجي
+                summarized += 1
+                save_repos(repos)
             else:
                 print(f"    فشل [{lang}] {repo['full_name']}، سيُعاد لاحقاً.", file=sys.stderr)
 
-    print(f"تم توليد {done} شرح.")
+    print(f"حُكم على {judged} · رُفض {rejected} · وُلّد {summarized} شرح.")
 
 
 if __name__ == "__main__":
