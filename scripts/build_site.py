@@ -6,7 +6,9 @@
 
 import html
 import json
+import os
 import re
+import shutil
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -22,9 +24,16 @@ for _stream in (sys.stdout, sys.stderr):
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "repos.json"
-SITE_DIR = ROOT / "site"
+STYLE_SRC = ROOT / "site" / "style.css"
 
-CANONICAL = "https://hashemwebdesing-sudo.github.io/github-website-arabic/"
+# مجلد الإخراج ورابط الموقع قابلان للضبط عبر البيئة (لاستضافة مختلفة مثل Hostinger)
+SITE_DIR = Path(os.environ.get("SITE_DIR") or (ROOT / "site"))
+CANONICAL = (
+    os.environ.get("SITE_URL", "https://hashemwebdesing-sudo.github.io/github-website-arabic/")
+    .rstrip("/") + "/"
+)
+# فترة التحديث بالدقائق (يجب أن تقسم 60: 5/10/15/30). تضبط العدّاد ونص الفوتر.
+INTERVAL = os.environ.get("SCAN_INTERVAL_MIN", "10")
 NEW_BADGE_HOURS = 36
 TAGLINE_CAP = 150
 
@@ -188,11 +197,17 @@ def build():
         .replace("%%UPDATED%%", updated)
         .replace("%%COUNT%%", str(count))
         .replace("%%CANONICAL%%", CANONICAL)
+        .replace("%%INTERVAL%%", INTERVAL)
     )
 
     SITE_DIR.mkdir(parents=True, exist_ok=True)
     (SITE_DIR / "index.html").write_text(page, encoding="utf-8")
     (SITE_DIR / ".nojekyll").write_text("", encoding="utf-8")
+
+    # ننسخ ملف التنسيق إلى مجلد الإخراج (مهم عند اختلاف مجلد الإخراج عن المصدر)
+    dest_style = SITE_DIR / "style.css"
+    if STYLE_SRC.exists() and STYLE_SRC.resolve() != dest_style.resolve():
+        shutil.copyfile(STYLE_SRC, dest_style)
     (SITE_DIR / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\nSitemap: {CANONICAL}sitemap.xml\n", encoding="utf-8"
     )
@@ -295,7 +310,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 </main>
 
 <footer class="site-foot">
-  <p class="foot-auto" data-k="foot_auto">Auto-updates every 10 minutes via GitHub Actions.</p>
+  <p class="foot-auto" data-k="foot_auto">Auto-updates every %%INTERVAL%% minutes.</p>
   <p class="foot-by">
     <span data-k="foot_by">Designed &amp; developed by</span>
     <a href="https://aijolabs.com" target="_blank" rel="noopener">aijolabs.com</a>
@@ -321,7 +336,7 @@ TEMPLATE = r"""<!DOCTYPE html>
       new_badge: "جديد",
       empty_favs: "لا يوجد مفضلة بعد. اضغط أيقونة الإشارة المرجعية على أي بطاقة لحفظها والرجوع إليها لاحقاً.",
       no_results: "لا توجد نتائج تطابق بحثك. جرّب كلمة أخرى.",
-      foot_auto: "يُحدَّث تلقائياً كل ١٠ دقائق عبر GitHub Actions.",
+      foot_auto: "يُحدَّث تلقائياً كل %%INTERVAL%% دقيقة.",
       foot_by: "صُمّم وطُوِّر بواسطة",
       lang_switch: "EN"
     },
@@ -340,7 +355,7 @@ TEMPLATE = r"""<!DOCTYPE html>
       new_badge: "New",
       empty_favs: "No bookmarks yet. Tap the bookmark icon on any card to save it for later.",
       no_results: "No results match your search. Try another keyword.",
-      foot_auto: "Auto-updates every 10 minutes via GitHub Actions.",
+      foot_auto: "Auto-updates every %%INTERVAL%% minutes.",
       foot_by: "Designed & developed by",
       lang_switch: "عربي"
     }
@@ -369,11 +384,12 @@ TEMPLATE = r"""<!DOCTYPE html>
   });
 
   /* ---------- countdown to next 10-minute mark ---------- */
+  var STEP = %%INTERVAL%%;  // دقائق
   var cdEl = document.getElementById("cd-time");
   function tickCountdown() {
     var now = new Date();
-    var secsIntoBlock = (now.getMinutes() % 10) * 60 + now.getSeconds();
-    var left = 600 - secsIntoBlock;
+    var secsIntoBlock = (now.getMinutes() % STEP) * 60 + now.getSeconds();
+    var left = STEP * 60 - secsIntoBlock;
     var m = Math.floor(left / 60);
     var s = left % 60;
     cdEl.textContent = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;

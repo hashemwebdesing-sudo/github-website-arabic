@@ -14,6 +14,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from quality import JUNK_CATEGORIES, QUALITY_MIN, GOOD_CATEGORIES
+from httputil import post_json
+
+GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 for _stream in (sys.stdout, sys.stderr):
     try:
@@ -125,7 +128,23 @@ def valid_summary(obj):
     )
 
 
-def summarize_one(client, repo, lang):
+def call_groq(prompt, max_tokens, temperature):
+    """يرسل طلباً لـ Groq (واجهة متوافقة مع OpenAI) ويُعيد نص المحتوى."""
+    payload = {
+        "model": MODEL,
+        "max_tokens": max_tokens,
+        "temperature": temperature,
+        "response_format": {"type": "json_object"},
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    headers = {"Authorization": f"Bearer {os.environ['GROQ_API_KEY']}"}
+    status, data = post_json(GROQ_URL, payload, headers)
+    if status != 200:
+        raise RuntimeError(f"Groq رجّع {status}: {str(data)[:200]}")
+    return data["choices"][0]["message"]["content"]
+
+
+def summarize_one(repo, lang):
     prompt = PROMPTS[lang].format(
         full_name=repo["full_name"],
         language=repo["language"] or "unspecified",
@@ -136,14 +155,7 @@ def summarize_one(client, repo, lang):
 
     for attempt in range(1, MAX_RETRIES + 1):
         try:
-            response = client.chat.completions.create(
-                model=MODEL,
-                max_tokens=MAX_TOKENS,
-                temperature=0.4,
-                response_format={"type": "json_object"},
-                messages=[{"role": "user", "content": prompt}],
-            )
-            data = json.loads(response.choices[0].message.content)
+            data = json.loads(call_groq(prompt, MAX_TOKENS, 0.4))
             if not valid_summary(data) and len(data) == 1:
                 inner = next(iter(data.values()))
                 if valid_summary(inner):
@@ -158,7 +170,7 @@ def summarize_one(client, repo, lang):
     return None
 
 
-def judge_one(client, repo):
+def judge_one(repo):
     prompt = JUDGE_PROMPT.format(
         full_name=repo["full_name"],
         description=repo["description"] or "no description",
@@ -170,14 +182,7 @@ def judge_one(client, repo):
     )
     for attempt in range(1, MAX_RETRIES + 1):
         try:
-            response = client.chat.completions.create(
-                model=MODEL,
-                max_tokens=300,
-                temperature=0.2,
-                response_format={"type": "json_object"},
-                messages=[{"role": "user", "content": prompt}],
-            )
-            v = json.loads(response.choices[0].message.content)
+            v = json.loads(call_groq(prompt, 300, 0.2))
             keep = bool(v.get("keep"))
             category = str(v.get("category", "other")).strip().lower()
             try:
@@ -227,16 +232,13 @@ def main():
         )
         return
 
-    from groq import Groq  # استيراد كسول: نحتاجه فقط عند وجود عمل فعلي
-
-    client = Groq()
     print(f"مستودعات بحاجة لمعالجة: {len(pending)} (النموذج: {MODEL})")
 
     judged = summarized = rejected = 0
     for repo in pending:
         # ١) الحَكَم أولاً — لتوفير مكالمات الشرح على المرفوضين
         if repo.get("verdict") is None:
-            verdict = judge_one(client, repo)
+            verdict = judge_one(repo)
             if not verdict:
                 print(f"    فشل حُكم {repo['full_name']}، سيُعاد لاحقاً.", file=sys.stderr)
                 continue
@@ -255,7 +257,7 @@ def main():
             if repo.get(field) is not None:
                 continue
             print(f"  [{lang}] {repo['full_name']} ...")
-            summary = summarize_one(client, repo, lang)
+            summary = summarize_one(repo, lang)
             if summary:
                 repo[field] = summary
                 summarized += 1

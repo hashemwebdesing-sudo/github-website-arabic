@@ -10,10 +10,9 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-import requests
-
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from quality import is_junk_text
+from httputil import get_json
 
 # ضمان طباعة العربية بشكل صحيح على أي نظام (خاصة ويندوز)
 for _stream in (sys.stdout, sys.stderr):
@@ -61,7 +60,7 @@ def save_archive(repos):
 def search_trending():
     since = (datetime.now(timezone.utc) - timedelta(days=DAYS_BACK)).strftime("%Y-%m-%d")
     query = f"created:>{since} stars:>={MIN_STARS}"
-    resp = requests.get(
+    status, data = get_json(
         f"{GITHUB_API}/search/repositories",
         headers=_headers(),
         params={
@@ -70,23 +69,18 @@ def search_trending():
             "order": "desc",
             "per_page": MAX_RESULTS,
         },
-        timeout=30,
     )
-    resp.raise_for_status()
-    return resp.json().get("items", [])
+    if status != 200:
+        raise RuntimeError(f"GitHub search رجّع {status}: {str(data)[:200]}")
+    return (data or {}).get("items", [])
 
 
 def fetch_readme(full_name):
-    resp = requests.get(
-        f"{GITHUB_API}/repos/{full_name}/readme",
-        headers=_headers(),
-        timeout=30,
-    )
-    if resp.status_code != 200:
+    status, data = get_json(f"{GITHUB_API}/repos/{full_name}/readme", headers=_headers())
+    if status != 200 or not data:
         return ""
-    content = resp.json().get("content", "")
     try:
-        text = base64.b64decode(content).decode("utf-8", errors="replace")
+        text = base64.b64decode(data.get("content", "")).decode("utf-8", errors="replace")
     except Exception:
         return ""
     return text[:README_MAX_CHARS]
@@ -163,6 +157,6 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except requests.HTTPError as e:
-        print(f"خطأ من GitHub API: {e}", file=sys.stderr)
+    except Exception as e:  # noqa: BLE001
+        print(f"خطأ في جلب المستودعات: {e}", file=sys.stderr)
         sys.exit(1)
