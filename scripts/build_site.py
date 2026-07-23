@@ -57,28 +57,40 @@ def first_sentence(text, cap=TAGLINE_CAP):
     return out
 
 
-def tagline_of(repo):
-    s = repo.get("summary_ar")
+def tagline_of(repo, lang):
+    s = repo.get("summary_ar" if lang == "ar" else "summary_en")
     if s and s.get("what"):
         return first_sentence(s["what"])
     if repo.get("description"):
         return repo["description"]
-    return "الشرح قيد التجهيز…"
+    return "الشرح قيد التجهيز…" if lang == "ar" else "Explanation coming soon…"
 
 
-SECTIONS = [
-    ("ما هو المشروع", "what"),
-    ("لماذا يتميّز", "why"),
-    ("من يستفيد منه", "who"),
-    ("كيف تجرّبه", "try"),
-]
+SECTIONS = {
+    "ar": [
+        ("ما هو المشروع", "what"),
+        ("لماذا يتميّز", "why"),
+        ("من يستفيد منه", "who"),
+        ("كيف تجرّبه", "try"),
+    ],
+    "en": [
+        ("What is it", "what"),
+        ("Why it stands out", "why"),
+        ("Who it's for", "who"),
+        ("How to try it", "try"),
+    ],
+}
+PENDING = {
+    "ar": '<p class="pending">الشرح قيد التجهيز — سيظهر في المسح القادم.</p>',
+    "en": '<p class="pending">Explanation is being generated — coming in the next scan.</p>',
+}
 
 
-def render_details(summary):
+def render_details(summary, lang):
     if not summary:
-        return '<p class="pending">الشرح قيد التجهيز — سيظهر في المسح القادم.</p>'
+        return PENDING[lang]
     parts = []
-    for label, key in SECTIONS:
+    for label, key in SECTIONS[lang]:
         body = summary.get(key)
         if body:
             parts.append(
@@ -97,15 +109,25 @@ def render_card(repo):
         if repo.get("language") else ""
     )
     url = esc(repo["html_url"])
+    s_ar = repo.get("summary_ar")
+    s_en = repo.get("summary_en")
+
+    # الشرح الإنجليزي، ومع غيابه نرجع للعربي كي لا تظهر بطاقة فارغة
+    details_ar = render_details(s_ar, "ar")
+    details_en = render_details(s_en, "en") if s_en else details_ar
+
     return f"""
     <article class="card" data-repo="{esc(repo['full_name'])}">
       <div class="card-top">
-        <h2 class="repo-name"><a href="{url}" target="_blank" rel="noopener">{esc(repo['full_name'])}</a></h2>
+        <h2 class="repo-name"><a href="{url}" target="_blank" rel="noopener">{esc(repo['full_name'])}</a> {new_badge}</h2>
         <button class="fav-btn" type="button" aria-label="Bookmark">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
         </button>
       </div>
-      <p class="tagline">{esc(tagline_of(repo))} {new_badge}</p>
+      <p class="tagline">
+        <span class="lx lx-ar">{esc(tagline_of(repo, 'ar'))}</span>
+        <span class="lx lx-en">{esc(tagline_of(repo, 'en'))}</span>
+      </p>
       <div class="meta">
         <span class="stars">★ {repo['stars']:,}</span>
         {lang}
@@ -115,7 +137,8 @@ def render_card(repo):
         <span data-k="details_toggle">Details</span><i class="chev">⌄</i>
       </button>
       <div class="details">
-        {render_details(repo.get('summary_ar'))}
+        <div class="lx lx-ar">{details_ar}</div>
+        <div class="lx lx-en">{details_en}</div>
       </div>
       <a class="btn-gh" href="{url}" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>

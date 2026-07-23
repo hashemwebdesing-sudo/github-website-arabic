@@ -37,6 +37,10 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* تبديل لغة الشرح مع زر AR/EN */
+html[lang="ar"] .lx-en { display: none; }
+html[lang="en"] .lx-ar { display: none; }
+
 body {
   margin: 0;
   font-family: var(--font);
