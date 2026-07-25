@@ -35,7 +35,7 @@ CANONICAL = (
 # فترة التحديث بالدقائق (يجب أن تقسم 60: 5/10/15/30). تضبط العدّاد ونص الفوتر.
 INTERVAL = os.environ.get("SCAN_INTERVAL_MIN", "10")
 # حد أدنى للنجوم في العرض — يُخفي المشاريع القديمة الأقل من الحد الجديد
-MIN_STARS_SHOW = int(os.environ.get("MIN_STARS", "2000"))
+MIN_STARS_SHOW = int(os.environ.get("MIN_STARS", "1500"))
 NEW_BADGE_HOURS = 36
 TAGLINE_CAP = 150
 
