@@ -24,8 +24,8 @@ for _stream in (sys.stdout, sys.stderr):
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "repos.json"
 
-MIN_STARS = 200
-DAYS_BACK = 21
+MIN_STARS = int(os.environ.get("MIN_STARS", "2000"))   # حد النجوم — للمشاريع المميزة فعلاً
+DAYS_BACK = int(os.environ.get("DAYS_BACK", "60"))     # نافذة أوسع لأن الحد أعلى
 MAX_RESULTS = 50          # نجلب عدداً أكبر لأن الفلترة تستبعد جزءاً
 README_MAX_CHARS = 8000
 README_MIN_CHARS = 200    # README أقصر من هذا غالباً مشروع فارغ/ريسكِن

@@ -34,6 +34,8 @@ CANONICAL = (
 )
 # فترة التحديث بالدقائق (يجب أن تقسم 60: 5/10/15/30). تضبط العدّاد ونص الفوتر.
 INTERVAL = os.environ.get("SCAN_INTERVAL_MIN", "10")
+# حد أدنى للنجوم في العرض — يُخفي المشاريع القديمة الأقل من الحد الجديد
+MIN_STARS_SHOW = int(os.environ.get("MIN_STARS", "2000"))
 NEW_BADGE_HOURS = 36
 TAGLINE_CAP = 150
 
@@ -112,7 +114,9 @@ def render_details(summary, lang):
 
 
 def is_visible(repo):
-    """يُظهر فقط المشاريع الجاهزة بشرح عربي (ويُخفي المرفوضين والزبالة)."""
+    """يُظهر فقط المشاريع المميزة الجاهزة بشرح عربي (ويُخفي المرفوضين والزبالة)."""
+    if repo.get("stars", 0) < MIN_STARS_SHOW:
+        return False  # أقل من حد النجوم — ليس مميزاً بما يكفي
     if not repo.get("summary_ar"):
         return False  # لسه ما اتشرح بالعربي — لا نعرضه إطلاقاً
     v = repo.get("verdict")

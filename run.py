@@ -24,7 +24,9 @@ for _stream in (sys.stdout, sys.stderr):
 
 ROOT = Path(__file__).resolve().parent
 SCRIPTS = ROOT / "scripts"
-STEPS = ["fetch_repos.py", "summarize.py", "build_site.py"]
+# نبني الموقع قبل الخطوة البطيئة (الشرح) وبعدها — حتى لو قُتلت العملية
+# أثناء الشرح، يكون الموقع قد نُشر بأحدث البيانات المتوفرة.
+STEPS = ["fetch_repos.py", "build_site.py", "summarize.py", "build_site.py"]
 
 
 def load_config():
