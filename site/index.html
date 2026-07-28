@@ -61,11 +61,7 @@
     <div class="stats">
       <span><strong>6</strong> <span data-k="stat_projects">projects tracked</span></span>
       <span class="sep">·</span>
-<<<<<<< HEAD
-      <span><span data-k="stat_updated">Updated</span> <time class="mono">2026-07-25 23:11 UTC</time></span>
-=======
-      <span><span data-k="stat_updated">Updated</span> <time class="mono">2026-07-25 23:14 UTC</time></span>
->>>>>>> 4c7c4fb (خفض الحد إلى 1500 نجمة (الحَكَم الذكي هو الفلتر الحقيقي للجودة))
+      <span><span data-k="stat_updated">Updated</span> <time class="mono">2026-07-28 06:33 UTC</time></span>
     </div>
   </div>
 </section>
@@ -84,14 +80,25 @@
 <p id="empty-favs" class="notice" data-k="empty_favs" hidden>No bookmarks yet.</p>
 <p id="no-results" class="notice" data-k="no_results" hidden>No results.</p>
 
-<main class="grid">
+<p id="hidden-bar" class="hidden-bar" hidden>
+  <span data-k="hidden_count_pre">Hidden:</span> <span id="hidden-count">0</span>
+  <button id="restore-btn" type="button" data-k="restore_all">Restore all</button>
+</p>
+
+<div class="layout">
+  <main class="grid">
 
     <article class="card" data-repo="hoainho/img2threejs">
       <div class="card-top">
         <h2 class="repo-name"><a href="https://github.com/hoainho/img2threejs" target="_blank" rel="noopener">hoainho/img2threejs</a> </h2>
-        <button class="fav-btn" type="button" aria-label="Bookmark">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
-        </button>
+        <div class="card-actions">
+          <button class="fav-btn" type="button" aria-label="Bookmark" data-tip-k="tip_fav">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+          </button>
+          <button class="hide-btn" type="button" aria-label="Hide" data-tip-k="tip_hide">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
       </div>
       <p class="tagline">
         <span class="lx lx-ar">مشروع يأخذ صورة عادية لجسم (مثل سلاح أو صندوق) ويحوّلها تلقائياً إلى نموذج ثلاثي الأبعاد يعمل في المتصفح.</span>
@@ -123,9 +130,14 @@
     <article class="card" data-repo="lopopolo/harness-engineering">
       <div class="card-top">
         <h2 class="repo-name"><a href="https://github.com/lopopolo/harness-engineering" target="_blank" rel="noopener">lopopolo/harness-engineering</a> </h2>
-        <button class="fav-btn" type="button" aria-label="Bookmark">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
-        </button>
+        <div class="card-actions">
+          <button class="fav-btn" type="button" aria-label="Bookmark" data-tip-k="tip_fav">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+          </button>
+          <button class="hide-btn" type="button" aria-label="Hide" data-tip-k="tip_hide">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
       </div>
       <p class="tagline">
         <span class="lx lx-ar">مشروع يعلّمك كيف تُحسّن نتائج برامج الذكاء الاصطناعي بطرق ذكية، بدل أن تعتمد على البرنامج نفسه فقط.</span>
@@ -157,9 +169,14 @@
     <article class="card" data-repo="MDX-Tom/gpt-5.6-instruct">
       <div class="card-top">
         <h2 class="repo-name"><a href="https://github.com/MDX-Tom/gpt-5.6-instruct" target="_blank" rel="noopener">MDX-Tom/gpt-5.6-instruct</a> </h2>
-        <button class="fav-btn" type="button" aria-label="Bookmark">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
-        </button>
+        <div class="card-actions">
+          <button class="fav-btn" type="button" aria-label="Bookmark" data-tip-k="tip_fav">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+          </button>
+          <button class="hide-btn" type="button" aria-label="Hide" data-tip-k="tip_hide">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
       </div>
       <p class="tagline">
         <span class="lx lx-ar">مشروع يوفر تعليمات خاصة لنموذج ذكاء اصطناعي يسمى GPT-5.6 لجعله أقوى وأكثر قدرة على تنفيذ المهام المعقدة.</span>
@@ -191,9 +208,14 @@
     <article class="card" data-repo="unicity-aos/aos-ce">
       <div class="card-top">
         <h2 class="repo-name"><a href="https://github.com/unicity-aos/aos-ce" target="_blank" rel="noopener">unicity-aos/aos-ce</a> </h2>
-        <button class="fav-btn" type="button" aria-label="Bookmark">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
-        </button>
+        <div class="card-actions">
+          <button class="fav-btn" type="button" aria-label="Bookmark" data-tip-k="tip_fav">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+          </button>
+          <button class="hide-btn" type="button" aria-label="Hide" data-tip-k="tip_hide">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
       </div>
       <p class="tagline">
         <span class="lx lx-ar">نظام تشغيل مفتوح المصدر مصمم للوكلاء الذكية (الروبوتات والذكاء الاصطناعي)، يسمح للمستخدمين ببناء وتركيب برامج خاصة بهم بسهولة وأمان.</span>
@@ -225,9 +247,14 @@
     <article class="card" data-repo="Fei-Away/Codex-Dream-Skin">
       <div class="card-top">
         <h2 class="repo-name"><a href="https://github.com/Fei-Away/Codex-Dream-Skin" target="_blank" rel="noopener">Fei-Away/Codex-Dream-Skin</a> </h2>
-        <button class="fav-btn" type="button" aria-label="Bookmark">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
-        </button>
+        <div class="card-actions">
+          <button class="fav-btn" type="button" aria-label="Bookmark" data-tip-k="tip_fav">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+          </button>
+          <button class="hide-btn" type="button" aria-label="Hide" data-tip-k="tip_hide">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
       </div>
       <p class="tagline">
         <span class="lx lx-ar">مشروع يسمح لك بتغيير مظهر برنامج Codex (برنامج كتابة الأكواد من OpenAI) بصور جميلة وخلفيات رائعة، مثل تغيير ثيم الهاتف أو الكمبيوتر.</span>
@@ -263,9 +290,14 @@
     <article class="card" data-repo="xai-org/grok-build">
       <div class="card-top">
         <h2 class="repo-name"><a href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener">xai-org/grok-build</a> </h2>
-        <button class="fav-btn" type="button" aria-label="Bookmark">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
-        </button>
+        <div class="card-actions">
+          <button class="fav-btn" type="button" aria-label="Bookmark" data-tip-k="tip_fav">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+          </button>
+          <button class="hide-btn" type="button" aria-label="Hide" data-tip-k="tip_hide">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
       </div>
       <p class="tagline">
         <span class="lx lx-ar">مشروع برنامج ذكاء اصطناعي متقدم من شركة SpaceX، يساعدك على كتابة وتعديل الأكواد البرمجية بشكل تلقائي.</span>
@@ -299,7 +331,30 @@
       <a class="btn-gh" href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener"><span data-k="open_gh">Open on GitHub</span> ↗</a>
     </article>
     
-</main>
+  </main>
+
+  <aside class="sidebar">
+    <h3 class="side-title" data-k="top_title">Top on GitHub</h3>
+    <ol class="top-list">
+<li><span class="rank">1</span><a href="https://github.com/codecrafters-io/build-your-own-x" target="_blank" rel="noopener"><span class="tname">codecrafters-io/build-your-own-x</span><span class="tstars">★ 532k</span></a></li>
+<li><span class="rank">2</span><a href="https://github.com/sindresorhus/awesome" target="_blank" rel="noopener"><span class="tname">sindresorhus/awesome</span><span class="tstars">★ 490k</span></a></li>
+<li><span class="rank">3</span><a href="https://github.com/freeCodeCamp/freeCodeCamp" target="_blank" rel="noopener"><span class="tname">freeCodeCamp/freeCodeCamp</span><span class="tstars">★ 453k</span></a></li>
+<li><span class="rank">4</span><a href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener"><span class="tname">public-apis/public-apis</span><span class="tstars">★ 453k</span></a></li>
+<li><span class="rank">5</span><a href="https://github.com/EbookFoundation/free-programming-books" target="_blank" rel="noopener"><span class="tname">EbookFoundation/free-programming-books</span><span class="tstars">★ 393k</span></a></li>
+<li><span class="rank">6</span><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener"><span class="tname">openclaw/openclaw</span><span class="tstars">★ 384k</span></a></li>
+<li><span class="rank">7</span><a href="https://github.com/nilbuild/developer-roadmap" target="_blank" rel="noopener"><span class="tname">nilbuild/developer-roadmap</span><span class="tstars">★ 363k</span></a></li>
+<li><span class="rank">8</span><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener"><span class="tname">donnemartin/system-design-primer</span><span class="tstars">★ 359k</span></a></li>
+<li><span class="rank">9</span><a href="https://github.com/jwasham/coding-interview-university" target="_blank" rel="noopener"><span class="tname">jwasham/coding-interview-university</span><span class="tstars">★ 357k</span></a></li>
+<li><span class="rank">10</span><a href="https://github.com/vinta/awesome-python" target="_blank" rel="noopener"><span class="tname">vinta/awesome-python</span><span class="tstars">★ 311k</span></a></li>
+<li><span class="rank">11</span><a href="https://github.com/awesome-selfhosted/awesome-selfhosted" target="_blank" rel="noopener"><span class="tname">awesome-selfhosted/awesome-selfhosted</span><span class="tstars">★ 309k</span></a></li>
+<li><span class="rank">12</span><a href="https://github.com/996icu/996.ICU" target="_blank" rel="noopener"><span class="tname">996icu/996.ICU</span><span class="tstars">★ 277k</span></a></li>
+<li><span class="rank">13</span><a href="https://github.com/practical-tutorials/project-based-learning" target="_blank" rel="noopener"><span class="tname">practical-tutorials/project-based-learning</span><span class="tstars">★ 276k</span></a></li>
+<li><span class="rank">14</span><a href="https://github.com/obra/superpowers" target="_blank" rel="noopener"><span class="tname">obra/superpowers</span><span class="tstars">★ 262k</span></a></li>
+<li><span class="rank">15</span><a href="https://github.com/react/react" target="_blank" rel="noopener"><span class="tname">react/react</span><span class="tstars">★ 247k</span></a></li>
+    </ol>
+    <p class="side-note" data-k="top_note">All-time most starred repositories.</p>
+  </aside>
+</div>
 
 <footer class="site-foot">
   <p class="foot-auto" data-k="foot_auto">Auto-updates every 10 minutes.</p>
@@ -330,6 +385,12 @@
       no_results: "لا توجد نتائج تطابق بحثك. جرّب كلمة أخرى.",
       foot_auto: "يُحدَّث تلقائياً كل 10 دقيقة.",
       foot_by: "صُمّم وطُوِّر بواسطة",
+      top_title: "الأقوى على GitHub",
+      top_note: "الأكثر نجوماً على الإطلاق.",
+      hidden_count_pre: "مشاريع مخفية:",
+      restore_all: "استعادة الكل",
+      tip_fav: "حفظ في المفضلة",
+      tip_hide: "إخفاء هذا المشروع",
       lang_switch: "EN"
     },
     en: {
@@ -349,6 +410,12 @@
       no_results: "No results match your search. Try another keyword.",
       foot_auto: "Auto-updates every 10 minutes.",
       foot_by: "Designed & developed by",
+      top_title: "Top on GitHub",
+      top_note: "All-time most starred repositories.",
+      hidden_count_pre: "Hidden projects:",
+      restore_all: "Restore all",
+      tip_fav: "Save to favorites",
+      tip_hide: "Hide this project",
       lang_switch: "عربي"
     }
   };
@@ -366,6 +433,10 @@
     document.querySelectorAll("[data-k-ph]").forEach(function (el) {
       var v = dict[el.dataset.kPh];
       if (v != null) el.placeholder = v;
+    });
+    document.querySelectorAll("[data-tip-k]").forEach(function (el) {
+      var v = dict[el.dataset.tipK];
+      if (v != null) { el.title = v; el.setAttribute("aria-label", v); }
     });
     document.getElementById("lang-btn").textContent = dict.lang_switch;
   }
@@ -391,16 +462,25 @@
 
   /* ---------- favorites + search + filter ---------- */
   var FKEY = "radar_favs";
+  var HKEY = "radar_hidden";
   var currentFilter = "all";
   var query = "";
 
-  function getFavs() {
-    try { return JSON.parse(localStorage.getItem(FKEY)) || []; }
+  function getList(key) {
+    try { return JSON.parse(localStorage.getItem(key)) || []; }
     catch (e) { return []; }
   }
-  function setFavs(list) { localStorage.setItem(FKEY, JSON.stringify(list)); }
+  function setList(key, list) { localStorage.setItem(key, JSON.stringify(list)); }
+  function getFavs() { return getList(FKEY); }
+  function setFavs(l) { setList(FKEY, l); }
+  function getHidden() { return getList(HKEY); }
+  function setHidden(l) { setList(HKEY, l); }
+
   function updateCount() {
     document.getElementById("fav-count").textContent = getFavs().length;
+    var n = getHidden().length;
+    document.getElementById("hidden-count").textContent = n;
+    document.getElementById("hidden-bar").hidden = (n === 0);
   }
 
   var cards = [].slice.call(document.querySelectorAll(".card"));
@@ -408,12 +488,14 @@
 
   function applyView() {
     var favs = getFavs();
+    var hidden = getHidden();
     var q = query.trim().toLowerCase();
     var shown = 0;
     cards.forEach(function (card) {
+      var isHidden = hidden.indexOf(card.dataset.repo) !== -1;
       var passFilter = currentFilter === "all" || favs.indexOf(card.dataset.repo) !== -1;
       var passSearch = q === "" || card._text.indexOf(q) !== -1;
-      var show = passFilter && passSearch;
+      var show = !isHidden && passFilter && passSearch;
       card.style.display = show ? "" : "none";
       if (show) shown++;
     });
@@ -434,11 +516,26 @@
       setFavs(favs); updateCount(); applyView();
     });
 
+    var hideBtn = card.querySelector(".hide-btn");
+    hideBtn.addEventListener("click", function () {
+      var h = getHidden();
+      if (h.indexOf(repo) === -1) h.push(repo);
+      setHidden(h);
+      updateCount();
+      applyView();
+    });
+
     var toggle = card.querySelector(".details-toggle");
     toggle.addEventListener("click", function () {
       var open = card.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
+  });
+
+  document.getElementById("restore-btn").addEventListener("click", function () {
+    setHidden([]);
+    updateCount();
+    applyView();
   });
 
   document.querySelectorAll(".filter-btn").forEach(function (btn) {

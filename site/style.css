@@ -231,15 +231,138 @@ a { color: inherit; }
 }
 
 /* ---------- Grid + cards ---------- */
-.grid {
-  max-width: 1080px;
+/* ---------- تخطيط: المحتوى + القائمة الجانبية ---------- */
+.layout {
+  max-width: 1240px;
   margin: 1.5rem auto 3rem;
   padding: 0 clamp(1rem, 4vw, 2rem);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-template-columns: 1fr 300px;
+  gap: 1.6rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { order: -1; }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.15rem;
   align-items: start;
 }
+
+/* ---------- القائمة الجانبية ---------- */
+.sidebar {
+  position: sticky;
+  top: 76px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.15rem 1.25rem 1rem;
+}
+.side-title {
+  margin: 0 0 .9rem;
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.side-title::before {
+  content: "";
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--star);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--star) 22%, transparent);
+}
+.top-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: t;
+}
+.top-list li {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .4rem 0;
+  border-top: 1px solid var(--border);
+}
+.top-list li:first-child { border-top: none; }
+.top-list .rank {
+  flex: 0 0 auto;
+  width: 20px;
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--muted);
+  text-align: center;
+}
+.top-list li:nth-child(-n+3) .rank { color: var(--star); font-weight: 700; }
+.top-list a {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem;
+  text-decoration: none;
+  transition: color .15s;
+}
+.top-list a:hover .tname { color: var(--accent); }
+.tname {
+  font-size: .84rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color .15s;
+}
+.tstars {
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--star);
+}
+.side-note {
+  margin: .9rem 0 0;
+  padding-top: .7rem;
+  border-top: 1px solid var(--border);
+  font-size: .74rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- شريط المخفية ---------- */
+.hidden-bar {
+  max-width: 1240px;
+  margin: 1rem auto 0;
+  padding: .55rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  font-size: .84rem;
+  color: var(--muted);
+}
+.hidden-bar #hidden-count {
+  font-family: var(--mono);
+  color: var(--text);
+  font-weight: 600;
+}
+.hidden-bar button {
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .25rem .85rem;
+  transition: all .15s;
+}
+.hidden-bar button:hover { background: var(--accent-soft); border-color: var(--accent); }
 .card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -267,6 +390,26 @@ a { color: inherit; }
 }
 .repo-name a { text-decoration: none; }
 .repo-name a:hover { color: var(--accent); }
+
+.card-actions {
+  flex: 0 0 auto;
+  display: flex;
+  gap: .35rem;
+}
+
+.hide-btn {
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  transition: all .15s;
+}
+.hide-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.hide-btn:hover { color: #f87171; border-color: #f87171; background: rgba(248,113,113,.1); }
 
 .fav-btn {
   flex: 0 0 auto;

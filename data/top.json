@@ -1,0 +1,110 @@
+{
+  "fetched_at": "2026-07-28T06:30:35.334575+00:00",
+  "items": [
+    {
+      "full_name": "codecrafters-io/build-your-own-x",
+      "html_url": "https://github.com/codecrafters-io/build-your-own-x",
+      "stars": 532254,
+      "language": "Markdown",
+      "description": "Master programming by recreating your favorite technologies from scratch."
+    },
+    {
+      "full_name": "sindresorhus/awesome",
+      "html_url": "https://github.com/sindresorhus/awesome",
+      "stars": 489775,
+      "language": "",
+      "description": "😎 Awesome lists about all kinds of interesting topics"
+    },
+    {
+      "full_name": "freeCodeCamp/freeCodeCamp",
+      "html_url": "https://github.com/freeCodeCamp/freeCodeCamp",
+      "stars": 453008,
+      "language": "TypeScript",
+      "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free."
+    },
+    {
+      "full_name": "public-apis/public-apis",
+      "html_url": "https://github.com/public-apis/public-apis",
+      "stars": 452966,
+      "language": "Python",
+      "description": "A collective list of free APIs"
+    },
+    {
+      "full_name": "EbookFoundation/free-programming-books",
+      "html_url": "https://github.com/EbookFoundation/free-programming-books",
+      "stars": 393170,
+      "language": "Python",
+      "description": ":books: Freely available programming books"
+    },
+    {
+      "full_name": "openclaw/openclaw",
+      "html_url": "https://github.com/openclaw/openclaw",
+      "stars": 384377,
+      "language": "TypeScript",
+      "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 "
+    },
+    {
+      "full_name": "nilbuild/developer-roadmap",
+      "html_url": "https://github.com/nilbuild/developer-roadmap",
+      "stars": 362913,
+      "language": "TypeScript",
+      "description": "Interactive roadmaps, guides and other educational content to help developers grow in their careers."
+    },
+    {
+      "full_name": "donnemartin/system-design-primer",
+      "html_url": "https://github.com/donnemartin/system-design-primer",
+      "stars": 359444,
+      "language": "Python",
+      "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards."
+    },
+    {
+      "full_name": "jwasham/coding-interview-university",
+      "html_url": "https://github.com/jwasham/coding-interview-university",
+      "stars": 357288,
+      "language": "",
+      "description": "A complete computer science study plan to become a software engineer."
+    },
+    {
+      "full_name": "vinta/awesome-python",
+      "html_url": "https://github.com/vinta/awesome-python",
+      "stars": 310739,
+      "language": "Python",
+      "description": "An opinionated list of Python frameworks, libraries, tools, and resources"
+    },
+    {
+      "full_name": "awesome-selfhosted/awesome-selfhosted",
+      "html_url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+      "stars": 308750,
+      "language": "",
+      "description": "A list of Free Software network services and web applications which can be hosted on your own servers"
+    },
+    {
+      "full_name": "996icu/996.ICU",
+      "html_url": "https://github.com/996icu/996.ICU",
+      "stars": 276502,
+      "language": "",
+      "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers."
+    },
+    {
+      "full_name": "practical-tutorials/project-based-learning",
+      "html_url": "https://github.com/practical-tutorials/project-based-learning",
+      "stars": 275530,
+      "language": "Python",
+      "description": "Curated list of project-based tutorials"
+    },
+    {
+      "full_name": "obra/superpowers",
+      "html_url": "https://github.com/obra/superpowers",
+      "stars": 262277,
+      "language": "Shell",
+      "description": "An agentic skills framework & software development methodology that works."
+    },
+    {
+      "full_name": "react/react",
+      "html_url": "https://github.com/react/react",
+      "stars": 246756,
+      "language": "JavaScript",
+      "description": "The library for web and native user interfaces."
+    }
+  ]
+}

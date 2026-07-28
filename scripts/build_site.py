@@ -24,6 +24,7 @@ for _stream in (sys.stdout, sys.stderr):
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "repos.json"
+TOP_FILE = ROOT / "data" / "top.json"
 STYLE_SRC = ROOT / "site" / "style.css"
 
 # مجلد الإخراج ورابط الموقع قابلان للضبط عبر البيئة (لاستضافة مختلفة مثل Hostinger)
@@ -157,9 +158,14 @@ def render_card(repo):
     <article class="card" data-repo="{esc(repo['full_name'])}">
       <div class="card-top">
         <h2 class="repo-name"><a href="{url}" target="_blank" rel="noopener">{esc(repo['full_name'])}</a> {new_badge}</h2>
-        <button class="fav-btn" type="button" aria-label="Bookmark">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
-        </button>
+        <div class="card-actions">
+          <button class="fav-btn" type="button" aria-label="Bookmark" data-tip-k="tip_fav">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+          </button>
+          <button class="hide-btn" type="button" aria-label="Hide" data-tip-k="tip_hide">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
       </div>
       <p class="tagline">
         <span class="lx lx-ar">{esc(tagline_of(repo, 'ar'))}</span>
@@ -183,6 +189,26 @@ def render_card(repo):
     """
 
 
+def render_top_list():
+    """قائمة جانبية بأقوى مستودعات GitHub عموماً."""
+    if not TOP_FILE.exists():
+        return ""
+    try:
+        items = json.loads(TOP_FILE.read_text(encoding="utf-8")).get("items", [])
+    except Exception:
+        return ""
+    rows = []
+    for i, r in enumerate(items, 1):
+        stars = f"{r['stars'] / 1000:.0f}k"
+        rows.append(
+            f'<li><span class="rank">{i}</span>'
+            f'<a href="{esc(r["html_url"])}" target="_blank" rel="noopener">'
+            f'<span class="tname">{esc(r["full_name"])}</span>'
+            f'<span class="tstars">★ {stars}</span></a></li>'
+        )
+    return "\n".join(rows)
+
+
 def build():
     if not DATA_FILE.exists():
         print("لا يوجد data/repos.json — شغّل fetch_repos.py أولاً.", file=sys.stderr)
@@ -204,6 +230,7 @@ def build():
         .replace("%%COUNT%%", str(count))
         .replace("%%CANONICAL%%", CANONICAL)
         .replace("%%INTERVAL%%", INTERVAL)
+        .replace("%%TOPLIST%%", render_top_list())
     )
 
     SITE_DIR.mkdir(parents=True, exist_ok=True)
@@ -311,9 +338,24 @@ TEMPLATE = r"""<!DOCTYPE html>
 <p id="empty-favs" class="notice" data-k="empty_favs" hidden>No bookmarks yet.</p>
 <p id="no-results" class="notice" data-k="no_results" hidden>No results.</p>
 
-<main class="grid">
+<p id="hidden-bar" class="hidden-bar" hidden>
+  <span data-k="hidden_count_pre">Hidden:</span> <span id="hidden-count">0</span>
+  <button id="restore-btn" type="button" data-k="restore_all">Restore all</button>
+</p>
+
+<div class="layout">
+  <main class="grid">
 %%CARDS%%
-</main>
+  </main>
+
+  <aside class="sidebar">
+    <h3 class="side-title" data-k="top_title">Top on GitHub</h3>
+    <ol class="top-list">
+%%TOPLIST%%
+    </ol>
+    <p class="side-note" data-k="top_note">All-time most starred repositories.</p>
+  </aside>
+</div>
 
 <footer class="site-foot">
   <p class="foot-auto" data-k="foot_auto">Auto-updates every %%INTERVAL%% minutes.</p>
@@ -344,6 +386,12 @@ TEMPLATE = r"""<!DOCTYPE html>
       no_results: "لا توجد نتائج تطابق بحثك. جرّب كلمة أخرى.",
       foot_auto: "يُحدَّث تلقائياً كل %%INTERVAL%% دقيقة.",
       foot_by: "صُمّم وطُوِّر بواسطة",
+      top_title: "الأقوى على GitHub",
+      top_note: "الأكثر نجوماً على الإطلاق.",
+      hidden_count_pre: "مشاريع مخفية:",
+      restore_all: "استعادة الكل",
+      tip_fav: "حفظ في المفضلة",
+      tip_hide: "إخفاء هذا المشروع",
       lang_switch: "EN"
     },
     en: {
@@ -363,6 +411,12 @@ TEMPLATE = r"""<!DOCTYPE html>
       no_results: "No results match your search. Try another keyword.",
       foot_auto: "Auto-updates every %%INTERVAL%% minutes.",
       foot_by: "Designed & developed by",
+      top_title: "Top on GitHub",
+      top_note: "All-time most starred repositories.",
+      hidden_count_pre: "Hidden projects:",
+      restore_all: "Restore all",
+      tip_fav: "Save to favorites",
+      tip_hide: "Hide this project",
       lang_switch: "عربي"
     }
   };
@@ -380,6 +434,10 @@ TEMPLATE = r"""<!DOCTYPE html>
     document.querySelectorAll("[data-k-ph]").forEach(function (el) {
       var v = dict[el.dataset.kPh];
       if (v != null) el.placeholder = v;
+    });
+    document.querySelectorAll("[data-tip-k]").forEach(function (el) {
+      var v = dict[el.dataset.tipK];
+      if (v != null) { el.title = v; el.setAttribute("aria-label", v); }
     });
     document.getElementById("lang-btn").textContent = dict.lang_switch;
   }
@@ -405,16 +463,25 @@ TEMPLATE = r"""<!DOCTYPE html>
 
   /* ---------- favorites + search + filter ---------- */
   var FKEY = "radar_favs";
+  var HKEY = "radar_hidden";
   var currentFilter = "all";
   var query = "";
 
-  function getFavs() {
-    try { return JSON.parse(localStorage.getItem(FKEY)) || []; }
+  function getList(key) {
+    try { return JSON.parse(localStorage.getItem(key)) || []; }
     catch (e) { return []; }
   }
-  function setFavs(list) { localStorage.setItem(FKEY, JSON.stringify(list)); }
+  function setList(key, list) { localStorage.setItem(key, JSON.stringify(list)); }
+  function getFavs() { return getList(FKEY); }
+  function setFavs(l) { setList(FKEY, l); }
+  function getHidden() { return getList(HKEY); }
+  function setHidden(l) { setList(HKEY, l); }
+
   function updateCount() {
     document.getElementById("fav-count").textContent = getFavs().length;
+    var n = getHidden().length;
+    document.getElementById("hidden-count").textContent = n;
+    document.getElementById("hidden-bar").hidden = (n === 0);
   }
 
   var cards = [].slice.call(document.querySelectorAll(".card"));
@@ -422,12 +489,14 @@ TEMPLATE = r"""<!DOCTYPE html>
 
   function applyView() {
     var favs = getFavs();
+    var hidden = getHidden();
     var q = query.trim().toLowerCase();
     var shown = 0;
     cards.forEach(function (card) {
+      var isHidden = hidden.indexOf(card.dataset.repo) !== -1;
       var passFilter = currentFilter === "all" || favs.indexOf(card.dataset.repo) !== -1;
       var passSearch = q === "" || card._text.indexOf(q) !== -1;
-      var show = passFilter && passSearch;
+      var show = !isHidden && passFilter && passSearch;
       card.style.display = show ? "" : "none";
       if (show) shown++;
     });
@@ -448,11 +517,26 @@ TEMPLATE = r"""<!DOCTYPE html>
       setFavs(favs); updateCount(); applyView();
     });
 
+    var hideBtn = card.querySelector(".hide-btn");
+    hideBtn.addEventListener("click", function () {
+      var h = getHidden();
+      if (h.indexOf(repo) === -1) h.push(repo);
+      setHidden(h);
+      updateCount();
+      applyView();
+    });
+
     var toggle = card.querySelector(".details-toggle");
     toggle.addEventListener("click", function () {
       var open = card.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
+  });
+
+  document.getElementById("restore-btn").addEventListener("click", function () {
+    setHidden([]);
+    updateCount();
+    applyView();
   });
 
   document.querySelectorAll(".filter-btn").forEach(function (btn) {

@@ -33,6 +33,8 @@ MAX_TOKENS = 1200
 MAX_RETRIES = 4
 RATE_RETRIES = 8  # محاولات إضافية عند تجاوز حد الطلبات (429)
 LIMIT = int(os.environ.get("SUMMARIZE_LIMIT", "0"))  # 0 = بلا حد
+# لا نهدر مكالمات على مشاريع لن تُعرض أصلاً (تحت حد النجوم)
+MIN_STARS = int(os.environ.get("MIN_STARS", "1500"))
 # نقتطع README لتقليل التوكن المُرسَل (أهم عامل لتفادي حد Groq المجاني)
 README_LIMIT = int(os.environ.get("README_CHARS", "1500"))
 
@@ -221,6 +223,8 @@ def judge_one(repo):
 
 
 def needs_work(repo):
+    if repo.get("stars", 0) < MIN_STARS:
+        return False                      # لن يُعرض — لا نهدر عليه مكالمات
     v = repo.get("verdict")
     if v is None:
         return True                       # بحاجة لحُكم
@@ -231,7 +235,12 @@ def needs_work(repo):
 
 def main():
     repos = load_repos()
-    pending = [r for r in repos if needs_work(r)]
+    # الأقوى نجوماً أولاً — كي تظهر أهم المشاريع على الموقع بأسرع وقت
+    pending = sorted(
+        [r for r in repos if needs_work(r)],
+        key=lambda r: r.get("stars", 0),
+        reverse=True,
+    )
     if LIMIT > 0:
         pending = pending[:LIMIT]
 
